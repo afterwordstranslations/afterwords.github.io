@@ -500,7 +500,7 @@ div.wh-widget-send-button-wrapper div.wh-widget-send-button-wrapper-list.wh-widg
   max-width: 100%;
 }
 .profile-picture {
-  max-width: 100%;
+  max-width: 70%;
   margin: 2em auto;
   border: 1px solid;
 }
