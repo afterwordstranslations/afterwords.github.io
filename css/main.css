@@ -540,13 +540,14 @@ div.wh-widget-send-button-wrapper div.wh-widget-send-button-wrapper-list.wh-widg
   margin-left: -9px;
 }
 .e-mail {
-  margin: 2em;
-}
-.e-mail:before {
-  content: attr(data-website) "\0040" attr(data-user);
-  unicode-bidi: bidi-override;
-  direction: rtl;
+  width: 200px;
+  margin: 2em auto;
   background: #E57F3B;
-  color: #fff;
   padding: 1em 2em;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+.e-mail > a {
+  color: #fff!important;
 }
