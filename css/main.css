@@ -310,7 +310,7 @@ html,
 body {
   height: 100%;
   background-color: #387F7D;
-  font-family: 'Port Lligat Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 p {
   font-family: 'Open Sans', sans-serif;
@@ -481,6 +481,10 @@ hr {
 #our-work, #media {
   background: #C9D7D8;
   color: #085151;
+}
+
+#media img {
+  width: 100px;
 }
 
 div.wh-widget-send-button-wrapper div.wh-widget-send-button-wrapper-list.wh-widget-show-get-button a.wh-widget-send-button-get-button {
