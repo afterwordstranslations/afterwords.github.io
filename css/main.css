@@ -443,6 +443,14 @@ hr {
   color: rgba(255,255,255,.5);
 }
 
+#social > h2 {
+  color: #fff;
+}
+
+#social img {
+  margin: 24px;
+  height: 50px;
+}
 
 /*
  * Affix and center
