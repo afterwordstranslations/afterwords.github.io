@@ -1,8 +1,16 @@
+"use client";
 import Image from "next/image";
 import { ServiceCard } from "~/components/Services";
 import Emoji from "a11y-react-emoji";
 import LabeledEmoji from "~/components/LabeledEmoji";
 import Translator from "~/components/Translator";
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line
+    Beacon: any;
+  }
+}
 
 export default function Home() {
   return (
@@ -59,12 +67,12 @@ export default function Home() {
                   thrive—whether in the vibrant local Greek market or the
                   expansive global marketplace.
                 </p>
-                <a
-                  href="https://www.linkedin.com/company/afterwordstranslations"
+                <button
                   className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white"
+                  onClick={() => window.Beacon("open")}
                 >
                   Get a quote →
-                </a>
+                </button>
               </div>
             </div>
             <div className="md:w-6/12 lg:w-6/12 xl:4/12">
@@ -80,7 +88,7 @@ export default function Home() {
         </div>
       </div>
       <div className="container mx-auto">
-        <div id="work" className="lg:w-2/3 p-8">
+        <div id="about" className="lg:w-2/3 p-8">
           <p className="text-2xl mb-2 text-gray-600">About us</p>
           <h2 className="text-4xl font-bold mb-8">
             Translation is more than <i className="font-normal">just</i> a
@@ -221,7 +229,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div id="our-team" className="p-8">
+        <div id="team" className="p-8">
           <p className="text-2xl mb-2 text-gray-600">Our team</p>
           <h2 className="text-4xl font-bold mb-8">You are in good hands</h2>
           <p className="text-xl mb-8 lg:w-2/3 ">
@@ -306,12 +314,12 @@ export default function Home() {
               Do you want to translate your new book or find interpreters for
               your big conference or event? Or do you have another question?{" "}
             </p>
-            <a
-              href="https://www.linkedin.com/company/afterwordstranslations"
+            <button
               className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white"
+              onClick={() => window.Beacon("open")}
             >
               Contact us →
-            </a>
+            </button>
           </div>
         </div>
       </div>
