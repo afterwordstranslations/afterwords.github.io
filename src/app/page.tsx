@@ -89,7 +89,9 @@ export default function Home() {
       </div>
       <div className="container mx-auto">
         <div id="about" className="lg:w-2/3 p-8">
-          <p className="text-2xl mb-2 text-gray-600">About us</p>
+          <p className="text-2xl mb-2 text-gray-600 dark:text-slate-500">
+            About us
+          </p>
           <h2 className="text-4xl font-bold mb-8">
             Translation is more than <i className="font-normal">just</i> a
             document.
@@ -121,9 +123,11 @@ export default function Home() {
         </div>
 
         <div className="p-8" id="services">
-          <p className="text-2xl mb-2 text-gray-600">Our services</p>
+          <p className="text-2xl mb-2 text-gray-600 dark:text-slate-500">
+            Our services
+          </p>
           <h2 className="text-4xl font-bold mb-8">How we can help you</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-8 md:w-3/4 lg:w-2/3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mb-8 md:w-3/4 lg:w-2/3">
             <div>
               <LabeledEmoji emoji="😌" label="Quality" />
             </div>
@@ -134,7 +138,7 @@ export default function Home() {
               <LabeledEmoji emoji="⏰" label="Consistency" />
             </div>
           </div>
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 mb-8">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
             <ServiceCard
               label="Certified Translations"
               description={
@@ -202,7 +206,7 @@ export default function Home() {
             expertise spans multiple areas.
           </p>
 
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 mb-8">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
             <ServiceCard
               label="Medical & patent"
               description="Expert translations of medical documentation, research papers, patents, as well as medical devices and product information."
@@ -230,7 +234,9 @@ export default function Home() {
           </div>
         </div>
         <div id="team" className="p-8">
-          <p className="text-2xl mb-2 text-gray-600">Our team</p>
+          <p className="text-2xl mb-2 text-gray-500 dark:text-slate-500">
+            Our team
+          </p>
           <h2 className="text-4xl font-bold mb-8">You are in good hands</h2>
           <p className="text-xl mb-8 lg:w-2/3 ">
             Our seasoned translators brings together diverse expertise to meet a
@@ -300,7 +306,7 @@ export default function Home() {
       <div className="bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
         <div className="container mx-auto">
           <div className="xl:w-2/3 p-8 pb-0 text-white">
-            <p className="text-2xl mb-2">
+            <p className="text-2xl text-slate-400 mb-2">
               Do you have any further questions?{" "}
               <Emoji className="text-2xl" symbol="🤔" />
             </p>
