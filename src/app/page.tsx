@@ -29,7 +29,10 @@ export default function Home() {
                 <a className="text-white m-2 px-2 py-1 " href="#team">
                   Our team
                 </a>
-                <a className="text-white m-2 px-2 py-1 " href="/contact">
+                <a
+                  className="text-white m-2 px-2 py-1 "
+                  href="https://www.linkedin.com/company/afterwordstranslations"
+                >
                   Contact
                 </a>
               </nav>
@@ -50,9 +53,12 @@ export default function Home() {
                   thrive—whether in the vibrant local Greek market or the
                   expansive global marketplace.
                 </p>
-                <button className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white">
+                <a
+                  href="https://www.linkedin.com/company/afterwordstranslations"
+                  className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white"
+                >
                   Get a quote →
-                </button>
+                </a>
               </div>
             </div>
             <div className="md:w-6/12 lg:w-6/12 xl:4/12">
@@ -294,9 +300,12 @@ export default function Home() {
               Do you want to translate your new book or find interpreters for
               your big conference or event? Or do you have another question?{" "}
             </p>
-            <button className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white">
+            <a
+              href="https://www.linkedin.com/company/afterwordstranslations"
+              className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white"
+            >
               Contact us →
-            </button>
+            </a>
           </div>
         </div>
       </div>
