@@ -18,8 +18,8 @@ export default function Home() {
       <div className="bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
         <div className="container mx-auto">
           <header className="text-gray-100 body-font w-full">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row">
-              <a className="flex mt-4 order-first lg:order-none lg:w-2/5 title-font font-medium mb-4 md:mb-0">
+            <div className="container mx-auto flex p-5 flex-col md:flex-row">
+              <a className="mt-4 order-first lg:order-none lg:w-2/5 title-font font-medium mb-4 md:mb-0">
                 <Image
                   src="/logo.svg"
                   width={312}
@@ -27,7 +27,7 @@ export default function Home() {
                   alt="Afterwords Logo"
                 />
               </a>
-              <nav className="flex lg:w-3/5 flex-wrap text-base md:mt-6">
+              <nav className="lg:w-3/5 text-base md:mt-6">
                 <a className="text-white m-2 px-2 py-1 " href="#about">
                   About us
                 </a>
@@ -68,7 +68,7 @@ export default function Home() {
                   expansive global marketplace.
                 </p>
                 <button
-                  className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white"
+                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white dark:bg-white dark:text-indigo-900"
                   onClick={() => window.Beacon("open")}
                 >
                   Get a quote →
@@ -321,7 +321,7 @@ export default function Home() {
               your big conference or event? Or do you have another question?{" "}
             </p>
             <button
-              className="btn text-xl btn-lg normal-case text-indigo-900 dark:text-white"
+              className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white dark:bg-white dark:text-indigo-900"
               onClick={() => window.Beacon("open")}
             >
               Contact us →
