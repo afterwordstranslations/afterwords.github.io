@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import { ServiceCard } from "~/components/Services";
 import Emoji from "a11y-react-emoji";
