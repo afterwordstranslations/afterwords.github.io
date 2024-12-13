@@ -33,7 +33,13 @@ export default function Home() {
                   className="text-white m-2 px-2 py-1 "
                   href="https://www.linkedin.com/company/afterwordstranslations"
                 >
-                  Contact
+                  <Image
+                    alt="LinkedIn logo"
+                    width={50}
+                    height={50}
+                    className="w-6"
+                    src="/in.png"
+                  />
                 </a>
               </nav>
             </div>
