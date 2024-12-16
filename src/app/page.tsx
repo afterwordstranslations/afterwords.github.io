@@ -68,7 +68,7 @@ export default function Home() {
                   expansive global marketplace.
                 </p>
                 <button
-                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white dark:bg-white dark:text-indigo-900"
+                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
                   onClick={() => window.Beacon("open")}
                 >
                   Get a quote →
@@ -321,7 +321,7 @@ export default function Home() {
               your big conference or event? Or do you have another question?{" "}
             </p>
             <button
-              className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white dark:bg-white dark:text-indigo-900"
+              className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
               onClick={() => window.Beacon("open")}
             >
               Contact us →
