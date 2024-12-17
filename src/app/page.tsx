@@ -16,36 +16,37 @@ export default function Home() {
   return (
     <div className="w-full">
       <div className="bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4 md:px-8">
           <header className="text-gray-100 body-font w-full">
-            <div className="container mx-auto flex p-5 flex-col md:flex-row">
-              <a className="mt-4 order-first lg:order-none lg:w-2/5 title-font font-medium mb-4 md:mb-0">
+            <div className="container mx-auto grid gap-4 grid-cols-6">
+              <a className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3">
                 <Image
                   src="/logo.svg"
+                  className="w-2/3"
                   width={312}
                   height={67}
                   alt="Afterwords Logo"
                 />
               </a>
-              <nav className="lg:w-3/5 text-base md:mt-6">
-                <a className="text-white m-2 px-2 py-1 " href="#about">
+              <nav className="text-base mt-4 md:mt-10 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right">
+                <a className="text-white m-2 py-1 link" href="#about">
                   About us
                 </a>
-                <a className="text-white m-2 px-2 py-1 " href="#services">
+                <a className="text-white m-2 py-1 link" href="#services">
                   Our services
                 </a>
-                <a className="text-white m-2 px-2 py-1 " href="#team">
+                <a className="text-white m-2 py-1 link" href="#team">
                   Our team
                 </a>
                 <a
-                  className="text-white m-2 px-2 py-1 "
+                  className="text-white m-2 py-1"
                   href="https://www.linkedin.com/company/afterwordstranslations"
                 >
                   <Image
                     alt="LinkedIn logo"
                     width={50}
                     height={50}
-                    className="w-6"
+                    className="w-6 inline"
                     src="/in.png"
                   />
                 </a>
@@ -53,7 +54,7 @@ export default function Home() {
             </div>
           </header>
           <div className="md:flex">
-            <div className="sm:w-full md:w-6/12 text-white p-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
+            <div className="sm:w-full md:w-6/12 text-white py-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
               <div>
                 <h1 className="text-4xl font-bold text-white mb-4">
                   {" "}
@@ -75,7 +76,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="md:w-6/12 lg:w-6/12 xl:4/12">
+            <div className="md:w-6/12 lg:w-6/12 xl:4/12 md:p-16">
               <Image
                 className="lg:p-16"
                 src="/world.svg"
@@ -103,7 +104,7 @@ export default function Home() {
             audiences, and achieve their goals with confidence.
           </p>
 
-          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8">
             <LabeledEmoji emoji="🇬🇷" label="Greek" />
             <LabeledEmoji emoji="🇩🇪" label="German" />
             <LabeledEmoji emoji="🇫🇷" label="French" />
@@ -206,7 +207,7 @@ export default function Home() {
             expertise spans multiple areas.
           </p>
 
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
             <ServiceCard
               label="Medical & patent"
               description="Expert translations of medical documentation, research papers, patents, as well as medical devices and product information."
@@ -336,7 +337,7 @@ export default function Home() {
             src="/logo.svg"
             width={200}
             height={50}
-            className="mb-8 w-2/3 md:w-1/4"
+            className="mb-8 w-1/3 md:w-1/4"
           />
           <div className="flex items-center">
             <h3 className="text-white text-xl mr-4">Find us on social media</h3>
