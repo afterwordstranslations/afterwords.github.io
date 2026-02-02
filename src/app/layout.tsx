@@ -28,7 +28,7 @@ export default function RootLayout({
       <Script
         id="beacon-2"
         type="text/javascript"
-      >{`window.Beacon('init', '47535534-3595-48a4-8975-bcf6433390e2')`}</Script>
+      >{`window.Beacon('init', '59d3cf5c-2a28-4cd5-a299-7cc71501140d')`}</Script>
     </html>
   );
 }
