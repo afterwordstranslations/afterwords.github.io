@@ -2,7 +2,8 @@ import Emoji from "a11y-react-emoji/lib/Emoji";
 
 export interface ILabeledEmoji {
   emoji: string;
-  label: string;
+  label?: string;
+  className?: string;
 }
 const LabeledEmoji: React.FC<ILabeledEmoji> = ({ emoji, label }) => {
   return (

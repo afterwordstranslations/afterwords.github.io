@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import { ServiceCard } from "~/components/Services";
-import Emoji from "a11y-react-emoji";
 import LabeledEmoji from "~/components/LabeledEmoji";
 import Translator from "~/components/Translator";
+import { DecadeSection } from "~/components/DecadeSection";
+import { TestimonialsSection } from "~/components/TestimonialsSection";
 
 declare global {
   interface Window {
@@ -56,24 +57,25 @@ export default function Home() {
           <div className="md:flex">
             <div className="sm:w-full md:w-6/12 text-white py-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
               <div>
+                <h4 className="bg-slate-900 rounded-3xl inline-block mb-8 px-4 py-2">
+                  We are a boutique translation agency from Greece
+                </h4>
                 <h1 className="text-4xl font-bold text-white mb-4">
                   {" "}
-                  <Emoji symbol="👋" /> Hi,
+                  Certified Translations for Legal, Medical, and Technical Businesses.
                 </h1>
-                <h1 className="text-4xl font-bold text-white mb-8">
-                  we are a boutique translation agency from Greece{" "}
-                </h1>
-                <p className="text-xl text-white mb-8">
-                  dedicated to helping businesses and organizations
+                <p className="text-xl text-white mb-16">
+                  We are a team dedicated to helping businesses and organizations
                   thrive—whether in the vibrant local Greek market or the
                   expansive global marketplace.
                 </p>
                 <button
-                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
+                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900 mb-2"
                   onClick={() => window.Beacon("open")}
                 >
-                  Get a quote →
+                  Get a free estimate →
                 </button>
+                <div className="italic">No bots. A real human will get back to you shortly.</div>
               </div>
             </div>
             <div className="md:w-6/12 lg:w-6/12 xl:4/12 md:p-16">
@@ -122,7 +124,11 @@ export default function Home() {
             className="sm:w-2/3 lg:w-2/5"
           />
         </div>
+      </div>
 
+      <DecadeSection />
+
+      <div className="container mx-auto">
         <div className="p-8" id="services">
           <p className="text-2xl mb-2 text-gray-600 dark:text-slate-500">
             Our services
@@ -130,13 +136,16 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8">How we can help you</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mb-8 md:w-3/4 lg:w-2/3">
             <div>
-              <LabeledEmoji emoji="😌" label="Quality" />
+              <h4 className="text-2xl font-semibold text-gray-800 dark:text-slate-200 mb-2">Quality</h4>
+              <p className="text-lg text-gray-600 dark:text-slate-400">Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
             </div>
             <div>
-              <LabeledEmoji emoji="🚀" label="Speed" />
+              <h4 className="text-2xl font-semibold text-gray-800 dark:text-slate-200 mb-2">Speed</h4>
+              <p className="text-lg text-gray-600 dark:text-slate-400">Standard turnaround in 48 hours; Rush delivery available.</p>
             </div>
             <div>
-              <LabeledEmoji emoji="⏰" label="Consistency" />
+              <h4 className="text-2xl font-semibold text-gray-800 dark:text-slate-200 mb-2">Consistency</h4>
+              <p className="text-lg text-gray-600 dark:text-slate-400">Translation memory and terminology management ensure uniform language across all your projects.</p>
             </div>
           </div>
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
@@ -199,6 +208,11 @@ export default function Home() {
               }
             />
           </div>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800 dark:to-slate-900 py-8">
+        <div className="container mx-auto">
           <h3 className="text-2xl font-bold mt-8 mb-4">Industries we serve</h3>
 
           <p className="text-xl mb-8 md:w-3/4 lg:w-2/3">
@@ -234,6 +248,8 @@ export default function Home() {
             />
           </div>
         </div>
+      </div>
+      <div className="container mx-auto">
         <div id="team" className="p-8">
           <p className="text-2xl mb-2 text-gray-500 dark:text-slate-500">
             Our team
@@ -303,13 +319,14 @@ export default function Home() {
           {/*   </div> */}
           {/* </div> */}
         </div>
+
       </div>
       <div className="bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
+        <TestimonialsSection />
         <div className="container mx-auto">
           <div className="xl:w-2/3 p-8 pb-0 text-white">
             <p className="text-2xl text-slate-400 mb-2">
-              Do you have any further questions?{" "}
-              <Emoji className="text-2xl" symbol="🤔" />
+              Do you have any further questions?
             </p>
             <h3 className="text-4xl font-bold mb-8">
               Feel free to contact us!
@@ -341,7 +358,7 @@ export default function Home() {
           />
           <div className="flex items-center">
             <h3 className="text-white text-xl mr-4">Find us on social media</h3>
-            <a href="#" className="inline-block mr-4">
+            <a href="https://www.instagram.com/afterwordstranslations/" className="inline-block mr-4">
               <Image
                 alt="Instagram logo"
                 width={50}
@@ -350,7 +367,7 @@ export default function Home() {
                 src="/insta.svg"
               />
             </a>
-            <a href="#" className="inline-block mr-4">
+            <a href="https://www.linkedin.com/company/afterwordstranslations/" className="inline-block mr-4">
               <Image
                 alt="LinkedIn logo"
                 width={50}
@@ -359,7 +376,7 @@ export default function Home() {
                 src="/in.png"
               />
             </a>
-            <a href="#" className="inline-block mr-4">
+            <a href="https://www.facebook.com/AfterWordstranslations" className="inline-block mr-4">
               <Image
                 alt="Facebook logo"
                 width={50}
