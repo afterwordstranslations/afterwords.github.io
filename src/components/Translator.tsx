@@ -15,7 +15,7 @@ export default function Translator(props: TranslatorProps) {
           alt={props.fullName}
           width={100}
           height={100}
-          className="rounded w-full"
+          className="rounded-badge w-full"
         />
       </figure>
       <div className="col-span-3 block px-4">

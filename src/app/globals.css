@@ -2,19 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light Theme Variables */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --card-background: #f8fafc;
+  --card-foreground: #334155;
+  --border: #e2e8f0;
+  --primary: #4f46e5;
+  --secondary: #64748b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e0e7ff;
+  --accent-foreground: #4338ca;
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+  --ring: #4f46e5;
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #ededed;
-  }
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card-background: #1e293b;
+  --card-foreground: #cbd5e1;
+  --border: #334155;
+  --primary: #6366f1;
+  --secondary: #475569;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e1b4b;
+  --accent-foreground: #c7d2fe;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --ring: #6366f1;
+  --radius: 0.5rem;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Smooth theme transitions */
+* {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Hero section - no transitions for theme independence */
+.hero-section {
+  transition: none !important;
+}
+
+.hero-section * {
+  transition: none !important;
 }
