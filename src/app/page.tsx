@@ -5,6 +5,8 @@ import LabeledEmoji from "~/components/LabeledEmoji";
 import Translator from "~/components/Translator";
 import { DecadeSection } from "~/components/DecadeSection";
 import { TestimonialsSection } from "~/components/TestimonialsSection";
+import { ThemeToggle } from "~/components/ThemeToggle";
+import Emoji from "a11y-react-emoji";
 
 declare global {
   interface Window {
@@ -15,50 +17,54 @@ declare global {
 
 export default function Home() {
   return (
-    <div className="w-full">
-      <div className="bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
+    <div className="w-full bg-base-100 text-base-content">
+      {/* Hero Section - Untouched */}
+      <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
         <div className="container mx-auto px-4 md:px-8">
           <header className="text-gray-100 body-font w-full">
             <div className="container mx-auto grid gap-4 grid-cols-6">
               <a className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3">
                 <Image
                   src="/logo.svg"
-                  className="w-2/3"
+                  className="w-2/4"
                   width={312}
                   height={67}
                   alt="Afterwords Logo"
                 />
               </a>
-              <nav className="text-base mt-4 md:mt-10 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right">
-                <a className="text-white m-2 py-1 link" href="#about">
-                  About us
-                </a>
-                <a className="text-white m-2 py-1 link" href="#services">
-                  Our services
-                </a>
-                <a className="text-white m-2 py-1 link" href="#team">
-                  Our team
-                </a>
-                <a
-                  className="text-white m-2 py-1"
-                  href="https://www.linkedin.com/company/afterwordstranslations"
-                >
-                  <Image
-                    alt="LinkedIn logo"
-                    width={50}
-                    height={50}
-                    className="w-6 inline"
-                    src="/in.png"
-                  />
-                </a>
+              <nav className="text-base mt-4 md:mt-10 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right flex items-center justify-end sm:justify-end">
+                <div className="flex items-center gap-2">
+                  <a className="text-white m-2 py-1 link" href="#about">
+                    About us
+                  </a>
+                  <a className="text-white m-2 py-1 link" href="#services">
+                    Our services
+                  </a>
+                  <a className="text-white m-2 py-1 link" href="#team">
+                    Our team
+                  </a>
+                  <a
+                    className="text-white m-2 py-1"
+                    href="https://www.linkedin.com/company/afterwordstranslations"
+                  >
+                    <Image
+                      alt="LinkedIn logo"
+                      width={50}
+                      height={50}
+                      className="w-6 inline"
+                      src="/in.png"
+                    />
+                  </a>
+                  <ThemeToggle />
+                </div>
               </nav>
             </div>
           </header>
           <div className="md:flex">
             <div className="sm:w-full md:w-6/12 text-white py-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
               <div>
-                <h4 className="bg-slate-900 rounded-3xl inline-block mb-8 px-4 py-2">
-                  We are a boutique translation agency from Greece
+                <h4 className="bg-slate-900 text-lg shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
+                  <Emoji symbol="👋" className="mr-2" /> We are a boutique translation agency from Greece
                 </h4>
                 <h1 className="text-4xl font-bold text-white mb-4">
                   {" "}
@@ -90,9 +96,11 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* About Section - Theme Applied */}
       <div className="container mx-auto">
         <div id="about" className="lg:w-2/3 p-8">
-          <p className="text-2xl mb-2 text-gray-600 dark:text-slate-500">
+          <p className="text-2xl mb-2 text-muted-foreground">
             About us
           </p>
           <h2 className="text-4xl font-bold mb-8">
@@ -128,24 +136,25 @@ export default function Home() {
 
       <DecadeSection />
 
+      {/* Services Section - Theme Applied */}
       <div className="container mx-auto">
         <div className="p-8" id="services">
-          <p className="text-2xl mb-2 text-gray-600 dark:text-slate-500">
+          <p className="text-2xl mb-2 text-muted-foreground">
             Our services
           </p>
           <h2 className="text-4xl font-bold mb-8">How we can help you</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mb-8 md:w-3/4 lg:w-2/3">
             <div>
-              <h4 className="text-2xl font-semibold text-gray-800 dark:text-slate-200 mb-2">Quality</h4>
-              <p className="text-lg text-gray-600 dark:text-slate-400">Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
+              <h4 className="text-2xl font-semibold mb-2">Quality</h4>
+              <p className="text-lg text-muted-foreground">Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
             </div>
             <div>
-              <h4 className="text-2xl font-semibold text-gray-800 dark:text-slate-200 mb-2">Speed</h4>
-              <p className="text-lg text-gray-600 dark:text-slate-400">Standard turnaround in 48 hours; Rush delivery available.</p>
+              <h4 className="text-2xl font-semibold mb-2">Speed</h4>
+              <p className="text-lg text-muted-foreground">Standard turnaround in 48 hours; Rush delivery available.</p>
             </div>
             <div>
-              <h4 className="text-2xl font-semibold text-gray-800 dark:text-slate-200 mb-2">Consistency</h4>
-              <p className="text-lg text-gray-600 dark:text-slate-400">Translation memory and terminology management ensure uniform language across all your projects.</p>
+              <h4 className="text-2xl font-semibold mb-2">Consistency</h4>
+              <p className="text-lg text-muted-foreground">Translation memory and terminology management ensure uniform language across all your projects.</p>
             </div>
           </div>
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
@@ -157,15 +166,6 @@ export default function Home() {
                     Translation of academic and public documents for submission
                     to various authorities.
                   </p>
-                  {/* <p className="mb-4"> */}
-                  {/*   These are sealed by Certified Translators who graduated from */}
-                  {/*   the Ionian University and delivered conveniently by courier. */}
-                  {/* </p> */}
-                  {/* <p> */}
-                  {/*   From industry-specific solutions to certified document */}
-                  {/*   translations, our dedicated team ensures accuracy, cultural */}
-                  {/*   relevance, and professionalism at every step. */}
-                  {/* </p> */}
                 </>
               }
             />
@@ -177,13 +177,6 @@ export default function Home() {
                     We provide professional interpreting services to ensure
                     seamless communication in any setting.
                   </p>
-                  {/* <p> */}
-                  {/*   {" "} */}
-                  {/*   Whether for private meetings, diplomatic and political */}
-                  {/*   engagements, press conferences, business events, or political */}
-                  {/*   roundtables, our skilled interpreters deliver precision and */}
-                  {/*   cultural fluency for meaningful dialogue. */}
-                  {/* </p> */}
                 </>
               }
             />
@@ -195,15 +188,6 @@ export default function Home() {
                     Our subtitling team brings stories and messages to life on
                     screen.
                   </p>
-                  {/* <p className="mb-4"> */}
-                  {/*   From movies, series, and documentaries to conferences, */}
-                  {/*   commercial spots, interviews, and festival entries, we work */}
-                  {/*   with passion and precision. */}
-                  {/* </p> */}
-                  {/* <p> */}
-                  {/*   We also collaborate with independent directors to ensure their */}
-                  {/*   unique projects resonate with diverse audiences worldwide. */}
-                  {/* </p> */}
                 </>
               }
             />
@@ -211,7 +195,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800 dark:to-slate-900 py-8">
+      {/* Industries Section - Theme Applied */}
+      <div className="bg-primary/10 py-8">
         <div className="container mx-auto">
           <h3 className="text-2xl font-bold mt-8 mb-4">Industries we serve</h3>
 
@@ -236,7 +221,7 @@ export default function Home() {
             />
             <ServiceCard
               label="Marketing"
-              description="Creative translations that resonate with your audience and amplify your brand’s message."
+              description="Creative translations that resonate with your audience and amplify your brand's message."
             />
             <ServiceCard
               label="Academic Books"
@@ -249,9 +234,11 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Team Section - Theme Applied */}
       <div className="container mx-auto">
         <div id="team" className="p-8">
-          <p className="text-2xl mb-2 text-gray-500 dark:text-slate-500">
+          <p className="text-2xl mb-2 text-muted-foreground">
             Our team
           </p>
           <h2 className="text-4xl font-bold mb-8">You are in good hands</h2>
@@ -287,41 +274,12 @@ export default function Home() {
               combining linguistic precision with creativity."
             />
           </div>
-          {/* <p className="text-xl mb-2 text-gray-600">Our clients</p> */}
-          {/* <h2 className="text-2xl font-bold mb-8"> */}
-          {/*   They trust us to get their job done */}
-          {/* </h2> */}
-          {/* <div className="grid grid-cols-3 gap-4 mb-8 lg:w-3/4"> */}
-          {/*   <div> */}
-          {/*     <Image */}
-          {/*       alt="aia logo" */}
-          {/*       className="block h-24 mx-auto" */}
-          {/*       width={200} */}
-          {/*       height={50} */}
-          {/*       src="/aia.png" */}
-          {/*     /> */}
-          {/*   </div> */}
-          {/*   <div> */}
-          {/*     <Image */}
-          {/*       alt="gutenberg logo" */}
-          {/*       src="/gutenberg.jpg" */}
-          {/*       width={200} */}
-          {/*       height={50} */}
-          {/*     /> */}
-          {/*   </div> */}
-          {/*   <div> */}
-          {/*     <Image */}
-          {/*       alt="gutenberg logo" */}
-          {/*       src="/gutenberg.jpg" */}
-          {/*       width={200} */}
-          {/*       height={50} */}
-          {/*     /> */}
-          {/*   </div> */}
-          {/* </div> */}
         </div>
 
       </div>
-      <div className="bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
+
+      {/* Testimonials Section - Hero gradient background (untouched) */}
+      <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
         <TestimonialsSection />
         <div className="container mx-auto">
           <div className="xl:w-2/3 p-8 pb-0 text-white">
@@ -347,6 +305,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Footer - Untouched */}
       <div className="bg-slate-900">
         <div className="container mx-auto p-8">
           <Image

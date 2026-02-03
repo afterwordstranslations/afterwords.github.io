@@ -29,10 +29,10 @@ export const TestimonialsSection = () => {
     <div className="py-16">
       <div className="container mx-auto px-4 md:px-8">
         <div className="mb-12">
-          <p className="text-2xl mb-2 text-gray-600 dark:text-slate-500">
+          <p className="text-2xl mb-2 text-slate-300">
             Client testimonials
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
             What our clients say
           </h2>
         </div>

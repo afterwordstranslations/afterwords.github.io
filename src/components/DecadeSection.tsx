@@ -3,22 +3,22 @@ import { StatCard } from "./StatCard";
 
 export const DecadeSection = () => {
   return (
-    <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800 dark:to-slate-900 py-8">
+    <div className="bg-primary/5 py-8">
       <div className="container mx-auto px-4 md:px-8">
         <div className="mb-16">
-          <p className="text-xl font-bold mb-2 text-gray-600 dark:text-slate-500">
+          <p className="text-xl font-bold mb-2 text-muted-foreground">
             <Emoji symbol="🎉" className="mr-2" />10th Anniversary<Emoji symbol="🥳" className="ml-2" />
           </p>
           <h2 className="text-4xl font-bold mb-8">
             Our Decade of Excellence
           </h2>
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-slate-300 max-w-3xl leading-relaxed">
+          <p className="text-xl md:text-2xl max-w-3xl leading-relaxed">
             Celebrating 10+ years of bridging languages and cultures across
             industries with precision and care.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <StatCard
             value="1000+"
             label="Projects Completed"
