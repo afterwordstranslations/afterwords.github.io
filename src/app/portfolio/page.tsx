@@ -4,103 +4,84 @@ import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "~/components/ThemeToggle";
 
-const projects = [
+const portfolioItems = [
   {
     id: 1,
-    title: "Luxury Fashion E-commerce Localization",
-    category: "E-commerce & Fashion",
-    image: "/projects/fashion.jpg",
-    description: "Complete localization of a luxury fashion brand's e-commerce platform for the Greek market, including product descriptions, marketing materials, and UI elements.",
-    tags: ["Translation", "Localization", "Fashion", "E-commerce"],
-    languages: ["English → Greek", "French → Greek"],
+    emoji: "🧬",
+    title: "Medical & Scientific Innovations",
+    category: "Specialized Translation",
+    description: "Expert translations for the medical and scientific sectors, including patent specifications, pharmaceutical applications, clinical research, and healthcare documentation.",
+    items: [
+      "Patent Specifications: Annual translation of 200–300 patent specifications specializing in biology, chemistry, biochemistry, and technology.",
+      "Pharmaceutical Applications: Translation of 150–200 patent applications and abstracts per year.",
+      "Clinical Research: Translation of clinical trial documents, medical research papers, and articles for publication.",
+      "Healthcare Documentation: Comprehensive translation of patient records and medical reports."
+    ],
     stats: {
-      pages: "500+",
-      products: "2,000+",
-      timeline: "3 months"
+      patents: "300/year",
+      applications: "200/year",
+      documents: "1000+"
     }
   },
   {
     id: 2,
-    title: "Marketing Campaign Transcreation",
-    category: "Marketing & Creative",
-    image: "/projects/marketing.jpg",
-    description: "Creative adaptation of multinational marketing campaigns for local markets, preserving brand voice while ensuring cultural relevance and emotional impact.",
-    tags: ["Transcreation", "Marketing", "Creative"],
-    languages: ["English → Greek", "German → Greek"],
+    emoji: "⚖️",
+    title: "Legal & Financial Compliance",
+    category: "Corporate Translation",
+    description: "Certified translations for international business operations, corporate governance, global finance, market intelligence, and international law.",
+    items: [
+      "Corporate Governance: Translation of contracts, agreements, and certificates for international business operations.",
+      "Global Finance: Preparation of financial reports, balance sheets, and income statements.",
+      "Market Intelligence: Translation of investment research reports and market analyses.",
+      "International Law: Translation of treaties, conventions, and residency applications."
+    ],
     stats: {
-      campaigns: "15+",
-      materials: "200+",
-      timeline: "Ongoing"
+      contracts: "300+",
+      reports: "200+",
+      clients: "50+"
     }
   },
   {
     id: 3,
-    title: "Technical Documentation Suite",
-    category: "Technical & Software",
-    image: "/projects/technical.jpg",
-    description: "Comprehensive translation of technical documentation for software products, including user manuals, API documentation, and help center content.",
-    tags: ["Technical", "Software", "Documentation"],
-    languages: ["English → Greek", "English → German"],
+    emoji: "📚",
+    title: "Published Books (Greek Editions)",
+    category: "Literary Translation",
+    description: "High-quality translations of academic and scholarly books, preserving intellectual rigor and authorial voice for Greek readers.",
+    items: [
+      "The Sociology of Health and Illness (4th Edition) by Sarah Nettleton.",
+      "Development Economics: Theory and Practice (2nd Edition) by Alain de Janvry & Elisabeth Sadoulet.",
+      "Managerial Economics in a Global Economy (9th Edition) by Dominick Salvatore.",
+      "Mathematics for Economics: An Integrated Approach by Mik Wisniewski.",
+      "Child Observation: A Guide for Students of Early Childhood (4th Edition) by Ioanna Palaiologou."
+    ],
     stats: {
-      pages: "1,500+",
-      guides: "50+",
-      timeline: "6 months"
+      books: "5+",
+      pages: "2000+",
+      publishers: "3"
     }
   },
   {
     id: 4,
-    title: "Legal & Financial Documentation",
-    category: "Legal & Financial",
-    image: "/projects/legal.jpg",
-    description: "Certified translations of contracts, financial statements, legal proceedings, and regulatory documents for international business operations.",
-    tags: ["Legal", "Financial", "Certified"],
-    languages: ["English → Greek", "Greek → English"],
+    emoji: "🎬",
+    title: "Media & Events",
+    category: "Subtitling & Interpreting",
+    description: "Professional subtitling services for TV series, films, and festivals, along with specialized interpreting for corporate conferences and the aviation sector.",
+    items: [
+      "TV Series Localization: Greek subtitles for the hit series \"Black-ish\".",
+      "Film Festivals: Subtitling for the Beyond Borders International Festival (2019–2022).",
+      "Cinema: English and French subtitles for the Greek short film \"MAUVE\".",
+      "Corporate Conferences: Interpreting for the Coating Forum (2022–2023) and pharmaceutical launches.",
+      "Aviation Sector: Specialized interpreting for business meetings and technical presentations."
+    ],
     stats: {
-      documents: "300+",
-      clients: "50+",
-      timeline: "Ongoing"
-    }
-  },
-  {
-    id: 5,
-    title: "Website & App Localization",
-    category: "Digital & Web",
-    image: "/projects/webapp.jpg",
-    description: "End-to-end localization of web platforms and mobile applications, including UI strings, help content, and user communication materials.",
-    tags: ["Localization", "Web", "Mobile Apps"],
-    languages: ["English → Greek", "English → 8 languages"],
-    stats: {
-      platforms: "10+",
-      strings: "50,000+",
-      timeline: "4 months"
-    }
-  },
-  {
-    id: 6,
-    title: "Medical & Patent Translations",
-    category: "Medical & Research",
-    image: "/projects/medical.jpg",
-    description: "Specialized translation of medical research papers, clinical trial documentation, patents, and medical device information for pharmaceutical companies.",
-    tags: ["Medical", "Patents", "Research"],
-    languages: ["English → Greek", "Greek → English"],
-    stats: {
-      papers: "100+",
-      patents: "50+",
-      timeline: "2 years"
+      series: "1",
+      festivals: "4 years",
+      events: "50+"
     }
   }
 ];
 
-const industries = [
-  { name: "Fashion & Luxury", icon: "👗", count: "45+" },
-  { name: "Marketing & Advertising", icon: "📢", count: "60+" },
-  { name: "Technology & Software", icon: "💻", count: "35+" },
-  { name: "Legal & Financial", icon: "⚖️", count: "80+" },
-  { name: "Medical & Healthcare", icon: "🏥", count: "40+" },
-  { name: "E-commerce", icon: "🛒", count: "55+" }
-];
-
-export default function ProjectsPage() {
+export default function PortfolioPage() {
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* Header */}
@@ -121,9 +102,6 @@ export default function ProjectsPage() {
                 <div className="flex items-center gap-2">
                   <Link className="text-white m-2 py-1 link" href="/">
                     Home
-                  </Link>
-                  <Link className="text-white m-2 py-1 link" href="/projects">
-                    Projects
                   </Link>
                   <a className="text-white m-2 py-1 link" href="https://www.linkedin.com/company/afterwordstranslations">
                     <Image
@@ -147,95 +125,61 @@ export default function ProjectsPage() {
                 Our Work
               </h1>
               <p className="text-xl text-gray-200 mb-8">
-                Explore our portfolio of translation and localization projects. 
-                From luxury fashion to medical research, we deliver precision and cultural expertise across industries.
+                Explore our portfolio of translation and localization projects.
+                From medical patents to published books, we deliver precision and cultural expertise across industries.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Industries Overview */}
-      <div className="container mx-auto py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Industries We Serve</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Specialized translation expertise across diverse sectors
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {industries.map((industry) => (
-            <div key={industry.name} className="text-center p-6 bg-base-200 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-3">{industry.icon}</div>
-              <h3 className="font-semibold mb-1">{industry.name}</h3>
-              <p className="text-sm text-muted-foreground">{industry.count} projects</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Featured Projects */}
+      {/* Portfolio Items */}
       <div className="bg-primary/10 py-16">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A selection of our recent work showcasing our expertise and commitment to quality
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              A selection of our work showcasing our expertise and commitment to quality
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <div 
-                key={project.id} 
+          <div className="grid gap-8 md:grid-cols-2">
+            {portfolioItems.map((item) => (
+              <div
+                key={item.id}
                 className="bg-base-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               >
-                {/* Project Image Placeholder */}
+                {/* Header with Emoji */}
                 <div className="h-48 bg-gradient-to-br from-blue-600 to-indigo-800 flex items-center justify-center">
-                  <span className="text-white text-6xl">🌍</span>
+                  <span className="text-white text-8xl">{item.emoji}</span>
                 </div>
 
                 <div className="p-6">
                   <div className="text-sm text-primary font-semibold mb-2">
-                    {project.category}
+                    {item.category}
                   </div>
-                  
-                  <h3 className="text-xl font-bold mb-3">
-                    {project.title}
+
+                  <h3 className="text-2xl font-bold mb-3">
+                    {item.title}
                   </h3>
 
-                  <p className="text-muted-foreground mb-4">
-                    {project.description}
+                  <p className="text-muted-foreground mb-6">
+                    {item.description}
                   </p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-3 py-1 bg-base-200 text-sm rounded-full"
-                      >
-                        {tag}
-                      </span>
+                  {/* Detailed Items List */}
+                  <div className="space-y-3 mb-6">
+                    {item.items.map((listItem, idx) => (
+                      <div key={idx} className="flex gap-3 text-sm">
+                        <span className="text-primary font-bold mt-1">•</span>
+                        <span className="text-base-content/90">{listItem}</span>
+                      </div>
                     ))}
-                  </div>
-
-                  {/* Languages */}
-                  <div className="mb-4">
-                    <div className="text-sm font-semibold mb-2">Languages:</div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.languages.map((lang) => (
-                        <span key={lang} className="text-sm text-muted-foreground">
-                          {lang}
-                        </span>
-                      ))}
-                    </div>
                   </div>
 
                   {/* Stats */}
                   <div className="grid grid-cols-3 gap-2 pt-4 border-t border-base-300">
-                    {Object.entries(project.stats).map(([key, value]) => (
+                    {Object.entries(item.stats).map(([key, value]) => (
                       <div key={key} className="text-center">
                         <div className="text-lg font-bold text-primary">{value}</div>
                         <div className="text-xs text-muted-foreground capitalize">{key}</div>
@@ -295,15 +239,15 @@ export default function ProjectsPage() {
 
       {/* CTA Section */}
       <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 py-16">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Start Your Project?
           </h2>
-          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            Get in touch with our team to discuss your translation and localization needs. 
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl">
+            Get in touch with our team to discuss your translation and localization needs.
             We deliver quality, speed, and reliability.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               className="btn btn-lg text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
               onClick={() => {
@@ -314,7 +258,7 @@ export default function ProjectsPage() {
             >
               Get a Free Estimate
             </button>
-            <Link 
+            <Link
               href="/"
               className="btn btn-lg btn-outline text-white border-white hover:bg-white hover:text-indigo-900"
             >

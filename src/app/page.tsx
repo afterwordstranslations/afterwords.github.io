@@ -74,12 +74,20 @@ export default function Home() {
                 <p className="text-xl text-white mb-16">
                   Bridging the gap between the Greek market and the global stage. We provide the linguistic precision and cultural nuance your business needs to expand without borders.
                 </p>
-                <button
-                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
-                  onClick={() => window.Beacon("open")}
-                >
-                  Get a free estimate →
-                </button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
+                    onClick={() => window.Beacon("open")}
+                  >
+                    Get a free estimate →
+                  </button>
+                  <Link
+                    href="/portfolio"
+                    className="btn text-xl btn-lg normal-case btn-outline text-white border-white hover:bg-white hover:text-indigo-900"
+                  >
+                    View Portfolio
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="md:w-6/12 lg:w-6/12 xl:4/12 md:p-16">

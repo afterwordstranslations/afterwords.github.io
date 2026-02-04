@@ -21,8 +21,8 @@ export const DecadeSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <StatCard
-            value="1000+"
-            label="Projects Completed"
+            value="5000+"
+            label="Documents Delivered"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -31,8 +31,8 @@ export const DecadeSection = () => {
             }
           />
           <StatCard
-            value="15+"
-            label="Languages Supported"
+            value="450+"
+            label="Annual Patent Projects"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -42,8 +42,8 @@ export const DecadeSection = () => {
             }
           />
           <StatCard
-            value="6+"
-            label="Industries Served"
+            value="9+"
+            label="Specialized Industries Served"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
