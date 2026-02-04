@@ -98,7 +98,22 @@ export default function Home() {
               />
             </div>
           </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mt-8 text-white">
+            <div>
+              <h4 className="text-lg font-semibold mb-2">Quality</h4>
+              <p>Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-2">Speed</h4>
+              <p>Standard turnaround in 48 hours; Rush delivery available.</p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-2">Consistency</h4>
+              <p>Translation memory and terminology management ensure uniform language.</p>
+            </div>
+          </div>
         </div>
+
       </div>
 
       {/* About Section - Theme Applied */}
@@ -147,20 +162,6 @@ export default function Home() {
             Our services
           </p>
           <h2 className="text-4xl font-bold mb-8">How we can help you</h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mb-8 md:w-3/4 lg:w-2/3">
-            <div>
-              <h4 className="text-2xl font-semibold mb-2">Quality</h4>
-              <p className="text-lg text-muted-foreground">Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
-            </div>
-            <div>
-              <h4 className="text-2xl font-semibold mb-2">Speed</h4>
-              <p className="text-lg text-muted-foreground">Standard turnaround in 48 hours; Rush delivery available.</p>
-            </div>
-            <div>
-              <h4 className="text-2xl font-semibold mb-2">Consistency</h4>
-              <p className="text-lg text-muted-foreground">Translation memory and terminology management ensure uniform language across all your projects.</p>
-            </div>
-          </div>
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
             <ServiceCard
               label="Certified Translations"
