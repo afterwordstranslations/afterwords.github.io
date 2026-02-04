@@ -4,24 +4,21 @@ export const TestimonialsSection = () => {
   const testimonials = [
     {
       quote:
-        "Afterwords has been our trusted translation partner for over 5 years. Their attention to detail and cultural understanding ensures our medical documents are always accurate and professionally delivered.",
-      author: "Maria Papadopoulos",
-      company: "MedTech Hellas",
-      industry: "Medical & Healthcare",
+        "The Afterwords Translations team is dedicated and readily accessible to deliver outstanding services for translation and interpreting requirements. Moreover, they exhibit a high level of professionalism and ethical conduct, making them excellent colleagues. I wholeheartedly recommend their services.",
+      author: "Zoe Resta, Ph.D.",
+      company: "Translator & Conference Interpreter",
     },
     {
       quote:
-        "The team at Afterwords consistently delivers high-quality translations for our legal documents. Their expertise in financial and legal terminology is unmatched in the industry.",
-      author: "Nikos Antoniou",
-      company: "Antoniou & Partners Law Firm",
-      industry: "Legal & Financial",
+        "Beyond their linguistic expertise, Afterwords Translations proves to be a collaborative and reliable team. They consistently go above and beyond to meet deadlines and play a crucial role in the overall success of our projects, especially focusing on chemical and technical patents.",
+      author: "Olena Vasilatos",
+      company: "LSP Owner & Translator",
     },
     {
       quote:
-        "We needed our entire website localized for multiple European markets. Afterwords handled everything seamlessly, maintaining our brand voice while making it culturally relevant for each audience.",
-      author: "Eleni Constantinou",
-      company: "Aegean Tech Solutions",
-      industry: "Technology & Software",
+        "After working with Afterwords Translations, I can confidently affirm their outstanding proficiency in medical and legal translations. Their precision, unwavering professionalism, and dedication to meeting deadlines make them an indispensable resource.",
+      author: "Sofia Simoni",
+      company: "Greek LSP Owner & Subtitler",
     },
   ];
 
@@ -44,7 +41,6 @@ export const TestimonialsSection = () => {
               quote={testimonial.quote}
               author={testimonial.author}
               company={testimonial.company}
-              industry={testimonial.industry}
             />
           ))}
         </div>

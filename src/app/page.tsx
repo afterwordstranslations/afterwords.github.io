@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { ServiceCard } from "~/components/Services";
 import LabeledEmoji from "~/components/LabeledEmoji";
 import Translator from "~/components/Translator";
@@ -43,6 +44,9 @@ export default function Home() {
                   <a className="text-white m-2 py-1 link" href="#team">
                     Our team
                   </a>
+                  <Link className="text-white m-2 py-1 link" href="/projects">
+                    Projects
+                  </Link>
                   <a
                     className="text-white m-2 py-1"
                     href="https://www.linkedin.com/company/afterwordstranslations"
@@ -275,16 +279,15 @@ export default function Home() {
             />
           </div>
         </div>
-
       </div>
 
-      {/* Testimonials Section - Hero gradient background (untouched) */}
+      {/* Client Testimonials Section - Hero gradient background with glass-morphism cards */}
       <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
         <TestimonialsSection />
         <div className="container mx-auto">
           <div className="xl:w-2/3 p-8 pb-0 text-white">
             <p className="text-2xl text-slate-400 mb-2">
-              Do you have any further questions?
+              Need a certified translation today??{" "}
             </p>
             <h3 className="text-4xl font-bold mb-8">
               Feel free to contact us!
