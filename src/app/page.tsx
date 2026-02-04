@@ -65,24 +65,21 @@ export default function Home() {
             <div className="sm:w-full md:w-6/12 text-white py-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
               <div>
                 <h4 className="bg-slate-900 text-lg shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
-                  <Emoji symbol="👋" className="mr-2" /> We are a boutique translation agency from Greece
+                  <Emoji symbol="👋" className="mr-2" /> A boutique Greek agency with over 10 years of specialized experience.
                 </h4>
                 <h1 className="text-4xl font-bold text-white mb-4">
                   {" "}
-                  Certified Translations for Legal, Medical, and Technical Businesses.
+                  Certified Legal, Medical, & Technical Translations.
                 </h1>
                 <p className="text-xl text-white mb-16">
-                  We are a team dedicated to helping businesses and organizations
-                  thrive—whether in the vibrant local Greek market or the
-                  expansive global marketplace.
+                  Bridging the gap between the Greek market and the global stage. We provide the linguistic precision and cultural nuance your business needs to expand without borders.
                 </p>
                 <button
-                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900 mb-2"
+                  className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
                   onClick={() => window.Beacon("open")}
                 >
                   Get a free estimate →
                 </button>
-                <div className="italic">No bots. A real human will get back to you shortly.</div>
               </div>
             </div>
             <div className="md:w-6/12 lg:w-6/12 xl:4/12 md:p-16">

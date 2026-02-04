@@ -3,17 +3,18 @@ import { StatCard } from "./StatCard";
 
 export const DecadeSection = () => {
   return (
-    <div className="bg-primary/5 py-8">
+
+    <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full py-8 text-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="mb-16">
-          <p className="text-xl font-bold mb-2 text-muted-foreground">
+          <p className="text-xl mb-2">
             <Emoji symbol="🎉" className="mr-2" />10th Anniversary<Emoji symbol="🥳" className="ml-2" />
           </p>
           <h2 className="text-4xl font-bold mb-8">
             Our Decade of Excellence
           </h2>
           <p className="text-xl md:text-2xl max-w-3xl leading-relaxed">
-            Celebrating 10+ years of bridging languages and cultures across
+            Since 2015 we have been bridging languages and cultures across
             industries with precision and care.
           </p>
         </div>
