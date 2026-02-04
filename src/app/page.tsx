@@ -44,9 +44,6 @@ export default function Home() {
                   <a className="text-white m-2 py-1 link" href="#team">
                     Our team
                   </a>
-                  <Link className="text-white m-2 py-1 link" href="/projects">
-                    Projects
-                  </Link>
                   <a
                     className="text-white m-2 py-1"
                     href="https://www.linkedin.com/company/afterwordstranslations"
