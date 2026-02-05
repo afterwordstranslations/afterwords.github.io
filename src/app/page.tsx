@@ -65,8 +65,11 @@ export default function Home() {
             <div className="sm:w-full md:w-6/12 text-white py-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
               <div>
                 <h4 className="bg-slate-900 text-lg shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
-                  <Emoji symbol="👋" className="mr-2" /> A boutique Greek agency with over 10 years of specialized experience.
+                  <div className="flex">
+                    <Emoji symbol="👋" className="mr-2 flex-none" /><div className="flex-1">A boutique Greek agency with over 10 years of specialized experience.</div>
+                  </div>
                 </h4>
+
                 <h1 className="text-4xl font-bold text-white mb-4">
                   {" "}
                   Certified Legal, Medical, & Technical Translations.
@@ -200,11 +203,9 @@ export default function Home() {
             />
           </div>
         </div>
-      </div>
 
-      {/* Industries Section - Theme Applied */}
-      <div className="bg-primary/10 py-8">
-        <div className="container mx-auto">
+        {/* Industries Section - Theme Applied */}
+        <div className="bg-primary/10 p-8">
           <h3 className="text-2xl font-bold mt-8 mb-4">Industries we serve</h3>
 
           <p className="text-xl mb-8 md:w-3/4 lg:w-2/3">
@@ -240,10 +241,8 @@ export default function Home() {
             />
           </div>
         </div>
-      </div>
 
-      {/* Team Section - Theme Applied */}
-      <div className="container mx-auto">
+        {/* Team Section - Theme Applied */}
         <div id="team" className="p-8">
           <p className="text-2xl mb-2 text-muted-foreground">
             Our team
