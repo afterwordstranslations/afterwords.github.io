@@ -4,9 +4,9 @@ export const TestimonialsSection = () => {
   const testimonials = [
     {
       quote:
-        "The Afterwords Translations team is dedicated and readily accessible to deliver outstanding services for translation and interpreting requirements. Moreover, they exhibit a high level of professionalism and ethical conduct, making them excellent colleagues. I wholeheartedly recommend their services.",
-      author: "Zoe Resta, Ph.D.",
-      company: "Translator & Conference Interpreter",
+        "I strongly endorse Ms. Chatzistylianou as a subtitler. She is professional, reliable, and fast, with excellent knowledge of multiple languages, strong research abilities, and clear communication. Her expertise and work ethic make her one of the best in today's subtitling market.",
+      author: "Georgios Kalipetis",
+      company: "VIDEOPRESS S.A.",
     },
     {
       quote:
@@ -19,6 +19,18 @@ export const TestimonialsSection = () => {
         "After working with Afterwords Translations, I can confidently affirm their outstanding proficiency in medical and legal translations. Their precision, unwavering professionalism, and dedication to meeting deadlines make them an indispensable resource.",
       author: "Sofia Simoni",
       company: "Greek LSP Owner & Subtitler",
+    },
+    {
+      quote:
+        "The Afterwords Translations team is dedicated and readily accessible to deliver outstanding services for translation and interpreting requirements. Moreover, they exhibit a high level of professionalism and ethical conduct, making them excellent colleagues. I wholeheartedly recommend their services.",
+      author: "Zoe Resta, Ph.D.",
+      company: "Translator & Conference Interpreter",
+    },
+    {
+      quote:
+        "We engaged Afterwords Translations for a high-stakes interpretation project and they delivered at a level few vendors reach. They were professional and strong on context, not just language. Communication was clear, controlled, and seamless throughout. I would work with them again without hesitation.",
+      author: "Ifigenia Geiveli",
+      company: "Human Resources Executive",
     },
   ];
 
