@@ -4,7 +4,7 @@ import { StatCard } from "./StatCard";
 export const DecadeSection = () => {
   return (
 
-    <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full py-8 text-white">
+    <div className="hero-section h-full py-8 text-primary-content" style={{ background: 'linear-gradient(to top right, oklch(27% 0.041 260.031), oklch(44% 0.043 257.281), oklch(27% 0.046 192.524))' }}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="mb-16">
           <p className="text-xl mb-2">

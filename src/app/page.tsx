@@ -20,109 +20,113 @@ export default function Home() {
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* Hero Section - Untouched */}
-      <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
-        <div className="container mx-auto px-4 md:px-8">
-          <header className="text-gray-100 body-font w-full">
-            <div className="container mx-auto grid gap-4 grid-cols-6">
-              <a className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3">
-                <Image
-                  src="/logo.svg"
-                  className="w-2/4"
-                  width={312}
-                  height={67}
-                  alt="Afterwords Logo"
-                />
-              </a>
-              <nav className="text-base mt-4 md:mt-10 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right flex items-center justify-end sm:justify-end">
-                <div className="flex items-center gap-2">
-                  <a className="text-white m-2 py-1 link" href="#about">
-                    About us
-                  </a>
-                  <a className="text-white m-2 py-1 link" href="#services">
-                    Our services
-                  </a>
-                  <a className="text-white m-2 py-1 link" href="#team">
-                    Our team
-                  </a>
-                  <a
-                    className="text-white m-2 py-1"
-                    href="https://www.linkedin.com/company/afterwordstranslations"
-                  >
+      <div className="hero-section bg-sl h-full pb-16">
+        <div>
+
+          <section className="relative w-full overflow-hidden bg-slate-900">
+
+            <div className="container mx-auto px-4 md:px-8">
+            </div>
+            <img
+              src="/bg.jpg"
+              alt="Professional signing document"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+
+            <div className="relative z-10 h-full items-center px-8 lg:px-24">
+              <header className="text-gray-100 body-font w-full mb-16">
+                <div className="container mx-auto grid gap-4 grid-cols-6">
+                  <a className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3">
                     <Image
-                      alt="LinkedIn logo"
-                      width={50}
-                      height={50}
-                      className="w-6 inline"
-                      src="/in.png"
+                      src="/logo.svg"
+                      className="w-2/6"
+                      width={312}
+                      height={67}
+                      alt="Afterwords Logo"
                     />
                   </a>
-                  <ThemeToggle />
+                  <nav className="text-base mt-4 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right flex items-center justify-end sm:justify-end">
+                    <div className="flex items-center gap-2">
+                      <a className="text-white m-2 py-1 link" href="#about">
+                        About us
+                      </a>
+                      <a className="text-white m-2 py-1 link" href="#services">
+                        Our services
+                      </a>
+                      <a className="text-white m-2 py-1 link" href="#team">
+                        Our team
+                      </a>
+                      <a
+                        className="text-white m-2 py-1"
+                        href="https://www.linkedin.com/company/afterwordstranslations"
+                      >
+                        <Image
+                          alt="LinkedIn logo"
+                          width={50}
+                          height={50}
+                          className="w-6 inline"
+                          src="/in.png"
+                        />
+                      </a>
+                      <ThemeToggle />
+                    </div>
+                  </nav>
                 </div>
-              </nav>
-            </div>
-          </header>
-          <div className="md:flex">
-            <div className="sm:w-full md:w-6/12 text-white py-8 sm:rounded-tr-lg md:rounded-tr-none md:rounded-bl-lg rounded-tl-lg flex items-center">
-              <div>
-                <h4 className="bg-slate-900 text-lg shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
-                  <div className="flex">
-                    <Emoji symbol="👋" className="mr-2 flex-none" /><div className="flex-1">A boutique Greek agency with over 10 years of specialized experience.</div>
-                  </div>
-                </h4>
+              </header>
+              <div className="max-w-xl text-white">
+                <div>
+                  <h4 className="bg-accent text-accent-content text-xs shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
+                    A boutique Greek agency with over 10 years of specialized experience.
+                  </h4>
 
-                <h1 className="text-4xl font-bold text-white mb-4">
-                  {" "}
-                  Certified Legal, Medical, & Technical Translations.
-                </h1>
-                <p className="text-xl text-white mb-16">
-                  Bridging the gap between the Greek market and the global stage. We provide the linguistic precision and cultural nuance your business needs to expand without borders.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
-                    onClick={() => window.Beacon("open")}
-                  >
-                    Get a free estimate →
-                  </button>
-                  <Link
-                    href="/portfolio"
-                    className="btn text-xl btn-lg normal-case btn-outline text-white border-white hover:bg-white hover:text-indigo-900"
-                  >
-                    View Portfolio
-                  </Link>
+                  <h1 className="text-5xl leading-tight font-bold mb-4">
+                    {" "}
+                    Precision in every word.
+                  </h1>
+                  <p className="text-xl mb-16">
+                    Bridging the gap between the Greek market and the global stage. We provide the linguistic precision and cultural nuance your business needs to expand without borders.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <button
+                      className="btn btn-lg btn-accent"
+                      onClick={() => window.Beacon("open")}
+                    >
+                      Get a free estimate
+                    </button>
+                    <Link
+                      href="/portfolio"
+                      className="btn btn-lg btn-outline btn-accent"
+                    >
+                      View Portfolio
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3 my-16 text-white">
+                <div>
+                  <h4 className="text-lg font-semibold mb-2">Quality</h4>
+                  <p>Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold mb-2">Speed</h4>
+                  <p>Standard turnaround in 48 hours; Rush delivery available.</p>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold mb-2">Consistency</h4>
+                  <p>Translation memory and terminology management ensure uniform language.</p>
                 </div>
               </div>
             </div>
-            <div className="md:w-6/12 lg:w-6/12 xl:4/12 md:p-16">
-              <Image
-                className="lg:p-16"
-                src="/world.svg"
-                width={500}
-                height={500}
-                alt="Banner Desktop"
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mt-8 text-white">
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Quality</h4>
-              <p>Every document undergoes a 2-step review by a native speaker and a subject matter expert.</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Speed</h4>
-              <p>Standard turnaround in 48 hours; Rush delivery available.</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Consistency</h4>
-              <p>Translation memory and terminology management ensure uniform language.</p>
-            </div>
-          </div>
-        </div>
+          </section>
+        </div >
 
-      </div>
+      </div >
 
       {/* About Section - Theme Applied */}
-      <div className="container mx-auto">
+      < div className="container mx-auto" >
         <div id="about" className="lg:w-2/3 p-8">
           <p className="text-2xl mb-2 text-muted-foreground">
             About us
@@ -156,135 +160,148 @@ export default function Home() {
             className="sm:w-2/3 lg:w-2/5"
           />
         </div>
-      </div>
+      </div >
 
       <DecadeSection />
 
       {/* Services Section - Theme Applied */}
-      <div className="container mx-auto">
-        <div className="p-8" id="services">
-          <p className="text-2xl mb-2 text-muted-foreground">
-            Our services
-          </p>
-          <h2 className="text-4xl font-bold mb-8">How we can help you</h2>
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
-            <ServiceCard
-              label="Certified Translations"
-              description={
-                <>
-                  <p className="mb-4">
-                    Translation of academic and public documents for submission
-                    to various authorities.
-                  </p>
-                </>
-              }
-            />
-            <ServiceCard
-              label="Interpreting Services"
-              description={
-                <>
-                  <p className="mb-4">
-                    We provide professional interpreting services to ensure
-                    seamless communication in any setting.
-                  </p>
-                </>
-              }
-            />
-            <ServiceCard
-              label="Subtitling Services"
-              description={
-                <>
-                  <p className="mb-4">
-                    Our subtitling team brings stories and messages to life on
-                    screen.
-                  </p>
-                </>
-              }
-            />
+      <div className="bg-base-100">
+        <div className="container mx-auto">
+          <div className="p-8" id="services">
+            <p className="text-2xl mb-2 text-muted-foreground">
+              Our services
+            </p>
+            <h2 className="text-4xl font-bold mb-8">How we can help you</h2>
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
+              <ServiceCard
+                label="Certified Translations"
+                description={
+                  <>
+                    <p className="mb-4">
+                      Translation of academic and public documents for submission
+                      to various authorities.
+                    </p>
+                  </>
+                }
+              />
+              <ServiceCard
+                label="Interpreting Services"
+                description={
+                  <>
+                    <p className="mb-4">
+                      We provide professional interpreting services to ensure
+                      seamless communication in any setting.
+                    </p>
+                  </>
+                }
+              />
+              <ServiceCard
+                label="Subtitling Services"
+                description={
+                  <>
+                    <p className="mb-4">
+                      Our subtitling team brings stories and messages to life on
+                      screen.
+                    </p>
+                  </>
+                }
+              />
+            </div>
           </div>
         </div>
+      </div>
+      <div className="bg-base-300">
+        <div className="container mx-auto">
 
-        {/* Industries Section - Theme Applied */}
-        <div className="bg-primary/10 p-8">
-          <h3 className="text-2xl font-bold mt-8 mb-4">Industries we serve</h3>
+          {/* Industries Section - Theme Applied */}
+          <div className="p-8">
+            <h3 className="text-2xl font-bold mt-8 mb-4">Industries we serve</h3>
 
-          <p className="text-xl mb-8 md:w-3/4 lg:w-2/3">
-            We provide specialized translation services designed to meet the
-            unique needs of businesses, organizations, and individuals. Our
-            expertise spans multiple areas.
-          </p>
+            <p className="text-xl mb-8 md:w-3/4 lg:w-2/3">
+              We provide specialized translation services designed to meet the
+              unique needs of businesses, organizations, and individuals. Our
+              expertise spans multiple areas.
+            </p>
 
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
-            <ServiceCard
-              label="Medical & patent"
-              description="Expert translations of medical documentation, research papers, patents, as well as medical devices and product information."
-            />
-            <ServiceCard
-              label="Legal & Financial"
-              description="Accurate and dependable translations of contracts, legal proceedings, financial statements, and related documents."
-            />
-            <ServiceCard
-              description="Engaging and culturally attuned translations to enhance your online presence and global reach."
-              label="Websites"
-            />
-            <ServiceCard
-              label="Marketing"
-              description="Creative translations that resonate with your audience and amplify your brand's message."
-            />
-            <ServiceCard
-              label="Academic Books"
-              description="High-quality translations that preserve the intellectual rigor and voice of scholarly works."
-            />
-            <ServiceCard
-              description="Specialized translations rooted in practical expertise, bolstered by a Permaculture Design Certificate (PDC) at Oregon State University."
-              label="Agriculture & Agroforestry"
-            />
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
+              <ServiceCard
+                label="Medical & patent"
+                description="Expert translations of medical documentation, research papers, patents, as well as medical devices and product information."
+              />
+              <ServiceCard
+                label="Legal & Financial"
+                description="Accurate and dependable translations of contracts, legal proceedings, financial statements, and related documents."
+              />
+              <ServiceCard
+                description="Engaging and culturally attuned translations to enhance your online presence and global reach."
+                label="Websites"
+              />
+              <ServiceCard
+                label="Marketing"
+                description="Creative translations that resonate with your audience and amplify your brand's message."
+              />
+              <Link href="/academic-translation" className="block">
+                <ServiceCard
+                  label="Academic Books"
+                  description="High-quality translations that preserve the intellectual rigor and voice of scholarly works."
+                />
+              </Link>
+              <ServiceCard
+                description="Specialized translations rooted in practical expertise, bolstered by a Permaculture Design Certificate (PDC) at Oregon State University."
+                label="Agriculture & Agroforestry"
+              />
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Team Section - Theme Applied */}
-        <div id="team" className="p-8">
-          <p className="text-2xl mb-2 text-muted-foreground">
-            Our team
-          </p>
-          <h2 className="text-4xl font-bold mb-8">You are in good hands</h2>
-          <p className="text-xl mb-8 lg:w-2/3 ">
-            Our seasoned translators brings together diverse expertise to meet a
-            wide range of translation and interpretation needs.
-          </p>
-          <div className="mb-16 text-xl lg:w-3/4 ">
-            <Translator
-              fullName="Aggeliki Gkika"
-              imageSrc="/aggeliki.jpeg"
-              shortName="Aggeliki"
-              href="https://www.linkedin.com/in/agkika/"
-              description="Aggeliki specializes in medical, patent, and legal translations,
+
+      <div className="bg-base-100">
+        <div className="container mx-auto">
+          {/* Team Section - Theme Applied */}
+          <div id="team" className="p-8">
+            <p className="text-2xl mb-2 text-muted-foreground">
+              Our team
+            </p>
+            <h2 className="text-4xl font-bold mb-8">You are in good hands</h2>
+            <p className="text-xl mb-8 lg:w-2/3 ">
+              Our seasoned translators brings together diverse expertise to meet a
+              wide range of translation and interpretation needs.
+            </p>
+            <div className="mb-16 text-xl lg:w-3/4 ">
+              <Translator
+                fullName="Aggeliki Gkika"
+                imageSrc="/agg_ai.png"
+                shortName="Aggeliki"
+                href="https://www.linkedin.com/in/agkika/"
+                description="Aggeliki specializes in medical, patent, and legal translations,
               ensuring accuracy and professionalism in highly specialized
               fields."
-            />
-            <Translator
-              fullName="Chrysanthi Partsanaki"
-              imageSrc="/chrysanthi.jpeg"
-              shortName="Chrysanthi"
-              href="https://www.linkedin.com/in/cpartsanaki/"
-              description="
+              />
+              <Translator
+                fullName="Chrysanthi Partsanaki"
+                imageSrc="/chrysa_ai.png"
+                shortName="Chrysanthi"
+                href="https://www.linkedin.com/in/cpartsanaki/"
+                description="
               Chrysanthi excels in book, financial, and political translations,
               along with skilled English and Spanish interpretation."
-            />
-            <Translator
-              fullName="Anna Maria Chatzistylianou"
-              imageSrc="/am.jpeg"
-              shortName="Anna Maria"
-              href="https://www.linkedin.com/in/amchatzistylianou/"
-              description="Anna Maria is your go-to for subtitles, website and marketing translations,
+              />
+              <Translator
+                fullName="Anna Maria Chatzistylianou"
+                imageSrc="/am_ai.png"
+                shortName="Anna Maria"
+                href="https://www.linkedin.com/in/amchatzistylianou/"
+                description="Anna Maria is your go-to for subtitles, website and marketing translations,
               combining linguistic precision with creativity."
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Client Testimonials Section - Hero gradient background with glass-morphism cards */}
-      <div className="hero-section bg-gradient-to-tr from-blue-700 via-indigo-900 to-gray-900 h-full pb-16">
+      <div className="hero-section h-full pb-16 text-white" style={{ background: 'linear-gradient(to top right, oklch(27% 0.041 260.031), oklch(44% 0.043 257.281), oklch(27% 0.046 192.524))' }}>
         <TestimonialsSection />
         <div className="container mx-auto">
           <div className="xl:w-2/3 p-8 pb-0 text-white">
@@ -302,7 +319,7 @@ export default function Home() {
               your big conference or event? Or do you have another question?{" "}
             </p>
             <button
-              className="btn text-xl btn-lg normal-case text-indigo-900 hover:text-white hover:bg-indigo-900 dark:bg-white dark:text-indigo-900"
+              className="btn btn-accent"
               onClick={() => window.Beacon("open")}
             >
               Contact us →
@@ -353,6 +370,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
