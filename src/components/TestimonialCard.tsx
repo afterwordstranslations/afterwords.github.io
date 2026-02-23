@@ -15,7 +15,7 @@ export const TestimonialCard: React.FC<ITestimonialCard> = ({
     <div className="p-8 rounded-lg bg-white/10 backdrop-blur-sm h-full flex flex-col">
       <div>
         <div className="text-4xl text-indigo-300 mb-4">&ldquo;</div>
-        <p className="text-lg mb-6 italic text-slate-200">
+        <p className="text-lg mb-6 italic text-slate-200 leading-8 max-w-3xl">
           {quote}
         </p>
       </div>

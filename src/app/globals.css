@@ -1,63 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Light Theme Variables */
-:root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --card-background: #f8fafc;
-  --card-foreground: #334155;
-  --border: #e2e8f0;
-  --primary: #4f46e5;
-  --secondary: #64748b;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #e0e7ff;
-  --accent-foreground: #4338ca;
-  --destructive: #ef4444;
-  --destructive-foreground: #fef2f2;
-  --ring: #4f46e5;
-  --radius: 0.5rem;
-}
+@plugin "daisyui";
 
-/* Dark Theme Variables */
-[data-theme="dark"] {
-  --background: #0f172a;
-  --foreground: #f1f5f9;
-  --card-background: #1e293b;
-  --card-foreground: #cbd5e1;
-  --border: #334155;
-  --primary: #6366f1;
-  --secondary: #475569;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #1e1b4b;
-  --accent-foreground: #c7d2fe;
-  --destructive: #dc2626;
-  --destructive-foreground: #fef2f2;
-  --ring: #6366f1;
-  --radius: 0.5rem;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-feature-settings: "rlig" 1, "calt" 1;
-}
-
-/* Smooth theme transitions */
-* {
-  transition-property: color, background-color, border-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-/* Hero section - no transitions for theme independence */
-.hero-section {
-  transition: none !important;
-}
-
-.hero-section * {
-  transition: none !important;
+@plugin "daisyui/theme" {
+  name: "winter";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97.466% 0.011 259.822);
+  --color-base-300: oklch(93.268% 0.016 262.751);
+  --color-base-content: oklch(41.886% 0.053 255.824);
+  --color-primary: oklch(27% 0.041 260.031);
+  --color-primary-content: oklch(91.372% 0.051 257.57);
+  --color-secondary: oklch(44% 0.043 257.281);
+  --color-secondary-content: oklch(88.51% 0.032 282.339);
+  --color-accent: oklch(86% 0.022 252.894);
+  --color-accent-content: oklch(11.988% 0.038 335.171);
+  --color-neutral: oklch(27% 0.046 192.524);
+  --color-neutral-content: oklch(83.923% 0.012 257.651);
+  --color-info: oklch(88.127% 0.085 214.515);
+  --color-info-content: oklch(17.625% 0.017 214.515);
+  --color-success: oklch(80.494% 0.077 197.823);
+  --color-success-content: oklch(16.098% 0.015 197.823);
+  --color-warning: oklch(89.172% 0.045 71.47);
+  --color-warning-content: oklch(17.834% 0.009 71.47);
+  --color-error: oklch(73.092% 0.11 20.076);
+  --color-error-content: oklch(14.618% 0.022 20.076);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
