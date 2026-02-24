@@ -151,17 +151,19 @@ export default function Home() {
                   </>
                 }
               />
-              <ServiceCard
-                label="Interpreting Services"
-                description={
-                  <>
-                    <p className="mb-4">
-                      We provide professional interpreting services to ensure
-                      seamless communication in any setting.
-                    </p>
-                  </>
-                }
-              />
+              <Link href="/interpreting" className="block">
+                <ServiceCard
+                  label="Interpreting Services"
+                  description={
+                    <>
+                      <p className="mb-4">
+                        We provide professional interpreting services to ensure
+                        seamless communication in any setting.
+                      </p>
+                    </>
+                  }
+                />
+              </Link>
               <ServiceCard
                 label="Subtitling Services"
                 description={
