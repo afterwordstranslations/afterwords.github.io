@@ -21,14 +21,13 @@ export default function Translator(props: TranslatorProps) {
       <div className="col-span-3 block px-4">
         <h3 className="card-title text-2xl mb-4">{props.fullName}</h3>
         <p className="mb-4 text-base">{props.description}</p>
-        <h4 className="text-lg mb-2">Find {props.shortName} on </h4>
-        <a href={props.href} className="btn btn-lg btn-accent px-4" target="_blank">
+        <p className="text-base mb-2">Find {props.shortName} on </p>
+        <a href={props.href} className="btn btn-accent px-4" target="_blank">
           <Image
             src="/LI-Logo.png"
             alt="LinkedIn logo"
-            width={100}
-            height={100}
-            className="brightness-125"
+            width={80}
+            height={80}
           />
         </a>
       </div>
