@@ -4,16 +4,16 @@ import { StatCard } from "./StatCard";
 export const DecadeSection = () => {
   return (
 
-    <div className="hero-section h-full py-8 text-primary-content" style={{ background: 'linear-gradient(to top right, oklch(27% 0.041 260.031), oklch(44% 0.043 257.281), oklch(27% 0.046 192.524))' }}>
+    <div className="hero-section h-full py-8" style={{ background: 'linear-gradient(to top right, oklch(27% 0.041 260.031), oklch(44% 0.043 257.281), oklch(27% 0.046 192.524))' }}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="mb-16">
-          <p className="text-xl mb-2">
+          <p className="text-xl mb-2 text-slate-300">
             <Emoji symbol="🎉" className="mr-2" />10th Anniversary<Emoji symbol="🥳" className="ml-2" />
           </p>
-          <h2 className="text-4xl font-bold mb-8">
+          <h2 className="text-4xl font-bold mb-8 text-white">
             Our Decade of Excellence
           </h2>
-          <p className="text-xl md:text-2xl max-w-3xl leading-relaxed">
+          <p className="text-xl md:text-2xl max-w-3xl leading-relaxed text-white">
             Since 2015 we have been bridging languages and cultures across
             industries with precision and care.
           </p>
@@ -45,7 +45,7 @@ export const DecadeSection = () => {
           />
           <StatCard
             value="9+"
-            label="Specialized Industries Served"
+            label="Specialized Industries"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />

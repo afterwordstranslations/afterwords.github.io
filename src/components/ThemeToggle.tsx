@@ -3,20 +3,20 @@
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"afterwords-light" | "dark">("afterwords-light");
+  const [theme, setTheme] = useState<"afterwords-light" | "afterwords-dark">("afterwords-light");
 
   useEffect(() => {
     // Get initial theme from localStorage or system preference
-    const savedTheme = localStorage.getItem("theme") as "afterwords-light" | "dark" | null;
+    const savedTheme = localStorage.getItem("theme") as "afterwords-light" | "afterwords-dark" | null;
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "afterwords-light");
+    const initialTheme = savedTheme || (systemPrefersDark ? "afterwords-dark" : "afterwords-light");
 
     setTheme(initialTheme);
     document.documentElement.setAttribute("data-theme", initialTheme);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "afterwords-light" ? "dark" : "afterwords-light";
+    const newTheme = theme === "afterwords-light" ? "afterwords-dark" : "afterwords-light";
     setTheme(newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
@@ -27,10 +27,10 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
       aria-label="Toggle theme"
-      title={`Switch to ${theme === "afterwords-light" ? "dark" : "afterwords-light"} theme`}
+      title={`Switch to ${theme === "afterwords-light" ? "afterwords-dark" : "afterwords-light"} theme`}
     >
       {theme === "afterwords-light" ? (
-        // Moon icon for dark mode
+        // Moon icon for afterwords-dark mode
         <svg
           className="w-5 h-5 text-yellow-400"
           fill="none"

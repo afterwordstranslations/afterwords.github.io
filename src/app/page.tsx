@@ -336,7 +336,7 @@ export default function Home() {
             src="/logo.svg"
             width={200}
             height={50}
-            className="mb-8 w-1/3 md:w-1/4"
+            className="mb-8 w-1/3 md:w-1/5"
           />
           <div className="flex items-center">
             <h3 className="text-white text-xl mr-4">Find us on social media</h3>
