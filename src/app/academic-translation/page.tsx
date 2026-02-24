@@ -31,7 +31,7 @@ const services = [
     description: (
       <>
         <p className="mb-4">
-          Sensitive translation for Memoirs and Novels that preserves authorial "voice" and charisma—something AI cannot replicate.
+          Sensitive translation for Memoirs and Novels that preserves authorial &ldquo;voice&rdquo; and charisma—something AI cannot replicate.
         </p>
       </>
     )
@@ -53,7 +53,7 @@ const services = [
     description: (
       <>
         <p className="mb-4">
-          Ensuring research is "journal-ready" for international peer-reviewed publication with precise academic language.
+          Ensuring research is &ldquo;journal-ready&rdquo; for international peer-reviewed publication with precise academic language.
         </p>
       </>
     )
@@ -75,10 +75,12 @@ export default function AcademicTranslationPage() {
         <div>
           <section className="relative w-full overflow-hidden bg-slate-900">
             <div className="container mx-auto px-4 md:px-8"></div>
-            <img
+            <Image
               src="/bg-academic.jpg"
               alt="Professional signing document"
               className="absolute inset-0 h-full w-full object-cover"
+              fill
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
             <div className="relative z-10 h-full items-center px-8 lg:px-24">
@@ -130,7 +132,7 @@ export default function AcademicTranslationPage() {
                     High-Stakes Academic Translation: Beyond the Algorithm
                   </h1>
                   <p className="text-xl mb-16">
-                    In scholarly publishing, a "near-miss" costs more than just credibility—it costs your budget. Unlike AI, our human-led process preserves the author's unique voice and charisma.
+                    In scholarly publishing, a &ldquo;near-miss&rdquo; costs more than just credibility—it costs your budget. Unlike AI, our human-led process preserves the author&apos;s unique voice and charisma.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
@@ -181,7 +183,7 @@ export default function AcademicTranslationPage() {
             Whether managing dense Econometrics data or complex Pedagogical theory, we deliver manuscripts that meet the highest international standards.
           </p>
           <p className="text-xl mb-8">
-            We eliminate the risks of a "Bad Translation"—such as costly reprints and brand damage—by utilizing a gold-standard TEP (Translation, Editing, Proofreading) workflow.
+            We eliminate the risks of a &ldquo;Bad Translation&rdquo;—such as costly reprints and brand damage—by utilizing a gold-standard TEP (Translation, Editing, Proofreading) workflow.
           </p>
         </div>
       </div>
@@ -216,7 +218,7 @@ export default function AcademicTranslationPage() {
             </p>
             <h2 className="text-4xl font-bold mb-8">Beyond AI Limitations</h2>
             <p className="text-xl mb-8 md:w-3/4 lg:w-2/3">
-              Unlike AI, which often misses nuance and metaphor, our human-led process preserves the author's unique voice and charisma.
+              Unlike AI, which often misses nuance and metaphor, our human-led process preserves the author&apos;s unique voice and charisma.
             </p>
             <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
               <ServiceCard
@@ -271,10 +273,10 @@ export default function AcademicTranslationPage() {
               Ready to discuss your academic translation project?
             </p>
             <h3 className="text-4xl font-bold mb-8">
-              Let's talk about your book
+              Let&apos;s talk about your book
             </h3>
             <p className="text-xl mb-8 md:w-2/3">
-              Whether it's a 500-page textbook or a journal manuscript, we have the expertise and professional stamina to deliver excellence.
+              Whether it&apos;s a 500-page textbook or a journal manuscript, we have the expertise and professional stamina to deliver excellence.
             </p>
             <button
               className="btn btn-accent"
