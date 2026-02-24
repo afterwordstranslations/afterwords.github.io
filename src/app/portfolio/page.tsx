@@ -88,10 +88,12 @@ export default function PortfolioPage() {
       <div className="hero-section bg-sl h-full">
         <section className="relative w-full overflow-hidden bg-slate-900">
           <div className="container mx-auto px-4 md:px-8"></div>
-          <img
+          <Image
             src="/bg.jpg"
             alt="Professional signing document"
             className="absolute inset-0 h-full w-full object-cover"
+            fill
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
 

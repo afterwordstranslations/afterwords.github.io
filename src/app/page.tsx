@@ -7,7 +7,6 @@ import Translator from "~/components/Translator";
 import { DecadeSection } from "~/components/DecadeSection";
 import { TestimonialsSection } from "~/components/TestimonialsSection";
 import { ThemeToggle } from "~/components/ThemeToggle";
-import Emoji from "a11y-react-emoji";
 
 declare global {
   interface Window {
@@ -27,10 +26,12 @@ export default function Home() {
 
             <div className="container mx-auto px-4 md:px-8">
             </div>
-            <img
+            <Image
               src="/bg.jpg"
               alt="Professional signing document"
               className="absolute inset-0 h-full w-full object-cover"
+              fill
+              sizes="100vw"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
@@ -58,6 +59,9 @@ export default function Home() {
                       <a className="text-white m-2 py-1 link" href="#team">
                         Our team
                       </a>
+                      <Link className="text-white m-2 py-1 link" href="/blog">
+                        Blog
+                      </Link>
                       <a
                         className="text-white m-2 py-1"
                         href="https://www.linkedin.com/company/afterwordstranslations"
