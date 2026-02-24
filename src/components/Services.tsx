@@ -18,7 +18,7 @@ export const ServiceCard: React.FC<IServiceCard> = ({ description, label }) => {
           {label}
         </h3>
         <div className="text-base-content leading-relaxed mb-4">{description}</div>
-        <a className="link link-primary" href="">Learn more</a>
+        {/*<a className="link link-primary" href="">Learn more</a>*/}
       </div>
     </div>
   );
