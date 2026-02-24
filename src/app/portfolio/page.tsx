@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ThemeToggle } from "~/components/ThemeToggle";
+import { Header } from "~/components/Header";
 
 const portfolioItems = [
   {
@@ -82,6 +82,10 @@ const portfolioItems = [
 ];
 
 export default function PortfolioPage() {
+  const navItems = [
+    { label: "Home", href: "/" },
+  ];
+
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* Header */}
@@ -97,36 +101,7 @@ export default function PortfolioPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
 
           <div className="relative z-10 h-full items-center px-8 lg:px-24">
-            <header className="text-gray-100 body-font w-full mb-16">
-              <div className="container mx-auto grid gap-4 grid-cols-6">
-                <Link href="/" className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3">
-                  <Image
-                    src="/logo.svg"
-                    className="w-2/6"
-                    width={312}
-                    height={67}
-                    alt="Afterwords Logo"
-                  />
-                </Link>
-                <nav className="text-base mt-4 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right flex items-center justify-end sm:justify-end">
-                  <div className="flex items-center gap-2">
-                    <Link className="text-white m-2 py-1 link" href="/">
-                      Home
-                    </Link>
-                    <a className="text-white m-2 py-1 link" href="https://www.linkedin.com/company/afterwordstranslations">
-                      <Image
-                        alt="LinkedIn logo"
-                        width={50}
-                        height={50}
-                        className="w-6 inline"
-                        src="/in.png"
-                      />
-                    </a>
-                    <ThemeToggle />
-                  </div>
-                </nav>
-              </div>
-            </header>
+            <Header navItems={navItems} />
 
             {/* Hero Section */}
             <div className="max-w-xl text-white">

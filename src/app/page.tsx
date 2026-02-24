@@ -7,7 +7,7 @@ import LabeledEmoji from "~/components/LabeledEmoji";
 import Translator from "~/components/Translator";
 import { DecadeSection } from "~/components/DecadeSection";
 import { TestimonialsSection } from "~/components/TestimonialsSection";
-import { ThemeToggle } from "~/components/ThemeToggle";
+import { Header } from "~/components/Header";
 
 declare global {
   interface Window {
@@ -17,7 +17,11 @@ declare global {
 }
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navItems = [
+    { label: "About us", href: "#about" },
+    { label: "Our services", href: "#services" },
+    { label: "Our team", href: "#team" },
+  ];
 
   return (
     <div className="w-full bg-base-100 text-base-content">
@@ -37,117 +41,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
 
             <div className="relative z-10 h-full items-center px-8 lg:px-24">
-              <header className="text-gray-100 body-font w-full mb-8">
-                <div className="container mx-auto">
-                  <div className="mt-4 flex items-center justify-between gap-4">
-                    {/* Logo */}
-                    <a className="title-font font">
-                      <Image
-                        src="/logo.svg"
-                        className="w-40 md:w-48 lg:w-2/3"
-                        width={312}
-                        height={67}
-                        alt="Afterwords Logo"
-                      />
-                    </a>
-
-                    {/* Desktop Navigation */}
-                    <div className="flex gap-8">
-                      <nav className="hidden md:flex items-center gap-4">
-                        <a className="text-white py-1 link" href="#about">
-                          About us
-                        </a>
-                        <a className="text-white py-1 link" href="#services">
-                          Our services
-                        </a>
-                        <a className="text-white py-1 link" href="#team">
-                          Our team
-                        </a>
-                      </nav>
-
-                      {/* Right side: Burger (mobile) / empty (desktop), LinkedIn, Theme Toggle */}
-                      <div className="flex items-center gap-2 md:gap-4">
-                        {/* Burger Menu - Mobile only */}
-                        <button
-                          className="md:hidden text-white p-2"
-                          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                          aria-label="Toggle menu"
-                        >
-                          <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            {mobileMenuOpen ? (
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M6 18L18 6M6 6l12 12"
-                              />
-                            ) : (
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 6h16M4 12h16M4 18h16"
-                              />
-                            )}
-                          </svg>
-                        </button>
-
-                        {/* LinkedIn */}
-                        <a
-                          className="text-white p-1"
-                          href="https://www.linkedin.com/company/afterwordstranslations"
-                          aria-label="LinkedIn"
-                        >
-                          <Image
-                            alt="LinkedIn logo"
-                            width={50}
-                            height={50}
-                            className="w-6"
-                            src="/in.png"
-                          />
-                        </a>
-
-                        {/* Theme Toggle */}
-                        <ThemeToggle />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Mobile Menu Dropdown */}
-                  {mobileMenuOpen && (
-                    <nav className="md:hidden mt-4 pb-4 border-t border-white/20">
-                      <div className="flex flex-col gap-2 pt-4">
-                        <a
-                          className="text-white py-2 link"
-                          href="#about"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          About us
-                        </a>
-                        <a
-                          className="text-white py-2 link"
-                          href="#services"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          Our services
-                        </a>
-                        <a
-                          className="text-white py-2 link"
-                          href="#team"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          Our team
-                        </a>
-                      </div>
-                    </nav>
-                  )}
-                </div>
-              </header>
+              <Header navItems={navItems} />
               <div className="max-w-xl text-white">
                 <div>
                   <h4 className="bg-accent text-accent-content text-xs shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
