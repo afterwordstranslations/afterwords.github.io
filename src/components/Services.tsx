@@ -34,7 +34,7 @@ export const ServiceCard: React.FC<IServiceCard> = ({ description, label, learnM
             {label}
           </h3>
           <div className="text-base-content leading-relaxed flex-1">{description}</div>
-          {learnMore.length && <Link className="link link-primary mt-4" href={learnMore}>Learn more</Link>}
+          {learnMore.length ? <Link className="link link-primary mt-4" href={learnMore}>Learn more</Link> : ""}
         </div>
       </div>
     </>
