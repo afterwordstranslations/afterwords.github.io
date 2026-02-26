@@ -30,16 +30,13 @@ export default function Home() {
         <div>
 
           <section className="relative w-full overflow-hidden bg-slate-900">
-
             <Image
               src="/bg.jpg"
               alt="Professional signing document"
               fill
               className="object-cover"
             />
-
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
-
             <div className="relative z-10 h-full items-center px-8 lg:px-24">
               <Header navItems={navItems} />
               <div className="max-w-xl text-white">
@@ -142,36 +139,30 @@ export default function Home() {
             <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mb-8">
               <ServiceCard
                 label="Certified Translations"
+                learnMore="/certified-translations"
                 description={
                   <>
-                    <p className="mb-4">
-                      Translation of academic and public documents for submission
-                      to various authorities.
-                    </p>
+                    Translation of academic and public documents for submission
+                    to various authorities.
                   </>
                 }
               />
-              <Link href="/interpreting" className="block">
-                <ServiceCard
-                  label="Interpreting Services"
-                  description={
-                    <>
-                      <p className="mb-4">
-                        We provide professional interpreting services to ensure
-                        seamless communication in any setting.
-                      </p>
-                    </>
-                  }
-                />
-              </Link>
+              <ServiceCard
+                label="Interpreting Services"
+                learnMore="/interpreting"
+                description={
+                  <>
+                    We provide professional interpreting services to ensure
+                    seamless communication in any setting.
+                  </>
+                }
+              />
               <ServiceCard
                 label="Subtitling Services"
                 description={
                   <>
-                    <p className="mb-4">
-                      Our subtitling team brings stories and messages to life on
-                      screen.
-                    </p>
+                    Our subtitling team brings stories and messages to life on
+                    screen.
                   </>
                 }
               />
@@ -209,12 +200,11 @@ export default function Home() {
                 label="Marketing"
                 description="Creative translations that resonate with your audience and amplify your brand's message."
               />
-              <Link href="/academic-translation" className="block">
-                <ServiceCard
-                  label="Academic Books"
-                  description="High-quality translations that preserve the intellectual rigor and voice of scholarly works."
-                />
-              </Link>
+              <ServiceCard
+                label="Academic Books"
+                description="High-quality translations that preserve the intellectual rigor and voice of scholarly works."
+                learnMore="/academic-translation"
+              />
               <ServiceCard
                 description="Specialized translations rooted in practical expertise, bolstered by a Permaculture Design Certificate (PDC) at Oregon State University."
                 label="Agriculture & Agroforestry"
