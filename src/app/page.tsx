@@ -251,8 +251,7 @@ export default function Home() {
                 imageSrc="/am_ai.png"
                 shortName="Anna Maria"
                 href="https://www.linkedin.com/in/amchatzistylianou/"
-                description="Anna Maria is your go-to for subtitles, website and marketing translations,
-              combining linguistic precision with creativity."
+                description="Anna Maria is your go-to specialist for maritime and legal translation, delivering linguistic precision with deep industry knowledge."
               />
             </div>
           </div>
