@@ -104,18 +104,73 @@ export default function PortfolioPage() {
             <Header navItems={navItems} />
 
             {/* Hero Section */}
-            <div className="max-w-xl text-white">
+            <div className="max-w-xl text-white mt-8">
               <div>
+                <h4 className="bg-accent text-accent-content text-xs shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
+                  Showcasing our expertise across specialized translation domains
+                </h4>
                 <h1 className="text-5xl leading-tight font-bold mb-4">
-                  Our Work
+                  Our Portfolio
                 </h1>
                 <p className="text-xl mb-16">
                   Explore our portfolio of translation and localization projects. From medical patents to published books, we deliver precision and cultural expertise across industries.
                 </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    className="btn btn-lg btn-accent"
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && window.Beacon) {
+                        window.Beacon("open");
+                      }
+                    }}
+                  >
+                    Get a free estimate
+                  </button>
+                  <Link
+                    href="/"
+                    className="btn btn-lg btn-outline btn-accent"
+                  >
+                    Back to Home
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Hero Features Grid */}
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 my-16 text-white">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Subject Matter Experts</h4>
+                <p>Specialized translators with deep domain expertise in medical, legal, and technical fields.</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">TEP Workflow</h4>
+                <p>Gold-standard Translation, Editing, Proofreading workflow ensures quality and accuracy.</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Proven Track Record</h4>
+                <p>From medical patents to published books, we deliver excellence across all project types.</p>
               </div>
             </div>
           </div>
         </section>
+      </div>
+
+      {/* About Section */}
+      <div className="container mx-auto">
+        <div className="lg:w-2/3 p-8">
+          <p className="text-2xl mb-2 text-muted-foreground">
+            Our work
+          </p>
+          <h2 className="text-4xl font-bold mb-8">
+            A Portfolio of <i className="font-normal">Excellence</i> Across Industries
+          </h2>
+          <p className="text-xl mb-4">
+            Our portfolio spans specialized translation domains, from medical patents and legal compliance to literary publishing and media localization.
+          </p>
+          <p className="text-xl mb-8">
+            Each project demonstrates our commitment to precision, cultural expertise, and professional excellence. We leverage subject matter expertise and advanced Translation Memories to deliver consistent, high-quality results.
+          </p>
+        </div>
       </div>
 
       {/* Portfolio Items */}
@@ -125,7 +180,7 @@ export default function PortfolioPage() {
             <p className="text-2xl mb-2 text-muted-foreground">
               Featured Projects
             </p>
-            <h2 className="text-4xl font-bold mb-8">A selection of our work showcasing our expertise and commitment to quality</h2>
+            <h2 className="text-4xl font-bold mb-8">Showcasing our expertise and commitment to quality</h2>
 
             <div className="grid gap-8 md:grid-cols-2">
               {portfolioItems.map((item) => (
@@ -223,32 +278,24 @@ export default function PortfolioPage() {
         <div className="container mx-auto">
           <div className="xl:w-2/3 p-8 pb-0 text-white">
             <p className="text-2xl text-slate-400 mb-2">
-              Ready to start your project?
+              Ready to start your translation project?
             </p>
             <h3 className="text-4xl font-bold mb-8">
-              Get in touch with our team
+              Let&apos;s discuss your needs
             </h3>
             <p className="text-xl mb-8 md:w-2/3">
-              Discuss your translation and localization needs. We deliver quality, speed, and reliability.
+              Whether you need specialized translation, certified documents, or media localization, we deliver quality, speed, and reliability.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                className="btn btn-accent"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && window.Beacon) {
-                    window.Beacon("open");
-                  }
-                }}
-              >
-                Get a free estimate →
-              </button>
-              <Link
-                href="/"
-                className="btn btn-outline btn-accent"
-              >
-                Back to Home
-              </Link>
-            </div>
+            <button
+              className="btn btn-accent"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.Beacon) {
+                  window.Beacon("open");
+                }
+              }}
+            >
+              Contact us →
+            </button>
           </div>
         </div>
       </div>
