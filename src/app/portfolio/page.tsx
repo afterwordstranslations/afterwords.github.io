@@ -162,7 +162,7 @@ export default function PortfolioPage() {
             Our work
           </p>
           <h2 className="text-4xl font-bold mb-8">
-            A Portfolio of <i className="font-normal">Excellence</i> Across Industries
+            We strive for <i className="font-normal">Excellence</i> Across Industries
           </h2>
           <p className="text-xl mb-4">
             Our portfolio spans specialized translation domains, from medical patents and legal compliance to literary publishing and media localization.
