@@ -59,12 +59,12 @@ export default function Home() {
                     >
                       Get a free estimate
                     </button>
-                    {/*<Link
+                    <Link
                       href="/portfolio"
                       className="btn btn-lg btn-outline btn-accent"
                     >
                       View Portfolio
-                    </Link>*/}
+                    </Link>
                   </div>
                 </div>
               </div>
