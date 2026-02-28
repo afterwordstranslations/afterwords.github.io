@@ -248,9 +248,7 @@ export default function Home() {
                 imageSrc="/agg_ai.png"
                 shortName="Aggeliki"
                 href="https://www.linkedin.com/in/agkika/"
-                description="Aggeliki specializes in medical, patent, and legal translations,
-              ensuring accuracy and professionalism in highly specialized
-              fields."
+                description="Aggeliki specializes in pharmaceutical, medical, clinical and patent translations, ensuring accuracy and professionalism in highly specialized fields."
               />
               <Translator
                 fullName="Chrysanthi Partsanaki"
