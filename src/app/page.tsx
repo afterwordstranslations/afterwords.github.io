@@ -159,10 +159,11 @@ export default function Home() {
               />
               <ServiceCard
                 label="Subtitling Services"
+                learnMore="/audiovisual-translation"
                 description={
                   <>
-                    Our subtitling team brings stories and messages to life on
-                    screen.
+                    From TV series to feature films and entire film festivals, we
+                    ensure the narrative remains sharp in every frame.
                   </>
                 }
               />
@@ -185,9 +186,25 @@ export default function Home() {
 
             <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
               <ServiceCard
-                label="Medical & patent"
-                description="Expert translations of medical documentation, research papers, patents, as well as medical devices and product information."
+                label="Pharmaceutical & Life Sciences"
+                learnMore="/pharmaceutical-translation"
+                description="Regulatory-compliant translation for submissions, clinical documentation, pharmacovigilance, and patient-facing materials."
               />
+              <ServiceCard
+                label="Maritime"
+                description="Technical and legal maritime translation for shipowners, crewing managers, and maritime law firms."
+                learnMore="/maritime-translation"
+              />
+              <ServiceCard
+                label="Academic Books"
+                description="High-quality translations that preserve the intellectual rigor, nuance, and voice of scholarly works for academic publication."
+                learnMore="/academic-translation"
+              />
+            </div>
+
+            <h4 className="text-sm text-muted-foreground mb-6 uppercase tracking-wider font-semibold">We also specialize in</h4>
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
+
               <ServiceCard
                 label="Legal & Financial"
                 description="Accurate and dependable translations of contracts, legal proceedings, financial statements, and related documents."
@@ -197,19 +214,17 @@ export default function Home() {
                 label="Websites"
               />
               <ServiceCard
-                label="Marketing"
-                description="Creative translations that resonate with your audience and amplify your brand's message."
-              />
-              <ServiceCard
-                label="Academic Books"
-                description="High-quality translations that preserve the intellectual rigor and voice of scholarly works."
-                learnMore="/academic-translation"
-              />
-              <ServiceCard
                 description="Specialized translations rooted in practical expertise, bolstered by a Permaculture Design Certificate (PDC) at Oregon State University."
                 label="Agriculture & Agroforestry"
               />
             </div>
+
+            <button
+              className="btn btn-primary"
+              onClick={() => window.Beacon("open")}
+            >
+              Tell us about your industry →
+            </button>
           </div>
         </div>
       </div>
@@ -224,7 +239,7 @@ export default function Home() {
             </p>
             <h2 className="text-4xl font-bold mb-8">You are in good hands</h2>
             <p className="text-xl mb-8 lg:w-2/3 ">
-              Our seasoned translators brings together diverse expertise to meet a
+              Our seasoned translators bring together diverse expertise to meet a
               wide range of translation and interpretation needs.
             </p>
             <div className="mb-16 text-xl lg:w-3/4 ">
@@ -242,9 +257,7 @@ export default function Home() {
                 imageSrc="/chrysa_ai.png"
                 shortName="Chrysanthi"
                 href="https://www.linkedin.com/in/cpartsanaki/"
-                description="
-              Chrysanthi excels in book, financial, and political translations,
-              along with skilled English and Spanish interpretation."
+                description="Chrysanthi delivers precision in academic, financial, legal, and maritime translation, complemented by professional Greek/English and Greek/Spanish interpretation services."
               />
               <Translator
                 fullName="Anna Maria Chatzistylianou"
