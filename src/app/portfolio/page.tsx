@@ -1,8 +1,20 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { Header } from "~/components/Header";
+import { motion } from "framer-motion";
+import { PageHero } from "~/components/PageHero";
+import { SectionHeader } from "~/components/SectionHeader";
+import { CTASection } from "~/components/CTASection";
+import { Footer } from "~/components/Footer";
+import { FadeIn } from "~/components/animations/FadeIn";
+import { CountUp } from "~/components/animations/CountUp";
+import { StaggerContainer, StaggerItem } from "~/components/animations/StaggerContainer";
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line
+    Beacon: any;
+  }
+}
 
 const portfolioItems = [
   {
@@ -10,338 +22,300 @@ const portfolioItems = [
     emoji: "🧬",
     title: "Medical & Scientific Innovations",
     category: "Specialized Translation",
-    description: "Expert translations for the medical and scientific sectors, including patent specifications, pharmaceutical applications, clinical research, and healthcare documentation.",
+    description:
+      "Expert translations for the medical and scientific sectors, including patent specifications, pharmaceutical applications, clinical research, and healthcare documentation.",
     items: [
       "Patent Specifications: Annual translation of 200–300 patent specifications specializing in biology, chemistry, biochemistry, and technology.",
       "Pharmaceutical Applications: Translation of 150–200 patent applications and abstracts per year.",
       "Clinical Research: Translation of clinical trial documents, medical research papers, and articles for publication.",
-      "Healthcare Documentation: Comprehensive translation of patient records and medical reports."
+      "Healthcare Documentation: Comprehensive translation of patient records and medical reports.",
     ],
-    stats: {
-      patents: "300/year",
-      applications: "200/year",
-      documents: "1000+"
-    }
+    stats: [
+      { value: 300, suffix: "/yr", label: "Patents" },
+      { value: 200, suffix: "/yr", label: "Applications" },
+      { value: 1000, suffix: "+", label: "Documents" },
+    ],
+    accent: "from-teal-500/10 to-emerald-500/10",
+    borderAccent: "border-l-teal-500",
   },
   {
     id: 2,
     emoji: "⚖️",
     title: "Legal & Financial Compliance",
     category: "Corporate Translation",
-    description: "Certified translations for international business operations, corporate governance, global finance, market intelligence, and international law.",
+    description:
+      "Certified translations for international business operations, corporate governance, global finance, market intelligence, and international law.",
     items: [
       "Corporate Governance: Translation of contracts, agreements, and certificates for international business operations.",
       "Global Finance: Preparation of financial reports, balance sheets, and income statements.",
       "Market Intelligence: Translation of investment research reports and market analyses.",
-      "International Law: Translation of treaties, conventions, and residency applications."
+      "International Law: Translation of treaties, conventions, and residency applications.",
     ],
-    stats: {
-      contracts: "300+",
-      reports: "200+",
-      clients: "50+"
-    }
+    stats: [
+      { value: 300, suffix: "+", label: "Contracts" },
+      { value: 200, suffix: "+", label: "Reports" },
+      { value: 50, suffix: "+", label: "Clients" },
+    ],
+    accent: "from-blue-500/10 to-indigo-500/10",
+    borderAccent: "border-l-blue-500",
   },
   {
     id: 3,
     emoji: "📚",
     title: "Published Books (Greek Editions)",
     category: "Literary Translation",
-    description: "High-quality translations of academic and scholarly books, preserving intellectual rigor and authorial voice for Greek readers.",
+    description:
+      "High-quality translations of academic and scholarly books, preserving intellectual rigor and authorial voice for Greek readers.",
     items: [
       "The Sociology of Health and Illness (4th Edition) by Sarah Nettleton.",
       "Development Economics: Theory and Practice (2nd Edition) by Alain de Janvry & Elisabeth Sadoulet.",
       "Managerial Economics in a Global Economy (9th Edition) by Dominick Salvatore.",
       "Mathematics for Economics: An Integrated Approach by Mik Wisniewski.",
-      "Child Observation: A Guide for Students of Early Childhood (4th Edition) by Ioanna Palaiologou."
+      "Child Observation: A Guide for Students of Early Childhood (4th Edition) by Ioanna Palaiologou.",
     ],
-    stats: {
-      books: "5+",
-      pages: "2000+",
-      publishers: "3"
-    }
+    stats: [
+      { value: 5, suffix: "+", label: "Books" },
+      { value: 2000, suffix: "+", label: "Pages" },
+      { value: 3, suffix: "", label: "Publishers" },
+    ],
+    accent: "from-amber-500/10 to-orange-500/10",
+    borderAccent: "border-l-amber-500",
   },
   {
     id: 4,
     emoji: "🎬",
     title: "Media & Events",
     category: "Subtitling & Interpreting",
-    description: "Professional subtitling services for TV series, films, and festivals, along with specialized interpreting for corporate conferences and the aviation sector.",
+    description:
+      "Professional subtitling services for TV series, films, and festivals, along with specialized interpreting for corporate conferences and the aviation sector.",
     items: [
-      "TV Series Localization: Greek subtitles for the hit series \"Black-ish\".",
+      'TV Series Localization: Greek subtitles for the hit series "Black-ish".',
       "Film Festivals: Subtitling for the Beyond Borders International Festival (2019–2022).",
-      "Cinema: English and French subtitles for the Greek short film \"MAUVE\".",
+      'Cinema: English and French subtitles for the Greek short film "MAUVE".',
       "Corporate Conferences: Interpreting for the Coating Forum (2022–2023) and pharmaceutical launches.",
-      "Aviation Sector: Specialized interpreting for business meetings and technical presentations."
+      "Aviation Sector: Specialized interpreting for business meetings and technical presentations.",
     ],
-    stats: {
-      series: "1",
-      festivals: "4 years",
-      events: "50+"
-    }
-  }
+    stats: [
+      { value: 1, suffix: "", label: "Series" },
+      { value: 4, suffix: " yrs", label: "Festivals" },
+      { value: 50, suffix: "+", label: "Events" },
+    ],
+    accent: "from-purple-500/10 to-pink-500/10",
+    borderAccent: "border-l-purple-500",
+  },
+];
+
+const expertiseAreas = [
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+      </svg>
+    ),
+    title: "Translation",
+    description: "Accurate translation of documents, websites, and content across all major languages",
+    color: "text-teal-600",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+      </svg>
+    ),
+    title: "Localization",
+    description: "Cultural adaptation of products, websites, and marketing for local markets",
+    color: "text-blue-600",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+      </svg>
+    ),
+    title: "Transcreation",
+    description: "Creative translation that preserves brand voice and emotional impact",
+    color: "text-amber-600",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+      </svg>
+    ),
+    title: "Cultural Consulting",
+    description: "Expert guidance on cultural nuances and market-specific communication strategies",
+    color: "text-purple-600",
+  },
 ];
 
 export default function PortfolioPage() {
-  const navItems = [
-    { label: "Home", href: "/" },
-  ];
+  const navItems = [{ label: "Home", href: "/" }];
 
   return (
     <div className="w-full bg-base-100 text-base-content">
-      {/* Header */}
-      <div className="hero-section bg-sl h-full">
-        <section className="relative w-full overflow-hidden bg-slate-900">
-          <div className="container mx-auto px-4 md:px-8"></div>
-          <Image
-            src="/bg.jpg"
-            alt="Professional signing document"
-            fill
-            className="object-cover"
+      {/* ===== HERO ===== */}
+      <PageHero
+        navItems={navItems}
+        badge="Showcasing our expertise across specialized translation domains"
+        title="Our Portfolio"
+        subtitle="Explore our portfolio of translation and localization projects. From medical patents to published books, we deliver precision and cultural expertise across industries."
+        variant="compact"
+        cta={
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20 cursor-pointer"
+              onClick={() => window.Beacon("open")}
+            >
+              Get a free estimate
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
+            >
+              Back to Home
+            </Link>
+          </div>
+        }
+        features={[
+          { title: "Subject Matter Experts", description: "Specialized translators with deep domain expertise in medical, legal, and technical fields." },
+          { title: "TEP Workflow", description: "Gold-standard Translation, Editing, Proofreading workflow ensures quality and accuracy." },
+          { title: "Proven Track Record", description: "From medical patents to published books, we deliver excellence across all project types." },
+        ]}
+        backgroundElement={
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary/90 to-slate-900" />
+            <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-warm/8 blur-[120px]" />
+          </div>
+        }
+      />
+
+      {/* ===== ABOUT ===== */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-8">
+          <SectionHeader
+            eyebrow="Our work"
+            title="We strive for"
+            titleItalic="Excellence Across Industries"
+            description="Our portfolio spans specialized translation domains, from medical patents and legal compliance to literary publishing and media localization."
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+          <FadeIn delay={0.2}>
+            <p className="text-lg text-base-content/70 leading-relaxed mt-4 max-w-3xl">
+              Each project demonstrates our commitment to precision, cultural expertise, and professional excellence. We leverage subject matter expertise and advanced Translation Memories to deliver consistent, high-quality results.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
 
-          <div className="relative z-10 h-full items-center px-8 lg:px-24">
-            <Header navItems={navItems} />
+      {/* ===== PORTFOLIO ITEMS — Full-Width Case Studies ===== */}
+      {portfolioItems.map((item, index) => (
+        <section
+          key={item.id}
+          className={`py-20 md:py-28 ${index % 2 === 0 ? "bg-base-200" : "bg-base-100"}`}
+        >
+          <div className="container mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* Category + Emoji */}
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-5xl">{item.emoji}</span>
+                <span className="text-sm font-semibold uppercase tracking-[0.15em] text-warm-dark">
+                  {item.category}
+                </span>
+              </div>
 
-            {/* Hero Section */}
-            <div className="max-w-xl text-white mt-8">
-              <div>
-                <h4 className="bg-accent text-accent-content text-xs shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
-                  Showcasing our expertise across specialized translation domains
-                </h4>
-                <h1 className="text-5xl leading-tight font-bold mb-4">
-                  Our Portfolio
-                </h1>
-                <p className="text-xl mb-16">
-                  Explore our portfolio of translation and localization projects. From medical patents to published books, we deliver precision and cultural expertise across industries.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    className="btn btn-lg btn-accent"
-                    onClick={() => {
-                      if (typeof window !== 'undefined' && window.Beacon) {
-                        window.Beacon("open");
-                      }
-                    }}
-                  >
-                    Get a free estimate
-                  </button>
-                  <Link
-                    href="/"
-                    className="btn btn-lg btn-outline btn-accent"
-                  >
-                    Back to Home
-                  </Link>
+              <h3 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-4 text-base-content">
+                {item.title}
+              </h3>
+
+              <p className="text-lg text-base-content/60 leading-relaxed max-w-3xl mb-10">
+                {item.description}
+              </p>
+
+              {/* Two column: items + stats */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                {/* Detail items */}
+                <div className="lg:col-span-2 space-y-4">
+                  {item.items.map((listItem, idx) => (
+                    <motion.div
+                      key={idx}
+                      className={`flex gap-4 p-4 rounded-xl bg-gradient-to-r ${item.accent} border-l-4 ${item.borderAccent}`}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                    >
+                      <span className="text-base-content/80 text-sm leading-relaxed">
+                        {listItem}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Stats */}
+                <div className="flex flex-row lg:flex-col gap-6 lg:gap-8 justify-start">
+                  {item.stats.map((stat) => (
+                    <div key={stat.label} className="text-center lg:text-left">
+                      <div className="text-3xl md:text-4xl font-bold text-base-content">
+                        <CountUp end={stat.value} suffix={stat.suffix} />
+                      </div>
+                      <p className="text-sm text-base-content/50 font-medium mt-1">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            {/* Hero Features Grid */}
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 my-16 text-white">
-              <div>
-                <h4 className="text-lg font-semibold mb-2">Subject Matter Experts</h4>
-                <p>Specialized translators with deep domain expertise in medical, legal, and technical fields.</p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-2">TEP Workflow</h4>
-                <p>Gold-standard Translation, Editing, Proofreading workflow ensures quality and accuracy.</p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-2">Proven Track Record</h4>
-                <p>From medical patents to published books, we deliver excellence across all project types.</p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </section>
-      </div>
+      ))}
 
-      {/* About Section */}
-      <div className="container mx-auto">
-        <div className="lg:w-2/3 p-8">
-          <p className="text-2xl mb-2 text-muted-foreground">
-            Our work
-          </p>
-          <h2 className="text-4xl font-bold mb-8">
-            We strive for <i className="font-normal">Excellence</i> Across Industries
-          </h2>
-          <p className="text-xl mb-4">
-            Our portfolio spans specialized translation domains, from medical patents and legal compliance to literary publishing and media localization.
-          </p>
-          <p className="text-xl mb-8">
-            Each project demonstrates our commitment to precision, cultural expertise, and professional excellence. We leverage subject matter expertise and advanced Translation Memories to deliver consistent, high-quality results.
-          </p>
-        </div>
-      </div>
-
-      {/* Portfolio Items */}
-      <div className="bg-base-300">
-        <div className="container mx-auto">
-          <div className="p-8">
-            <p className="text-2xl mb-2 text-muted-foreground">
-              Featured Projects
-            </p>
-            <h2 className="text-4xl font-bold mb-8">Showcasing our expertise and commitment to quality</h2>
-
-            <div className="grid gap-8 md:grid-cols-2">
-              {portfolioItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-base-100 rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <div className="text-6xl mb-4">{item.emoji}</div>
-                  <div className="text-sm text-accent font-semibold mb-2">
-                    {item.category}
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-3">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-muted-foreground mb-6">
-                    {item.description}
-                  </p>
-
-                  {/* Detailed Items List */}
-                  <div className="space-y-3 mb-6">
-                    {item.items.map((listItem, idx) => (
-                      <div key={idx} className="flex gap-3 text-sm">
-                        <span className="text-accent font-bold mt-1">•</span>
-                        <span className="text-base-content/90">{listItem}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-2 pt-4 border-t border-base-300">
-                    {Object.entries(item.stats).map(([key, value]) => (
-                      <div key={key} className="text-center">
-                        <div className="text-lg font-bold text-accent">{value}</div>
-                        <div className="text-xs text-muted-foreground capitalize">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Services Highlight */}
-      <div className="bg-base-100">
-        <div className="container mx-auto">
-          <div className="p-8">
-            <p className="text-2xl mb-2 text-muted-foreground">
-              Our Expertise
-            </p>
-            <h2 className="text-4xl font-bold mb-8">Comprehensive language services tailored to your needs</h2>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center p-6">
-                <div className="text-5xl mb-4">📝</div>
-                <h3 className="text-xl font-bold mb-2">Translation</h3>
-                <p className="text-muted-foreground">
-                  Accurate translation of documents, websites, and content across all major languages
-                </p>
-              </div>
-
-              <div className="text-center p-6">
-                <div className="text-5xl mb-4">🌐</div>
-                <h3 className="text-xl font-bold mb-2">Localization</h3>
-                <p className="text-muted-foreground">
-                  Cultural adaptation of products, websites, and marketing for local markets
-                </p>
-              </div>
-
-              <div className="text-center p-6">
-                <div className="text-5xl mb-4">✨</div>
-                <h3 className="text-xl font-bold mb-2">Transcreation</h3>
-                <p className="text-muted-foreground">
-                  Creative translation that preserves brand voice and emotional impact
-                </p>
-              </div>
-
-              <div className="text-center p-6">
-                <div className="text-5xl mb-4">🎯</div>
-                <h3 className="text-xl font-bold mb-2">Cultural Consulting</h3>
-                <p className="text-muted-foreground">
-                  Expert guidance on cultural nuances and market-specific communication strategies
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="hero-section h-full pb-16 text-white" style={{ background: 'linear-gradient(to top right, oklch(27% 0.041 260.031), oklch(44% 0.043 257.281), oklch(27% 0.046 192.524))' }}>
-        <div className="container mx-auto">
-          <div className="xl:w-2/3 p-8 pb-0 text-white">
-            <p className="text-2xl text-slate-400 mb-2">
-              Ready to start your translation project?
-            </p>
-            <h3 className="text-4xl font-bold mb-8">
-              Let&apos;s discuss your needs
-            </h3>
-            <p className="text-xl mb-8 md:w-2/3">
-              Whether you need specialized translation, certified documents, or media localization, we deliver quality, speed, and reliability.
-            </p>
-            <button
-              className="btn btn-accent"
-              onClick={() => {
-                if (typeof window !== 'undefined' && window.Beacon) {
-                  window.Beacon("open");
-                }
-              }}
-            >
-              Contact us →
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="bg-slate-900">
-        <div className="container mx-auto p-8">
-          <Image
-            alt="Afterwords logo"
-            src="/logo.svg"
-            width={200}
-            height={50}
-            className="mb-8 w-1/3 md:w-1/4"
+      {/* ===== EXPERTISE ===== */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-8">
+          <SectionHeader
+            eyebrow="Our Expertise"
+            title="Comprehensive language services"
+            titleItalic="tailored to your needs"
           />
-          <div className="flex items-center">
-            <h3 className="text-white text-xl mr-4">Find us on social media</h3>
-            <a href="https://www.instagram.com/afterwordstranslations/" className="inline-block mr-4">
-              <Image
-                alt="Instagram logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/insta.svg"
-              />
-            </a>
-            <a href="https://www.linkedin.com/company/afterwordstranslations" className="inline-block mr-4">
-              <Image
-                alt="LinkedIn logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/in.png"
-              />
-            </a>
-            <a href="https://www.facebook.com/AfterWordstranslations" className="inline-block mr-4">
-              <Image
-                alt="Facebook logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/fb.png"
-              />
-            </a>
-          </div>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+            {expertiseAreas.map((area) => (
+              <StaggerItem key={area.title}>
+                <div className="group p-6 rounded-2xl border border-base-300 hover:shadow-lg hover:border-warm/30 transition-all duration-300 bg-base-100">
+                  <div className={`${area.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    {area.icon}
+                  </div>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold mb-2 text-base-content">
+                    {area.title}
+                  </h3>
+                  <p className="text-sm text-base-content/60 leading-relaxed">
+                    {area.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
-      </div>
+      </section>
+
+      {/* ===== CTA ===== */}
+      <CTASection
+        eyebrow="Ready to start your translation project?"
+        title="Let's discuss your needs"
+        description="Whether you need specialized translation, certified documents, or media localization, we deliver quality, speed, and reliability."
+        buttonText="Contact us"
+      />
+
+      {/* ===== FOOTER ===== */}
+      <Footer />
     </div>
   );
 }

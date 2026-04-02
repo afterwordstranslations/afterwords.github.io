@@ -2,6 +2,14 @@
 
 @plugin "daisyui";
 
+@theme {
+  --font-sans: var(--font-body), "Noto Sans", sans-serif;
+  --font-display: var(--font-display), "Playfair Display", serif;
+  --color-warm: oklch(82% 0.12 75);
+  --color-warm-subtle: oklch(94% 0.04 70);
+  --color-warm-dark: oklch(70% 0.1 60);
+}
+
 @plugin "daisyui/theme" {
   name: "afterwords-light";
   default: true;

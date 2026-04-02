@@ -1,79 +1,137 @@
-import { TestimonialCard } from "./TestimonialCard";
+"use client";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FadeIn } from "./animations/FadeIn";
+
+const testimonials = [
+  {
+    quote:
+      "In 2023, the year when the title of the European Capital of Culture was awarded, 2023 Eleusis in cooperation with the Aikaterini Laskaridis Foundation and with its exclusive sponsorship, implemented the dedicated bilingual anthology They Wrote about Her with texts by Greek and foreign authors written about Eleusis, from antiquity to the present day. The Afterwords Translations team undertook the difficult task of translating texts from the entire range of this anthology. The collaboration was flawless at every level and the result was excellent with an emphasis on the quality of the style and meaning of the texts.",
+    author: "Isavela Karouti",
+    company: "2023 Eleusis European Capital of Culture",
+  },
+  {
+    quote:
+      "I strongly endorse Ms. Chatzistylianou as a subtitler. She is professional, reliable, and fast, with excellent knowledge of multiple languages, strong research abilities, and clear communication. Her expertise and work ethic make her one of the best in today's subtitling market.",
+    author: "Georgios Kalipetis",
+    company: "VIDEOPRESS S.A.",
+  },
+  {
+    quote:
+      "Beyond their linguistic expertise, Afterwords Translations proves to be a collaborative and reliable team. They consistently go above and beyond to meet deadlines and play a crucial role in the overall success of our projects, especially focusing on chemical and technical patents.",
+    author: "Olena Vasilatos",
+    company: "LSP Owner & Translator",
+  },
+  {
+    quote:
+      "After working with Afterwords Translations, I can confidently affirm their outstanding proficiency in medical and legal translations. Their precision, unwavering professionalism, and dedication to meeting deadlines make them an indispensable resource.",
+    author: "Sofia Simoni",
+    company: "Greek LSP Owner & Subtitler",
+  },
+  {
+    quote:
+      "The Afterwords Translations team is dedicated and readily accessible to deliver outstanding services for translation and interpreting requirements. Moreover, they exhibit a high level of professionalism and ethical conduct, making them excellent colleagues. I wholeheartedly recommend their services.",
+    author: "Zoe Resta, Ph.D.",
+    company: "Translator & Conference Interpreter",
+  },
+  {
+    quote:
+      "We engaged Afterwords Translations for a high-stakes interpretation project and they delivered at a level few vendors reach. They were professional and strong on context, not just language. Communication was clear, controlled, and seamless throughout. I would work with them again without hesitation.",
+    author: "Ifigenia Geiveli",
+    company: "Human Resources Executive",
+  },
+  {
+    quote:
+      "Our long-standing collaboration with Afterwords proves the quality of their work. They are a team of translators who respond with great success to the translation of texts from various scientific disciplines, always respecting the deadlines set each time.",
+    author: "Maria Simantiri",
+    company: "Gutenberg Editions, Athens",
+  },
+];
 
 export const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      quote:
-        "In 2023, the year when the title of the European Capital of Culture was awarded, 2023 Eleusis in cooperation with the Aikaterini Laskaridis Foundation and with its exclusive sponsorship, implemented the dedicated bilingual anthology They Wrote about Her with texts by Greek and foreign authors written about Eleusis, from antiquity to the present day. The Afterwords Translations team undertook the difficult task of translating texts from the entire range of this anthology. The collaboration was flawless at every level and the result was excellent with an emphasis on the quality of the style and meaning of the texts.",
-      author: "Isavela Karouti",
-      company: "2023 Eleusis European Capital of Culture",
-      featured: true,
-    },
-    {
-      quote:
-        "I strongly endorse Ms. Chatzistylianou as a subtitler. She is professional, reliable, and fast, with excellent knowledge of multiple languages, strong research abilities, and clear communication. Her expertise and work ethic make her one of the best in today's subtitling market.",
-      author: "Georgios Kalipetis",
-      company: "VIDEOPRESS S.A.",
-    },
-    {
-      quote:
-        "Beyond their linguistic expertise, Afterwords Translations proves to be a collaborative and reliable team. They consistently go above and beyond to meet deadlines and play a crucial role in the overall success of our projects, especially focusing on chemical and technical patents.",
-      author: "Olena Vasilatos",
-      company: "LSP Owner & Translator",
-    },
-    {
-      quote:
-        "After working with Afterwords Translations, I can confidently affirm their outstanding proficiency in medical and legal translations. Their precision, unwavering professionalism, and dedication to meeting deadlines make them an indispensable resource.",
-      author: "Sofia Simoni",
-      company: "Greek LSP Owner & Subtitler",
-    },
-    {
-      quote:
-        "The Afterwords Translations team is dedicated and readily accessible to deliver outstanding services for translation and interpreting requirements. Moreover, they exhibit a high level of professionalism and ethical conduct, making them excellent colleagues. I wholeheartedly recommend their services.",
-      author: "Zoe Resta, Ph.D.",
-      company: "Translator & Conference Interpreter",
-    },
-    {
-      quote:
-        "We engaged Afterwords Translations for a high-stakes interpretation project and they delivered at a level few vendors reach. They were professional and strong on context, not just language. Communication was clear, controlled, and seamless throughout. I would work with them again without hesitation.",
-      author: "Ifigenia Geiveli",
-      company: "Human Resources Executive",
-    },
-    {
-      quote:
-        "Our long-standing collaboration with Afterwords proves the quality of their work. They are a team of translators who respond with great success to the translation of texts from various scientific disciplines, always respecting the deadlines set each time.",
-      author: "Maria Simantiri",
-      company: "Gutenberg Editions, Athens",
-    },
-  ];
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(next, 7000);
+    return () => clearInterval(timer);
+  }, [isPaused, next]);
+
+  const testimonial = testimonials[current];
 
   return (
-    <div className="py-16">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="mb-12">
-          <p className="text-2xl mb-2 text-slate-300">
-            Client testimonials
+    <section className="py-24 md:py-32 bg-base-300/50">
+      <div className="container mx-auto px-8">
+        <FadeIn>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-4 text-warm-dark">
+            Client Testimonials
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-16 text-base-content">
             What our clients say
           </h2>
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={testimonial.featured ? "md:col-span-3" : ""}
-            >
-              <TestimonialCard
-                quote={testimonial.quote}
-                author={testimonial.author}
-                company={testimonial.company}
+        <div
+          className="relative max-w-4xl"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Decorative quote mark */}
+          <div className="absolute -top-8 -left-4 text-[8rem] leading-none font-[family-name:var(--font-display)] text-warm/15 select-none hidden md:block">
+            &ldquo;
+          </div>
+
+          <div className="relative min-h-[280px] md:min-h-[200px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <blockquote className="font-[family-name:var(--font-display)] text-xl md:text-2xl leading-relaxed text-base-content/80 mb-8 italic">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-[2px] bg-warm rounded-full" />
+                  <div>
+                    <p className="font-bold text-base-content">
+                      {testimonial.author}
+                    </p>
+                    <p className="text-sm text-base-content/50">
+                      {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation dots */}
+          <div className="flex gap-2 mt-12">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  i === current
+                    ? "w-8 bg-warm"
+                    : "w-2 bg-base-content/20 hover:bg-base-content/40"
+                }`}
+                aria-label={`Go to testimonial ${i + 1}`}
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
