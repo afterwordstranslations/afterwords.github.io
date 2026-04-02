@@ -1,6 +1,6 @@
 "use client";
 import { CountUp } from "./animations/CountUp";
-import { FadeIn } from "./animations/FadeIn";
+import { SectionHeader } from "./SectionHeader";
 import { StaggerContainer, StaggerItem } from "./animations/StaggerContainer";
 
 const stats = [
@@ -60,13 +60,7 @@ export const DecadeSection = () => {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, oklch(27% 0.041 260.031) 0%, oklch(35% 0.05 200) 50%, oklch(30% 0.04 60) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
       {/* Warm glow */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] -translate-y-1/2 rounded-full bg-warm/8 blur-[150px]" />
 
@@ -76,22 +70,13 @@ export const DecadeSection = () => {
       </div>
 
       <div className="container mx-auto px-8 relative z-10">
-        <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-4 text-warm">
-            10th Anniversary
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-4 text-white">
-            Our Decade of Excellence
-          </h2>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="text-lg md:text-xl max-w-2xl leading-relaxed text-white/70 mb-16">
-            Since 2015 we have been bridging languages and cultures across
-            industries with precision and care.
-          </p>
-        </FadeIn>
+        <SectionHeader
+          eyebrow="10th Anniversary"
+          title="Our Decade of Excellence"
+          description="Since 2015 we have been bridging languages and cultures across industries with precision and care."
+          light
+          className="mb-16"
+        />
 
         <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat) => (

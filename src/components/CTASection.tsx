@@ -15,13 +15,7 @@ export const CTASection = ({
   buttonText = "Contact us",
 }: CTASectionProps) => {
   return (
-    <section
-      className="relative py-24 md:py-32 overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, oklch(27% 0.041 260.031), oklch(35% 0.045 240), oklch(27% 0.046 192.524))",
-      }}
-    >
+    <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Warm accent glow */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-warm/10 blur-[120px]" />
       <div className="absolute bottom-0 left-1/4 w-64 h-64 rounded-full bg-warm/5 blur-[100px]" />

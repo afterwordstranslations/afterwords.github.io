@@ -77,12 +77,26 @@ export const Footer = () => {
                   </Link>
                 </li>
               ))}
+            </ul>
+
+            <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-warm mb-4 mt-8">
+              Resources
+            </h4>
+            <ul className="space-y-3">
               <li>
                 <Link
                   href="/blog"
                   className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                 >
                   Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/portfolio"
+                  className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  Portfolio
                 </Link>
               </li>
             </ul>
@@ -125,6 +139,13 @@ export const Footer = () => {
           <p className="text-white/40 text-sm">
             &copy; {new Date().getFullYear()} Afterwords. All rights reserved.
           </p>
+          <Image
+            alt="I work with SDL Trados Studio"
+            src="/trados.png"
+            width={180}
+            height={40}
+            className="h-7 w-auto opacity-50 hover:opacity-80 transition-opacity duration-300"
+          />
           <p className="text-white/40 text-sm">
             Athens, Greece
           </p>
