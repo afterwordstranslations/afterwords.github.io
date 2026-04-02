@@ -1,9 +1,11 @@
-import { getPostBySlug, getAllPosts } from "~/lib/blog";
+import { getPostBySlug, getAllPosts, formatDate, estimateReadingTime, AUTHORS, DEFAULT_AUTHOR } from "~/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "~/components/MdxComponents";
+import { BlogCard } from "~/components/BlogCard";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Header } from "~/components/Header";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -36,72 +38,114 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const author = AUTHORS[post.author || DEFAULT_AUTHOR];
+  const readingTime = estimateReadingTime(post.content);
+  const heroImage = post.image || "/bg.jpg";
+
+  // Get related posts (other posts, max 3)
+  const allPosts = await getAllPosts();
+  const relatedPosts = allPosts
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
+
   return (
     <div className="w-full bg-base-100 text-base-content">
-      {/* Hero Section - Matching page.tsx */}
-      <div className="hero-section bg-sl h-full pb-16">
-        <div>
-          <section className="relative w-full overflow-hidden bg-slate-900">
-            <div className="container mx-auto px-4 md:px-8"></div>
-            <Image
-              src="/bg.jpg"
-              alt="Professional signing document"
-              className="absolute inset-0 h-full w-full object-cover"
-              fill
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden bg-slate-900">
+        <Image
+          src={heroImage}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 
-            <div className="relative z-10 h-full items-center px-8 lg:px-24">
-              <header className="text-gray-100 body-font w-full mb-16">
-                <div className="container mx-auto grid gap-4 grid-cols-6">
-                  <Link className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3" href="/">
-                    <Image
-                      src="/logo.svg"
-                      className="w-2/6"
-                      width={312}
-                      height={67}
-                      alt="Afterwords Logo"
-                    />
-                  </Link>
-                  <nav className="text-base mt-4 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right flex items-center justify-end sm:justify-end">
-                    <div className="flex items-center gap-2">
-                      <Link className="text-white m-2 py-1 link" href="/">
-                        Home
-                      </Link>
-                      <Link className="text-white m-2 py-1 link" href="/blog">
-                        Blog
-                      </Link>
-                    </div>
-                  </nav>
+        <div className="relative z-10 px-8 lg:px-24">
+          <Header navItems={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+          ]} />
+
+          <div className="max-w-3xl pb-16 pt-4 md:pb-20 md:pt-8">
+            {/* Back to blog pill */}
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-white/20 hover:bg-white/25 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5" />
+                <path d="m12 19-7-7 7-7" />
+              </svg>
+              Read our blog
+            </Link>
+
+            {/* Date & reading time */}
+            <div className="flex items-center gap-3 text-sm text-white/60 mb-4">
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <span className="w-1 h-1 rounded-full bg-white/40" />
+              <span>{readingTime} min read</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] font-bold text-white mb-8">
+              {post.title}
+            </h1>
+
+            {/* Author */}
+            {author && (
+              <div className="flex items-center gap-3">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/30">
+                  <Image
+                    src={author.avatar}
+                    alt={author.name}
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                  />
                 </div>
-              </header>
-
-              <div className="max-w-xl text-white">
                 <div>
-                  <p className="text-sm mb-2 opacity-80">{post.date}</p>
-                  <h1 className="text-5xl leading-tight font-bold mb-4">{post.title}</h1>
+                  <p className="text-white text-sm font-semibold">{author.name}</p>
+                  <p className="text-white/50 text-xs">{author.role}</p>
                 </div>
               </div>
-            </div>
-          </section>
+            )}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Blog Post Content */}
-      <article className="container mx-auto">
-        <div className="lg:w-3/4 p-8">
+      <article className="container mx-auto px-4 md:px-8">
+        <div className="max-w-3xl mx-auto py-12 md:py-16">
           <div className="prose prose-lg max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />
           </div>
-
-          <div className="mt-16 pt-8 border-t border-base-300">
-            <Link href="/blog" className="link link-accent text-lg">
-              ← Back to all posts
-            </Link>
-          </div>
         </div>
       </article>
+
+      {/* Related Posts */}
+      {relatedPosts.length > 0 && (
+        <section className="border-t border-base-300">
+          <div className="container mx-auto px-4 md:px-8 py-12 md:py-16">
+            <h2 className="text-2xl font-bold mb-8 text-base-content/80">Keep reading</h2>
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((relatedPost) => (
+                <BlogCard
+                  key={relatedPost.slug}
+                  title={relatedPost.title}
+                  excerpt={relatedPost.excerpt}
+                  date={relatedPost.date}
+                  slug={relatedPost.slug}
+                  image={relatedPost.image}
+                  content={relatedPost.content}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Footer */}
       <div className="bg-slate-900">

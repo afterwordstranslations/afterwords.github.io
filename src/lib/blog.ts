@@ -9,6 +9,43 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   content: string;
+  image?: string;
+  author?: string;
+}
+
+export interface Author {
+  name: string;
+  role: string;
+  avatar: string;
+}
+
+export const AUTHORS: Record<string, Author> = {
+  aggeliki: {
+    name: "Aggeliki Menegaki",
+    role: "Founder & Lead Translator",
+    avatar: "/aggeliki.jpg",
+  },
+  team: {
+    name: "Afterwords Team",
+    role: "Translation & Localization Experts",
+    avatar: "/logo.png",
+  },
+};
+
+export const DEFAULT_AUTHOR = "team";
+
+export function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export function estimateReadingTime(content: string): number {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
@@ -26,6 +63,8 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         date: data.date || "",
         excerpt: data.excerpt || extractExcerpt(markdown),
         content: markdown,
+        image: data.image || undefined,
+        author: data.author || undefined,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -50,6 +89,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       date: data.date || "",
       excerpt: data.excerpt || extractExcerpt(markdown),
       content: markdown,
+      image: data.image || undefined,
+      author: data.author || undefined,
     };
   } catch {
     return null;

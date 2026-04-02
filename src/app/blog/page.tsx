@@ -1,14 +1,15 @@
 import { getAllPosts } from "~/lib/blog";
-import { BlogCard } from "~/components/BlogCard";
-import Link from "next/link";
+import { BlogCard, FeaturedBlogCard } from "~/components/BlogCard";
 import Image from "next/image";
+import { Header } from "~/components/Header";
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
+  const [featured, ...rest] = posts;
 
   return (
     <div className="w-full bg-base-100 text-base-content">
-      {/* Hero Section - Matching page.tsx */}
+      {/* Hero Section */}
       <div className="hero-section bg-sl h-full pb-16">
         <div>
           <section className="relative w-full overflow-hidden bg-slate-900">
@@ -23,46 +24,22 @@ export default async function BlogPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
 
             <div className="relative z-10 h-full items-center px-8 lg:px-24">
-              <header className="text-gray-100 body-font w-full mb-16">
-                <div className="container mx-auto grid gap-4 grid-cols-6">
-                  <Link className="mt-4 title-font font-medium mb-4 md:mb-0 col-span-6 sm:col-span-2 md:col-span-3" href="/">
-                    <Image
-                      src="/logo.svg"
-                      className="w-2/6"
-                      width={312}
-                      height={67}
-                      alt="Afterwords Logo"
-                    />
-                  </Link>
-                  <nav className="text-base mt-4 col-span-6 sm:col-span-4 md:col-span-3 sm:text-right flex items-center justify-end sm:justify-end">
-                    <div className="flex items-center gap-2">
-                      <a className="text-white m-2 py-1 link" href="#about">
-                        About us
-                      </a>
-                      <a className="text-white m-2 py-1 link" href="#services">
-                        Our services
-                      </a>
-                      <a className="text-white m-2 py-1 link" href="#team">
-                        Our team
-                      </a>
-                      <Link className="text-white m-2 py-1 link" href="/blog">
-                        Blog
-                      </Link>
-                    </div>
-                  </nav>
-                </div>
-              </header>
+              <Header navItems={[
+                { label: "Home", href: "/" },
+                { label: "Blog", href: "/blog" },
+              ]} />
 
-              <div className="max-w-xl text-white">
+              <div className="max-w-2xl text-white py-8">
                 <div>
-                  <h4 className="bg-accent text-accent-content text-xs shadow-lg rounded-3xl inline-block mb-8 px-4 py-2">
-                    Expert insights and industry news
-                  </h4>
-                  <h1 className="text-5xl leading-tight font-bold mb-4">
-                    Translation Blog
+                  <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] text-white bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+                    The Afterwords Blog
+                  </span>
+                  <h1 className="text-5xl md:text-6xl leading-tight font-bold mb-6">
+                    The stories behind the words
                   </h1>
-                  <p className="text-xl mb-16">
-                    Expert articles on translation best practices, industry insights, and tips for businesses expanding globally.
+                  <p className="text-xl md:text-2xl mb-20 text-white/70 leading-relaxed">
+                    {/* TODO: alternative subtitle: "Notes from the space between languages." */}
+                    Where we unpack what gets lost — and found — in translation.
                   </p>
                 </div>
               </div>
@@ -72,28 +49,48 @@ export default async function BlogPage() {
       </div>
 
       {/* Blog Posts Section */}
-      <div className="container mx-auto">
-        <div className="p-8">
-          <h2 className="text-4xl font-bold mb-8">Latest Articles</h2>
-
-          {posts.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-xl text-muted-foreground">No blog posts yet. Check back soon!</p>
-            </div>
-          ) : (
-            <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
-              {posts.map((post) => (
-                <BlogCard
-                  key={post.slug}
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  date={post.date}
-                  slug={post.slug}
+      <div className="container mx-auto px-4 md:px-8 py-12 md:py-16">
+        {posts.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-xl text-base-content/60">No blog posts yet. Check back soon!</p>
+          </div>
+        ) : (
+          <>
+            {/* Featured Post */}
+            {featured && (
+              <section className="mb-12 md:mb-16">
+                <FeaturedBlogCard
+                  title={featured.title}
+                  excerpt={featured.excerpt}
+                  date={featured.date}
+                  slug={featured.slug}
+                  image={featured.image}
+                  content={featured.content}
                 />
-              ))}
-            </div>
-          )}
-        </div>
+              </section>
+            )}
+
+            {/* Remaining Posts */}
+            {rest.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold mb-8 text-base-content/80">More articles</h2>
+                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                  {rest.map((post) => (
+                    <BlogCard
+                      key={post.slug}
+                      title={post.title}
+                      excerpt={post.excerpt}
+                      date={post.date}
+                      slug={post.slug}
+                      image={post.image}
+                      content={post.content}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
+        )}
       </div>
 
       {/* Footer */}
