@@ -10,7 +10,12 @@ export const metadata: Metadata = {
   title:
     "Afterwords - Translations, subtitles & interpretations in various languages",
   description:
-    "Translation isn’t just a document that needs to be translated from one language to another. For us, it's so much more. It represents our effort to highlight the meaning behind your words.",
+    "Translation isn’t just a document that needs to be translated from one language to another. For us, it’s so much more. It represents our effort to highlight the meaning behind your words.",
+  alternates: {
+    types: {
+      "application/rss+xml": "/blog/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({
