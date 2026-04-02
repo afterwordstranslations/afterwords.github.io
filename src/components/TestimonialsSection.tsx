@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FadeIn } from "./animations/FadeIn";
+import { SectionHeader } from "./SectionHeader";
 
 const testimonials = [
   {
@@ -65,30 +65,31 @@ export const TestimonialsSection = () => {
   const testimonial = testimonials[current];
 
   return (
-    <section className="py-24 md:py-32 bg-base-300/50">
+    <section className="py-24 md:py-32 bg-base-200">
       <div className="container mx-auto px-8">
-        <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-4 text-warm-dark">
-            Client Testimonials
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-16 text-base-content">
-            What our clients say
-          </h2>
-        </FadeIn>
+        <SectionHeader
+          eyebrow="Client Testimonials"
+          title="What our clients say"
+          className="mb-16"
+        />
 
         <div
           className="relative max-w-4xl"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Decorative quote mark */}
-          <div className="absolute -top-8 -left-4 text-[8rem] leading-none font-[family-name:var(--font-display)] text-warm/15 select-none hidden md:block">
+          {/* Decorative quote mark — animates on slide change */}
+          <motion.div
+            key={`quote-${current}`}
+            className="absolute -top-2 -left-2 md:-left-6 text-[6rem] md:text-[8rem] leading-none font-[family-name:var(--font-display)] text-warm/15 select-none pointer-events-none"
+            initial={{ opacity: 0, scale: 0.3, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15, mass: 0.8 }}
+          >
             &ldquo;
-          </div>
+          </motion.div>
 
-          <div className="relative min-h-[280px] md:min-h-[200px]">
+          <div className="relative min-h-[280px] md:min-h-[200px] pt-12 md:pt-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -98,7 +99,7 @@ export const TestimonialsSection = () => {
                 transition={{ duration: 0.5 }}
               >
                 <blockquote className="font-[family-name:var(--font-display)] text-xl md:text-2xl leading-relaxed text-base-content/80 mb-8 italic">
-                  &ldquo;{testimonial.quote}&rdquo;
+                  {testimonial.quote}
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-[2px] bg-warm rounded-full" />

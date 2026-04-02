@@ -41,7 +41,8 @@ const primaryServices = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
-    accent: "from-blue-500/10 to-indigo-500/10",
+    borderColor: "border-t-blue-500",
+    iconColor: "text-blue-500",
   },
   {
     label: "Interpreting Services",
@@ -52,7 +53,8 @@ const primaryServices = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
     ),
-    accent: "from-emerald-500/10 to-teal-500/10",
+    borderColor: "border-t-emerald-500",
+    iconColor: "text-emerald-500",
   },
   {
     label: "Subtitling Services",
@@ -63,17 +65,18 @@ const primaryServices = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
       </svg>
     ),
-    accent: "from-amber-500/10 to-orange-500/10",
+    borderColor: "border-t-amber-500",
+    iconColor: "text-amber-500",
   },
 ];
 
 const industries = [
-  { label: "Pharmaceutical & Life Sciences", href: "/pharmaceutical-translation", description: "Regulatory-compliant translation for submissions, clinical documentation, and patient-facing materials.", span: "md:col-span-2" },
-  { label: "Maritime", href: "/maritime-translation", description: "Technical and legal maritime translation for shipowners, crewing managers, and maritime law firms." },
-  { label: "Academic Books", href: "/academic-translation", description: "Translations that preserve the intellectual rigor and voice of scholarly works." },
-  { label: "Legal & Financial", description: "Accurate translations of contracts, legal proceedings, and financial statements.", span: "md:col-span-2" },
-  { label: "Websites", description: "Engaging and culturally attuned translations to enhance your online presence." },
-  { label: "Agriculture & Agroforestry", description: "Specialized translations bolstered by a PDC at Oregon State University." },
+  { label: "Pharmaceutical & Life Sciences", href: "/pharmaceutical-translation", description: "Regulatory-compliant translation for submissions, clinical documentation, and patient-facing materials.", span: "md:col-span-2", borderColor: "border-l-teal-500" },
+  { label: "Maritime", href: "/maritime-translation", description: "Technical and legal maritime translation for shipowners, crewing managers, and maritime law firms.", borderColor: "border-l-blue-500" },
+  { label: "Academic Books", href: "/academic-translation", description: "Translations that preserve the intellectual rigor and voice of scholarly works.", borderColor: "border-l-amber-500" },
+  { label: "Legal & Financial", description: "Accurate translations of contracts, legal proceedings, and financial statements.", span: "md:col-span-2", borderColor: "border-l-indigo-500" },
+  { label: "Websites", description: "Engaging and culturally attuned translations to enhance your online presence.", borderColor: "border-l-emerald-500" },
+  { label: "Agriculture & Agroforestry", description: "Specialized translations bolstered by a PDC at Oregon State University.", borderColor: "border-l-orange-500" },
 ];
 
 export default function Home() {
@@ -87,10 +90,10 @@ export default function Home() {
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* ===== HERO ===== */}
-      <section className="relative w-full overflow-hidden min-h-[90vh] flex flex-col">
+      <section className="relative w-full overflow-hidden min-h-[100vh] flex flex-col">
         {/* Gradient mesh background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary to-slate-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
           <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-warm/8 blur-[150px]" />
           <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-secondary/20 blur-[120px]" />
           <div className="absolute top-1/3 right-0 w-[300px] h-[300px] rounded-full bg-warm/5 blur-[100px]" />
@@ -100,108 +103,104 @@ export default function Home() {
           <Header navItems={navItems} />
 
           <div className="flex-1 flex items-center">
-            <div className="max-w-3xl py-16">
-              <motion.span
-                className="inline-block text-xs font-semibold uppercase tracking-[0.15em] px-4 py-2 rounded-full bg-warm/20 text-warm border border-warm/30 mb-8"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                A boutique Greek agency with over 10 years of specialized experience
-              </motion.span>
-
-              <TextReveal
-                text="Precision in every word."
-                className="font-[family-name:var(--font-display)] text-5xl md:text-6xl lg:text-7xl leading-[1.1] font-bold mb-8 text-white"
-                delay={0.2}
-              />
-
-              <motion.p
-                className="text-lg md:text-xl text-white/70 mb-10 max-w-xl leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                Bridging the gap between the Greek market and the global stage. We provide the linguistic precision and cultural nuance your business needs to expand without borders.
-              </motion.p>
-
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 }}
-              >
-                <button
-                  className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20 cursor-pointer"
-                  onClick={() => window.Beacon("open")}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 w-full py-16 items-center">
+              {/* Left — headline */}
+              <div>
+                <motion.span
+                  className="inline-block text-xs font-semibold uppercase tracking-[0.15em] px-4 py-2 rounded-full bg-warm/20 text-warm border border-warm/30 mb-8"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  Get a free estimate
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </button>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
+                  Est. 2015
+                </motion.span>
+
+                <TextReveal
+                  text="Precision in every word."
+                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] font-bold text-white"
+                  delay={0.2}
+                />
+              </div>
+
+              {/* Right — description, CTAs, features */}
+              <div className="flex flex-col justify-center">
+                <motion.p
+                  className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
                 >
-                  View Portfolio
-                </Link>
-              </motion.div>
+                  A boutique Greek translation agency bridging the gap between the Greek market and the global stage. We provide the linguistic precision and cultural nuance your business needs to expand without borders.
+                </motion.p>
+
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4 mb-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                >
+                  <button
+                    className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20 cursor-pointer"
+                    onClick={() => window.Beacon("open")}
+                  >
+                    Get a free estimate
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </button>
+                  <Link
+                    href="/portfolio"
+                    className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
+                  >
+                    View Portfolio
+                  </Link>
+                </motion.div>
+
+                {/* Feature pills — stacked with left border */}
+                <motion.div
+                  className="space-y-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  {[
+                    { title: "Quality", desc: "2-step review by a native speaker and a subject matter expert." },
+                    { title: "Speed", desc: "Standard turnaround in 48 hours. Rush delivery available." },
+                    { title: "Consistency", desc: "Translation memory and terminology management ensure uniform language." },
+                  ].map((f) => (
+                    <div key={f.title} className="border-l-2 border-warm/40 pl-4">
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-warm mb-1">{f.title}</h4>
+                      <p className="text-white/50 text-sm leading-relaxed">{f.desc}</p>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
-
-          {/* Feature pills */}
-          <motion.div
-            className="grid grid-cols-1 gap-4 md:grid-cols-3 pb-12 pt-8 border-t border-white/10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-          >
-            {[
-              { title: "Quality", desc: "Every document undergoes a 2-step review by a native speaker and a subject matter expert." },
-              { title: "Speed", desc: "Standard turnaround in 48 hours; Rush delivery available." },
-              { title: "Consistency", desc: "Translation memory and terminology management ensure uniform language." },
-            ].map((f) => (
-              <div key={f.title} className="group">
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-warm mb-2">{f.title}</h4>
-                <p className="text-white/50 text-sm leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
       {/* ===== ABOUT ===== */}
       <section id="about" className="py-24 md:py-32">
         <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left column */}
-            <div className="lg:col-span-3">
+            <div>
               <SectionHeader
                 eyebrow="About us"
                 title="Translation is more than"
                 titleItalic="just a document."
                 description="We pride ourselves on delivering tailored language solutions that empower our clients to communicate effectively, reach broader audiences, and achieve their goals with confidence."
               />
-              <FadeIn delay={0.3}>
-                <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-base-200 border border-base-300">
-                  <Image
-                    alt="SDL Trados Studio"
-                    width={120}
-                    height={30}
-                    src="/trados.png"
-                  />
-                </div>
-              </FadeIn>
             </div>
 
-            {/* Right column — floating flags */}
-            <div className="lg:col-span-2 relative min-h-[300px]">
-              <StaggerContainer className="flex flex-wrap gap-4 justify-center lg:justify-end items-center">
+            {/* Right column — language flags */}
+            <div>
+              <StaggerContainer className="grid grid-cols-4 gap-3">
                 {languages.map((lang) => (
                   <StaggerItem key={lang.label}>
-                    <div className="group flex flex-col items-center gap-1 p-3 rounded-xl hover:bg-base-200 transition-colors duration-200 cursor-default">
-                      <span className={`${lang.size} group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="group flex flex-col items-center gap-1.5 p-3 rounded-xl hover:bg-base-200 transition-colors duration-200 cursor-default">
+                      <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
                         {lang.emoji}
                       </span>
                       <span className="text-xs font-medium text-base-content/50">{lang.label}</span>
@@ -226,37 +225,32 @@ export default function Home() {
             description="From certified legal documents to live interpreting and cinematic subtitling — we deliver precision across every medium."
           />
 
-          {/* Primary services — full-width alternating blocks */}
-          <div className="mt-16 space-y-6">
-            <StaggerContainer staggerDelay={0.15} className="space-y-6">
-              {primaryServices.map((service, i) => (
-                <StaggerItem key={service.label}>
-                  <Link href={service.href} className="block group">
-                    <div className={`relative overflow-hidden rounded-2xl border border-base-300 p-8 md:p-10 hover:shadow-xl hover:border-warm/30 transition-all duration-500 bg-gradient-to-br ${service.accent}`}>
-                      <div className={`flex flex-col md:flex-row gap-6 items-start ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-                        <div className="shrink-0 w-16 h-16 rounded-2xl bg-base-100 border border-base-300 flex items-center justify-center text-warm-dark group-hover:scale-110 transition-transform duration-300">
-                          {service.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold mb-3 text-base-content group-hover:text-warm-dark transition-colors duration-300">
-                            {service.label}
-                          </h3>
-                          <p className="text-base-content/60 text-lg leading-relaxed max-w-2xl">
-                            {service.description}
-                          </p>
-                        </div>
-                        <div className="shrink-0 self-center">
-                          <svg className="w-6 h-6 text-base-content/30 group-hover:text-warm-dark group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                          </svg>
-                        </div>
-                      </div>
+          {/* Primary services — 3-column vertical cards */}
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            {primaryServices.map((service) => (
+              <StaggerItem key={service.label}>
+                <Link href={service.href} className="block group h-full">
+                  <div className={`card-surface h-full flex flex-col rounded-2xl border border-base-300 border-t-4 ${service.borderColor} p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}>
+                    <div className={`w-14 h-14 rounded-xl bg-base-200 flex items-center justify-center ${service.iconColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      {service.icon}
                     </div>
-                  </Link>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
+                    <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold mb-3 text-base-content group-hover:text-warm-dark transition-colors duration-300">
+                      {service.label}
+                    </h3>
+                    <p className="text-base-content/60 text-base leading-relaxed flex-1">
+                      {service.description}
+                    </p>
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-warm-dark">
+                      Learn more
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
@@ -270,31 +264,34 @@ export default function Home() {
           />
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
-            {industries.map((ind) => (
-              <StaggerItem key={ind.label} className={ind.span || ""}>
-                {ind.href ? (
-                  <Link href={ind.href} className="block h-full group">
-                    <div className="h-full p-6 rounded-2xl border border-base-300 bg-base-100 hover:shadow-lg hover:border-warm/30 transition-all duration-300">
-                      <h3 className="font-semibold text-lg mb-2 text-base-content group-hover:text-warm-dark transition-colors duration-300">
-                        {ind.label}
-                      </h3>
+            {industries.map((ind) => {
+              const cardClasses = `card-surface h-full p-6 rounded-2xl border border-base-300 border-l-4 ${ind.borderColor} hover:shadow-lg transition-all duration-300`;
+              return (
+                <StaggerItem key={ind.label} className={ind.span || ""}>
+                  {ind.href ? (
+                    <Link href={ind.href} className="block h-full group">
+                      <div className={cardClasses}>
+                        <h3 className="font-semibold text-lg mb-2 text-base-content group-hover:text-warm-dark transition-colors duration-300">
+                          {ind.label}
+                        </h3>
+                        <p className="text-sm text-base-content/60 leading-relaxed">{ind.description}</p>
+                        <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-warm-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          Learn more
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </span>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className={cardClasses}>
+                      <h3 className="font-semibold text-lg mb-2 text-base-content">{ind.label}</h3>
                       <p className="text-sm text-base-content/60 leading-relaxed">{ind.description}</p>
-                      <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-warm-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Learn more
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </span>
                     </div>
-                  </Link>
-                ) : (
-                  <div className="h-full p-6 rounded-2xl border border-base-300 bg-base-100">
-                    <h3 className="font-semibold text-lg mb-2 text-base-content">{ind.label}</h3>
-                    <p className="text-sm text-base-content/60 leading-relaxed">{ind.description}</p>
-                  </div>
-                )}
-              </StaggerItem>
-            ))}
+                  )}
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
 
           <FadeIn delay={0.3}>
@@ -320,7 +317,7 @@ export default function Home() {
             description="Our seasoned translators bring together diverse expertise to meet a wide range of translation and interpretation needs."
           />
 
-          <div className="mt-16 max-w-3xl space-y-0">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
             <Translator
               fullName="Aggeliki Gkika"
               imageSrc="/agg_ai.png"
@@ -358,9 +355,9 @@ export default function Home() {
       {/* ===== CTA ===== */}
       <CTASection
         eyebrow="Ready to get started?"
-        title="Feel free to contact us!"
-        description="Do you want to translate your new book or find interpreters for your big conference or event? Or do you have another question?"
-        buttonText="Contact us"
+        title="Let's bring your words to the world."
+        description="Whether you need a book translated, interpreters for a conference, or certified documents for a deadline — we're here to help."
+        buttonText="Get in touch"
       />
 
       {/* ===== FOOTER ===== */}

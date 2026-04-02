@@ -37,9 +37,6 @@ export const SectionHeader = ({
           {titleItalic && <em className="font-normal"> {titleItalic}</em>}
         </h2>
       </FadeIn>
-      <FadeIn delay={0.1}>
-        <div className={`w-16 h-1 rounded-full bg-warm mb-6 ${align === "center" ? "mx-auto" : ""}`} />
-      </FadeIn>
       {description && (
         <FadeIn delay={0.2}>
           <p className={`text-lg md:text-xl leading-relaxed ${light ? "text-white/80" : "text-base-content/70"}`}>

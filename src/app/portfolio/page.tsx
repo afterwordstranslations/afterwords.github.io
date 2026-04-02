@@ -5,7 +5,6 @@ import { PageHero } from "~/components/PageHero";
 import { SectionHeader } from "~/components/SectionHeader";
 import { CTASection } from "~/components/CTASection";
 import { Footer } from "~/components/Footer";
-import { FadeIn } from "~/components/animations/FadeIn";
 import { CountUp } from "~/components/animations/CountUp";
 import { StaggerContainer, StaggerItem } from "~/components/animations/StaggerContainer";
 
@@ -19,7 +18,6 @@ declare global {
 const portfolioItems = [
   {
     id: 1,
-    emoji: "🧬",
     title: "Medical & Scientific Innovations",
     category: "Specialized Translation",
     description:
@@ -35,12 +33,10 @@ const portfolioItems = [
       { value: 200, suffix: "/yr", label: "Applications" },
       { value: 1000, suffix: "+", label: "Documents" },
     ],
-    accent: "from-teal-500/10 to-emerald-500/10",
     borderAccent: "border-l-teal-500",
   },
   {
     id: 2,
-    emoji: "⚖️",
     title: "Legal & Financial Compliance",
     category: "Corporate Translation",
     description:
@@ -56,12 +52,10 @@ const portfolioItems = [
       { value: 200, suffix: "+", label: "Reports" },
       { value: 50, suffix: "+", label: "Clients" },
     ],
-    accent: "from-blue-500/10 to-indigo-500/10",
     borderAccent: "border-l-blue-500",
   },
   {
     id: 3,
-    emoji: "📚",
     title: "Published Books (Greek Editions)",
     category: "Literary Translation",
     description:
@@ -78,12 +72,10 @@ const portfolioItems = [
       { value: 2000, suffix: "+", label: "Pages" },
       { value: 3, suffix: "", label: "Publishers" },
     ],
-    accent: "from-amber-500/10 to-orange-500/10",
     borderAccent: "border-l-amber-500",
   },
   {
     id: 4,
-    emoji: "🎬",
     title: "Media & Events",
     category: "Subtitling & Interpreting",
     description:
@@ -100,7 +92,6 @@ const portfolioItems = [
       { value: 4, suffix: " yrs", label: "Festivals" },
       { value: 50, suffix: "+", label: "Events" },
     ],
-    accent: "from-purple-500/10 to-pink-500/10",
     borderAccent: "border-l-purple-500",
   },
 ];
@@ -114,7 +105,8 @@ const expertiseAreas = [
     ),
     title: "Translation",
     description: "Accurate translation of documents, websites, and content across all major languages",
-    color: "text-teal-600",
+    iconColor: "text-teal-500",
+    borderColor: "border-t-teal-500",
   },
   {
     icon: (
@@ -124,7 +116,8 @@ const expertiseAreas = [
     ),
     title: "Localization",
     description: "Cultural adaptation of products, websites, and marketing for local markets",
-    color: "text-blue-600",
+    iconColor: "text-blue-500",
+    borderColor: "border-t-blue-500",
   },
   {
     icon: (
@@ -134,7 +127,8 @@ const expertiseAreas = [
     ),
     title: "Transcreation",
     description: "Creative translation that preserves brand voice and emotional impact",
-    color: "text-amber-600",
+    iconColor: "text-amber-500",
+    borderColor: "border-t-amber-500",
   },
   {
     icon: (
@@ -144,7 +138,8 @@ const expertiseAreas = [
     ),
     title: "Cultural Consulting",
     description: "Expert guidance on cultural nuances and market-specific communication strategies",
-    color: "text-purple-600",
+    iconColor: "text-purple-500",
+    borderColor: "border-t-purple-500",
   },
 ];
 
@@ -156,9 +151,9 @@ export default function PortfolioPage() {
       {/* ===== HERO ===== */}
       <PageHero
         navItems={navItems}
-        badge="Showcasing our expertise across specialized translation domains"
+        badge="Our Work"
         title="Our Portfolio"
-        subtitle="Explore our portfolio of translation and localization projects. From medical patents to published books, we deliver precision and cultural expertise across industries."
+        subtitle="From medical patents to published books, we deliver precision and cultural expertise across specialized translation domains."
         variant="compact"
         cta={
           <div className="flex flex-col sm:flex-row gap-4">
@@ -186,34 +181,17 @@ export default function PortfolioPage() {
         ]}
         backgroundElement={
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary/90 to-slate-900" />
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
             <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-warm/8 blur-[120px]" />
           </div>
         }
       />
 
-      {/* ===== ABOUT ===== */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-8">
-          <SectionHeader
-            eyebrow="Our work"
-            title="We strive for"
-            titleItalic="Excellence Across Industries"
-            description="Our portfolio spans specialized translation domains, from medical patents and legal compliance to literary publishing and media localization."
-          />
-          <FadeIn delay={0.2}>
-            <p className="text-lg text-base-content/70 leading-relaxed mt-4 max-w-3xl">
-              Each project demonstrates our commitment to precision, cultural expertise, and professional excellence. We leverage subject matter expertise and advanced Translation Memories to deliver consistent, high-quality results.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* ===== PORTFOLIO ITEMS — Full-Width Case Studies ===== */}
       {portfolioItems.map((item, index) => (
         <section
           key={item.id}
-          className={`py-20 md:py-28 ${index % 2 === 0 ? "bg-base-200" : "bg-base-100"}`}
+          className={`py-24 md:py-32 ${index % 2 === 0 ? "bg-base-200" : "bg-base-100"}`}
         >
           <div className="container mx-auto px-8">
             <motion.div
@@ -222,30 +200,21 @@ export default function PortfolioPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              {/* Category + Emoji */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-5xl">{item.emoji}</span>
-                <span className="text-sm font-semibold uppercase tracking-[0.15em] text-warm-dark">
-                  {item.category}
-                </span>
-              </div>
-
-              <h3 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-4 text-base-content">
-                {item.title}
-              </h3>
-
-              <p className="text-lg text-base-content/60 leading-relaxed max-w-3xl mb-10">
-                {item.description}
-              </p>
+              <SectionHeader
+                eyebrow={item.category}
+                title={item.title}
+                description={item.description}
+                className="mb-12"
+              />
 
               {/* Two column: items + stats */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 {/* Detail items */}
-                <div className="lg:col-span-2 space-y-4">
+                <div className="lg:col-span-2 space-y-3">
                   {item.items.map((listItem, idx) => (
                     <motion.div
                       key={idx}
-                      className={`flex gap-4 p-4 rounded-xl bg-gradient-to-r ${item.accent} border-l-4 ${item.borderAccent}`}
+                      className={`card-surface p-4 rounded-xl border border-base-300 border-l-4 ${item.borderAccent}`}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -286,11 +255,11 @@ export default function PortfolioPage() {
             titleItalic="tailored to your needs"
           />
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             {expertiseAreas.map((area) => (
               <StaggerItem key={area.title}>
-                <div className="group p-6 rounded-2xl border border-base-300 hover:shadow-lg hover:border-warm/30 transition-all duration-300 bg-base-100">
-                  <div className={`${area.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`card-surface group p-6 rounded-2xl border border-base-300 border-t-4 ${area.borderColor} hover:shadow-lg transition-all duration-300`}>
+                  <div className={`${area.iconColor} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     {area.icon}
                   </div>
                   <h3 className="font-[family-name:var(--font-display)] text-xl font-bold mb-2 text-base-content">
