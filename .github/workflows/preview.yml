@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: preview-pr-${{ github.event.pull_request.number }}
-      url: https://pr-${{ github.event.pull_request.number }}.preview.afterwords.gr
+      url: https://afterwords-preview-pr-${{ github.event.pull_request.number }}.fly.dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,12 +36,11 @@ jobs:
           # Create app if it doesn't exist
           if ! flyctl apps list | grep -q "$APP_NAME"; then
             flyctl apps create "$APP_NAME" --org personal
-            flyctl certs create --app "$APP_NAME" "pr-${PR_NUMBER}.preview.afterwords.gr"
           fi
 
           flyctl deploy --remote-only \
             --app "$APP_NAME" \
-            --build-arg NEXT_PUBLIC_SITE_URL=https://pr-${PR_NUMBER}.preview.afterwords.gr \
+            --build-arg NEXT_PUBLIC_SITE_URL=https://${APP_NAME}.fly.dev \
             --build-arg NEXT_PUBLIC_GA_MEASUREMENT_ID=${{ secrets.GA_MEASUREMENT_ID }} \
             --build-arg NEXT_PUBLIC_HELPSCOUT_BEACON_ID=${{ secrets.HELPSCOUT_BEACON_ID }}
 
@@ -50,7 +49,7 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const previewUrl = `https://pr-${prNumber}.preview.afterwords.gr`;
+            const previewUrl = `https://afterwords-preview-pr-${prNumber}.fly.dev`;
             const body = `🔗 **Preview deployment ready!**\n\n${previewUrl}\n\n_Deployed from commit ${context.sha.substring(0, 7)}_`;
 
             const comments = await github.rest.issues.listComments({
