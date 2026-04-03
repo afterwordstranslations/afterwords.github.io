@@ -2,7 +2,7 @@ import { getAllPosts } from "~/lib/blog";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://afterwords.github.io";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://afterwords.gr";
 
 export async function GET() {
   const posts = await getAllPosts();
