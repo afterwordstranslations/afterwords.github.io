@@ -4,7 +4,7 @@
 
 /* Card surface background that adapts per theme */
 .card-surface {
-  background-color: var(--color-base-200);
+  background-color: var(--color-base-100);
 }
 
 [data-theme="afterwords-dark"] .card-surface {

@@ -2,22 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
 import { ServiceCard } from "~/components/Services";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
 export default function NotFound() {
-  const navItems = [
-    { label: "About us", href: "/#about" },
-    { label: "Our services", href: "/#services" },
-    { label: "Our team", href: "/#team" },
-  ];
-
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* Hero Section */}
@@ -37,7 +25,7 @@ export default function NotFound() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
           <div className="relative z-10 h-full items-center px-8 lg:px-24">
-            <Header navItems={navItems} />
+            <Header />
             <div className="text-white">
               {/* 404 Badge */}
               <h4 className="bg-accent text-accent-content text-sm shadow-lg rounded-3xl inline-block mb-6 px-4 py-2">
@@ -118,57 +106,7 @@ export default function NotFound() {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="bg-slate-900">
-        <div className="container mx-auto p-8">
-          <Image
-            alt="Afterwords logo"
-            src="/logo.svg"
-            width={200}
-            height={50}
-            className="mb-8 w-1/3 md:w-1/5"
-          />
-          <div className="flex items-center">
-            <h3 className="text-white text-xl mr-4">Find us on social media</h3>
-            <a
-              href="https://www.instagram.com/afterwordstranslations/"
-              className="inline-block mr-4"
-            >
-              <Image
-                alt="Instagram logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/insta.svg"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/afterwordstranslations/"
-              className="inline-block mr-4"
-            >
-              <Image
-                alt="LinkedIn logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/in.png"
-              />
-            </a>
-            <a
-              href="https://www.facebook.com/AfterWordstranslations"
-              className="inline-block mr-4"
-            >
-              <Image
-                alt="Facebook logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/fb.png"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }

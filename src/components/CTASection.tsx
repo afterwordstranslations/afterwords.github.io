@@ -2,14 +2,12 @@
 import { FadeIn } from "./animations/FadeIn";
 
 interface CTASectionProps {
-  eyebrow: string;
   title: string;
   description: string;
   buttonText?: string;
 }
 
 export const CTASection = ({
-  eyebrow,
   title,
   description,
   buttonText = "Contact us",
@@ -21,30 +19,25 @@ export const CTASection = ({
       <div className="absolute bottom-0 left-1/4 w-64 h-64 rounded-full bg-warm/5 blur-[100px]" />
 
       <div className="container mx-auto px-8 relative z-10">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <FadeIn>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-4 text-warm">
-              {eyebrow}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
               {title}
             </h2>
           </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed">
+          <FadeIn delay={0.1}>
+            <p className="text-lg md:text-xl text-white/70 mb-12 leading-relaxed">
               {description}
             </p>
           </FadeIn>
-          <FadeIn delay={0.3}>
+          <FadeIn delay={0.2}>
             <button
-              className="group relative inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20"
+              className="group relative inline-flex items-center gap-2.5 bg-warm text-slate-900 font-semibold px-10 py-5 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 shadow-lg shadow-warm/25 hover:shadow-xl hover:shadow-warm/30 text-lg cursor-pointer"
               onClick={() => window.Beacon("open")}
             >
               {buttonText}
               <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

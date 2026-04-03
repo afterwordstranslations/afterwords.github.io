@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Header } from "./Header";
 
 interface PageHeroProps {
-  navItems: { label: string; href: string }[];
   badge: string;
   title: string;
   subtitle: string;
@@ -12,11 +11,11 @@ interface PageHeroProps {
   features?: { title: string; description: string }[];
   backgroundElement?: ReactNode;
   variant?: "full" | "compact";
+  lightHero?: boolean;
   className?: string;
 }
 
 export const PageHero = ({
-  navItems,
   badge,
   title,
   subtitle,
@@ -24,9 +23,14 @@ export const PageHero = ({
   features,
   backgroundElement,
   variant = "compact",
+  lightHero = false,
   className = "",
 }: PageHeroProps) => {
   const paddingClass = variant === "full" ? "pb-20" : "pb-16";
+  const titleColor = lightHero ? "text-base-content" : "text-white";
+  const subtitleColor = lightHero ? "text-base-content/70" : "text-white/80";
+  const featureBorder = lightHero ? "border-base-content/10" : "border-white/10";
+  const featureDesc = lightHero ? "text-base-content/50" : "text-white/50";
 
   return (
     <section className={`relative w-full overflow-hidden ${className}`}>
@@ -36,7 +40,7 @@ export const PageHero = ({
       )}
 
       <div className={`relative z-10 px-8 lg:px-24 ${paddingClass}`}>
-        <Header navItems={navItems} />
+        <Header />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mt-8 items-start">
           {/* Left — title */}
@@ -51,7 +55,7 @@ export const PageHero = ({
             </motion.p>
 
             <motion.h1
-              className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl leading-tight font-bold text-white"
+              className={`font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl leading-tight font-bold ${titleColor}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -63,7 +67,7 @@ export const PageHero = ({
           {/* Right — subtitle, CTA, features */}
           <div className="flex flex-col justify-center">
             <motion.p
-              className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed"
+              className={`text-lg md:text-xl ${subtitleColor} mb-8 leading-relaxed`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -84,7 +88,7 @@ export const PageHero = ({
 
             {features && features.length > 0 && (
               <motion.div
-                className="space-y-4 pt-8 border-t border-white/10"
+                className={`space-y-4 pt-8 border-t ${featureBorder}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -94,7 +98,7 @@ export const PageHero = ({
                     <h4 className="text-sm font-semibold uppercase tracking-wider text-warm mb-1">
                       {feature.title}
                     </h4>
-                    <p className="text-white/50 text-sm leading-relaxed">
+                    <p className={`${featureDesc} text-sm leading-relaxed`}>
                       {feature.description}
                     </p>
                   </div>
