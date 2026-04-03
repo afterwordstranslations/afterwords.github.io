@@ -41,8 +41,6 @@ jobs:
 
           flyctl deploy --remote-only \
             --app "$APP_NAME" \
-            --region ams \
-            --vm-memory 256 \
             --build-arg NEXT_PUBLIC_SITE_URL=https://pr-${PR_NUMBER}.preview.afterwords.gr \
             --build-arg NEXT_PUBLIC_GA_MEASUREMENT_ID=${{ secrets.GA_MEASUREMENT_ID }} \
             --build-arg NEXT_PUBLIC_HELPSCOUT_BEACON_ID=${{ secrets.HELPSCOUT_BEACON_ID }}
