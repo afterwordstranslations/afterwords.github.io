@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.github
+.gitignore
+.env*
+.DS_Store
+out
+.vercel
+.serena
+.playwright-mcp
+screenshots
+*.md
