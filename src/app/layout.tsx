@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={noto.className}>{children}</body>
+      <body className={`${noto.variable} ${playfair.variable}`}>{children}</body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
         <>
           <Script
