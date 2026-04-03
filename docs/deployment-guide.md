@@ -5,18 +5,19 @@ This guide covers the full setup, deployment, DNS configuration, and ongoing ope
 ## Architecture Overview
 
 ```
-GitHub repo (main branch)
+GitHub repo
   │
-  ├─ push to main ──→ GitHub Actions ──→ fly deploy ──→ afterwords.gr (production)
+  ├─ PR opened/updated ──→ checks (type-check + build) ──→ fly deploy ──→ afterwords-preview-pr-<N>.fly.dev
   │
-  ├─ PR opened ─────→ GitHub Actions ──→ fly deploy ──→ pr-<N>.preview.afterwords.gr
+  ├─ PR closed ───────────→ fly destroy ──→ preview app removed
   │
-  └─ PR closed ─────→ GitHub Actions ──→ fly destroy ──→ preview app removed
+  └─ push to main ────────→ checks (type-check + build) ──→ fly deploy ──→ afterwords.gr (production)
 ```
 
 - **Runtime:** Next.js standalone (SSR) in a Docker container
 - **Region:** Amsterdam (`ams`) — optimized for Greek/EU audience
 - **Scaling:** Auto-stop when idle, auto-start on request. Stopped machines cost nothing.
+- **CI checks:** Type-check (`tsc --noEmit`) and build (`next build`) must pass before any deployment.
 
 ## Initial Setup (One-Time)
 
@@ -89,7 +90,17 @@ Go to **Settings → Environments → New environment**:
 
 This ensures only pushes to `main` can trigger production deployments.
 
-## DNS Configuration (Papaki.gr)
+### 8. Enable branch protection (recommended)
+
+Go to **Settings → Branches → Add rule** for `main`:
+- Require status checks to pass: enable **"Type Check & Build"**
+- Do not allow force pushes
+
+This prevents merging PRs that fail checks.
+
+## DNS Configuration (Cloudflare)
+
+DNS for `afterwords.gr` is managed in Cloudflare.
 
 ### Step 1: Register custom domains with Fly
 
@@ -100,32 +111,25 @@ fly certs create www.afterwords.gr -a afterwords-web
 
 Fly will provision Let's Encrypt TLS certificates automatically once DNS is pointed.
 
-### Step 2: Check certificate status
+### Step 2: Configure DNS records in Cloudflare
+
+**Production (afterwords.gr):**
+
+| Type | Name | Value | Proxy |
+|------|------|-------|-------|
+| A | `@` | *(Fly IPv4 from `fly ips list`)* | DNS only (grey cloud) |
+| AAAA | `@` | *(Fly IPv6 from `fly ips list`)* | DNS only (grey cloud) |
+| CNAME | `www` | `afterwords.gr` | DNS only (grey cloud) |
+
+**Important:** Keep proxy **off** (DNS only / grey cloud). Fly needs direct access to provision and renew Let's Encrypt certificates. Cloudflare proxy would intercept TLS and break Fly's certificate validation.
+
+### Step 3: Check certificate status
 
 ```bash
 fly certs show afterwords.gr -a afterwords-web
 ```
 
 Wait until it shows `Ready`. This happens automatically once DNS propagates.
-
-### Step 3: Configure DNS records at Papaki.gr
-
-**Production (afterwords.gr):**
-
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| A | `@` | *(Fly IPv4 from step 4 above)* | 300 |
-| AAAA | `@` | *(Fly IPv6 from step 4 above)* | 300 |
-| CNAME | `www` | `afterwords.gr` | 300 |
-
-**Preview deployments (*.preview.afterwords.gr):**
-
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| A | `*.preview` | *(same Fly IPv4)* | 300 |
-| AAAA | `*.preview` | *(same Fly IPv6)* | 300 |
-
-The wildcard record routes all `pr-<N>.preview.afterwords.gr` traffic to Fly, which matches by hostname (SNI) to the correct preview app.
 
 ### Cutover strategy
 
@@ -134,14 +138,15 @@ The wildcard record routes all `pr-<N>.preview.afterwords.gr` traffic to Fly, wh
 3. Replace the records with the Fly IPs
 4. Verify: `curl -I https://afterwords.gr`
 5. Once confirmed, disable GitHub Pages in repo settings
+6. Remove `.github/workflows/nextjs.yml` (the old GitHub Pages workflow)
 
 ## Deploying
 
 ### Production
 
-Push or merge to `main`. That's it. The `deploy.yml` workflow:
+Push or merge to `main`. The `deploy.yml` workflow:
 
-1. Checks out the code
+1. Runs checks (type-check + build)
 2. Builds the Docker image on Fly's remote builders
 3. Deploys to the `afterwords-web` app
 
@@ -157,12 +162,31 @@ Or check the GitHub Actions tab for build logs.
 
 Open a pull request. The `preview.yml` workflow:
 
-1. Creates a Fly app named `afterwords-preview-pr-<N>` (if it doesn't exist)
-2. Provisions a TLS cert for `pr-<N>.preview.afterwords.gr`
+1. Runs checks (type-check + build)
+2. Creates a Fly app named `afterwords-preview-pr-<N>` (if it doesn't exist)
 3. Builds and deploys
 4. Comments on the PR with the preview URL
 
+Preview URLs use Fly's default domain: `https://afterwords-preview-pr-<N>.fly.dev`
+
+TLS is automatic on `.fly.dev` — no DNS or certificate setup needed.
+
 When the PR is closed or merged, the preview app is automatically destroyed.
+
+**Fork safety:** The workflow only runs for PRs from the same repository, not from forks.
+
+## CI Checks
+
+Both the preview and production workflows run these checks before deploying:
+
+| Check | Command | What it catches |
+|-------|---------|-----------------|
+| Type check | `tsc --noEmit` | Type errors |
+| Build | `next build` | Build failures, missing imports, SSR errors |
+
+If either check fails, the deployment is skipped.
+
+**Note:** Lint (`next lint`) is currently disabled due to a Next.js 16 compatibility issue and pre-existing lint errors. It can be re-enabled after fixing those errors.
 
 ## Operations
 
@@ -273,8 +297,8 @@ All `NEXT_PUBLIC_*` variables are inlined at build time by Next.js. They are pas
 | `Dockerfile` | Multi-stage Docker build for Next.js standalone |
 | `.dockerignore` | Files excluded from Docker build context |
 | `.env.example` | Documents required environment variables |
-| `.github/workflows/deploy.yml` | Production deployment workflow |
-| `.github/workflows/preview.yml` | PR preview deployment workflow |
+| `.github/workflows/deploy.yml` | Production deployment workflow (checks + deploy) |
+| `.github/workflows/preview.yml` | PR preview deployment workflow (checks + deploy + destroy) |
 
 ## Costs (Fly.io)
 
@@ -284,15 +308,22 @@ With `auto_stop_machines = "stop"` and `min_machines_running = 0`:
 - **Active (shared-cpu-1x, 256MB):** ~$1.94/month if running 24/7
 - **Bandwidth:** 100GB/month free outbound, then $0.02/GB
 - **Remote builder:** free tier covers small projects
+- **Preview apps:** $0 when idle (auto-stopped), destroyed on PR close
 
 For a low-traffic site, expect **$3–5/month** total.
 
 ## Troubleshooting
 
+### CI checks fail
+
+Check the GitHub Actions tab for the specific error:
+- **Type check fails:** Fix TypeScript errors shown in the log
+- **Build fails:** Check for missing imports, SSR-incompatible code, or environment variable issues
+
 ### Build fails in GitHub Actions
 
-Check the Actions tab for logs. Common issues:
-- Missing `FLY_API_TOKEN` secret
+Common issues:
+- Missing `FLY_API_TOKEN` secret → "no access token available"
 - npm dependency issues (try `npm ci` locally first)
 - Docker build errors (test locally with `docker build .`)
 
@@ -311,7 +342,7 @@ fly status -a afterwords-web
 fly certs show afterwords.gr -a afterwords-web
 ```
 
-Ensure DNS records point to Fly IPs. Certificate provisioning requires DNS to be correctly configured. It uses HTTP-01 validation, so the domain must resolve to Fly.
+Ensure DNS records point to Fly IPs with **proxy off** (DNS only) in Cloudflare. Certificate provisioning requires direct access — Cloudflare proxy intercepts TLS and breaks Fly's HTTP-01 validation.
 
 ### Preview app not created
 
