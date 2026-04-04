@@ -115,19 +115,29 @@ export const TestimonialsSection = () => {
             </AnimatePresence>
           </div>
 
-          {/* Navigation dots */}
+          {/* Navigation dots with progress indicator */}
           <div className="flex gap-2 mt-12">
             {testimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`relative h-2 rounded-full cursor-pointer overflow-hidden transition-all duration-300 ${
                   i === current
-                    ? "w-8 bg-warm"
+                    ? "w-8 bg-warm/30"
                     : "w-2 bg-base-content/20 hover:bg-base-content/40"
                 }`}
                 aria-label={`Go to testimonial ${i + 1}`}
-              />
+              >
+                {i === current && (
+                  <motion.div
+                    className="absolute inset-0 bg-warm rounded-full origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: isPaused ? undefined : 1 }}
+                    transition={{ duration: 7, ease: "linear" }}
+                    key={`progress-${current}`}
+                  />
+                )}
+              </button>
             ))}
           </div>
         </div>
