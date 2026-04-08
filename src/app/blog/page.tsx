@@ -1,13 +1,40 @@
+import type { Metadata } from "next";
 import { getAllPosts } from "~/lib/blog";
 import { BlogCard, FeaturedBlogCard } from "~/components/BlogCard";
 import Image from "next/image";
 import { Header } from "~/components/Header";
+import { JsonLd, breadcrumbJsonLd } from "~/lib/seo";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://afterwords.gr";
+
+export const metadata: Metadata = {
+  title: "Blog - Translation Insights",
+  description:
+    "Insights on translation, localization, and language services. Tips on certified translations, choosing agencies, and understanding the translation industry.",
+  openGraph: {
+    title: "Blog - Translation Insights | Afterwords",
+    description:
+      "Where we unpack what gets lost — and found — in translation. Insights on certified translations, localization, and the language industry.",
+    url: `${BASE_URL}/blog`,
+    images: [{ url: "/bg.jpg", width: 1200, height: 630, alt: "Afterwords Blog" }],
+  },
+  alternates: {
+    canonical: `${BASE_URL}/blog`,
+  },
+};
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
   const [featured, ...rest] = posts;
 
   return (
+    <>
+    <JsonLd
+      data={breadcrumbJsonLd([
+        { name: "Home", url: BASE_URL },
+        { name: "Blog", url: `${BASE_URL}/blog` },
+      ])}
+    />
     <div className="w-full bg-base-100 text-base-content">
       {/* Hero Section */}
       <div className="hero-section bg-sl h-full pb-16">
@@ -136,5 +163,6 @@ export default async function BlogPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

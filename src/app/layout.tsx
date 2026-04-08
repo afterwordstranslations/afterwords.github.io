@@ -6,12 +6,59 @@ import Script from "next/script";
 // If loading a variable font, you don't need to specify the font weight
 const noto = Noto_Sans({ subsets: ["latin", "greek"] });
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://afterwords.gr";
+
 export const metadata: Metadata = {
-  title:
-    "Afterwords - Translations, subtitles & interpretations in various languages",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default:
+      "Afterwords - Professional Translation Services in Greece",
+    template: "%s | Afterwords",
+  },
   description:
-    "Translation isn’t just a document that needs to be translated from one language to another. For us, it’s so much more. It represents our effort to highlight the meaning behind your words.",
+    "Professional translation, interpreting, and subtitling services based in Athens, Greece. Certified translations, pharmaceutical, maritime, academic, and audiovisual translation.",
+  keywords: [
+    "translation services",
+    "certified translation",
+    "Greek translation",
+    "interpreting services",
+    "subtitling",
+    "sworn translation Greece",
+    "pharmaceutical translation",
+    "maritime translation",
+    "academic translation",
+  ],
+  authors: [{ name: "Afterwords" }],
+  creator: "Afterwords",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Afterwords",
+    title: "Afterwords - Professional Translation Services in Greece",
+    description:
+      "Professional translation, interpreting, and subtitling services based in Athens, Greece. Bridging the gap between the Greek market and the global stage.",
+    images: [
+      {
+        url: "/bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Afterwords - Professional Translation Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Afterwords - Professional Translation Services in Greece",
+    description:
+      "Professional translation, interpreting, and subtitling services based in Athens, Greece.",
+    images: ["/bg.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
   alternates: {
+    canonical: BASE_URL,
     types: {
       "application/rss+xml": "/blog/feed.xml",
     },
