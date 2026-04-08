@@ -6,6 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Header } from "~/components/Header";
+import { JsonLd, blogPostingJsonLd, breadcrumbJsonLd } from "~/lib/seo";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://afterwords.gr";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -24,9 +27,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
+  const postUrl = `${BASE_URL}/blog/${slug}`;
+  const postImage = post.image || "/bg.jpg";
+
   return {
     title: `${post.title} | Afterwords Blog`,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: postUrl,
+      type: "article",
+      publishedTime: post.date,
+      authors: [AUTHORS[post.author || DEFAULT_AUTHOR]?.name || "Afterwords Team"],
+      images: [{ url: postImage, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [postImage],
+    },
+    alternates: {
+      canonical: postUrl,
+    },
   };
 }
 
@@ -49,6 +73,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     .slice(0, 3);
 
   return (
+    <>
+    <JsonLd
+      data={blogPostingJsonLd({
+        title: post.title,
+        excerpt: post.excerpt,
+        date: post.date,
+        slug,
+        image: post.image,
+        authorName: author?.name,
+      })}
+    />
+    <JsonLd
+      data={breadcrumbJsonLd([
+        { name: "Home", url: BASE_URL },
+        { name: "Blog", url: `${BASE_URL}/blog` },
+        { name: post.title, url: `${BASE_URL}/blog/${slug}` },
+      ])}
+    />
     <div className="w-full bg-base-100 text-base-content">
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden bg-slate-900">
@@ -190,5 +232,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </div>
     </div>
+    </>
   );
 }
