@@ -32,7 +32,7 @@ export const SectionHeader = ({
         </p>
       </FadeIn>
       <FadeIn delay={0.1}>
-        <h2 className={`font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-6 leading-tight ${textColor}`}>
+        <h2 className={`font-[family-name:var(--font-display)] text-4xl md:text-5xl mb-6 leading-tight ${textColor}`}>
           {title}
           {titleItalic && <em className="font-normal"> {titleItalic}</em>}
         </h2>

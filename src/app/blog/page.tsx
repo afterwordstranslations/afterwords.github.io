@@ -3,6 +3,7 @@ import { getAllPosts } from "~/lib/blog";
 import { BlogCard, FeaturedBlogCard } from "~/components/BlogCard";
 import Image from "next/image";
 import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
 import { JsonLd, breadcrumbJsonLd } from "~/lib/seo";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://afterwords.gr";
@@ -51,10 +52,7 @@ export default async function BlogPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
 
             <div className="relative z-10 h-full items-center px-8 lg:px-24">
-              <Header navItems={[
-                { label: "Home", href: "/" },
-                { label: "Blog", href: "/blog" },
-              ]} />
+              <Header />
 
               <div className="max-w-2xl text-white py-8">
                 <div>
@@ -120,48 +118,7 @@ export default async function BlogPage() {
         )}
       </div>
 
-      {/* Footer */}
-      <div className="bg-slate-900">
-        <div className="container mx-auto p-8">
-          <Image
-            alt="Afterwords logo"
-            src="/logo.svg"
-            width={200}
-            height={50}
-            className="mb-8 w-1/3 md:w-1/4"
-          />
-          <div className="flex items-center">
-            <h3 className="text-white text-xl mr-4">Find us on social media</h3>
-            <a href="https://www.instagram.com/afterwordstranslations/" className="inline-block mr-4">
-              <Image
-                alt="Instagram logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/insta.svg"
-              />
-            </a>
-            <a href="https://www.linkedin.com/company/afterwordstranslations/" className="inline-block mr-4">
-              <Image
-                alt="LinkedIn logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/in.png"
-              />
-            </a>
-            <a href="https://www.facebook.com/AfterWordstranslations" className="inline-block mr-4">
-              <Image
-                alt="Facebook logo"
-                width={50}
-                height={50}
-                className="w-6"
-                src="/fb.png"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
     </>
   );

@@ -12,19 +12,6 @@ import {
   StaggerItem,
 } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Our services", href: "#services" },
-  { label: "Why us", href: "#why" },
-];
-
 const services = [
   { id: 1, label: "Legal & Claims", description: "Precise translation for Charter Party disputes, Bills of Lading, and LMAA arbitration. We provide the linguistic security required for high-stakes maritime litigation." },
   { id: 2, label: "Crewing & Operations", description: "Ensuring compliance for Seafarer Employment Agreements (SEA), PEME medicals, and STCW certifications across our core European language sets." },
@@ -32,10 +19,10 @@ const services = [
 ];
 
 const whyUsCards = [
-  { title: "Individual Account Ownership", description: 'You are served by a specific individual, not a rotating queue of employees. This builds a "long-term memory" of your company\u2019s preferred terminology and formatting.' },
-  { title: "24/7 Operational Support", description: 'Shipping doesn\u2019t stop. Your dedicated partner is available for "Vessel in Port" emergencies and urgent weekend requests via direct communication lines.' },
+  { title: "Individual Account Ownership", description: `You are served by a specific individual, not a rotating queue of employees. This builds a "long-term memory" of your company's preferred terminology and formatting.` },
+  { title: "24/7 Operational Support", description: `Shipping doesn't stop. Your dedicated partner is available for "Vessel in Port" emergencies and urgent weekend requests via direct communication lines.` },
   { title: "Strict Security Protocols", description: "We treat your commercial intelligence with the same privilege as a law firm, utilizing secure transfers and project-specific NDAs for every file." },
-  { title: "Beyond AI Limitations", description: "Unlike AI, our human-led process understands the critical nuances of maritime law\u2014preserving the technical precision that algorithms frequently overlook." },
+  { title: "Beyond AI Limitations", description: "Unlike AI, our human-led process understands the critical nuances of maritime law—preserving the technical precision that algorithms frequently overlook." },
 ];
 
 const languages = [
@@ -85,7 +72,7 @@ const WaveBackground = () => (
 export default function MaritimeTranslationClient() {
   return (
     <div className="w-full bg-base-100 text-base-content">
-      <PageHero navItems={navItems} badge="Boutique, human-led linguistic support with a dedicated partner for every fleet" title="High-Stakes Maritime Translation: Precision for the Global Fleet" subtitle='In shipping, a "near-miss" costs more than just time — it costs operational safety. We provide boutique, human-led linguistic support with a dedicated partner for every fleet.' variant="full" backgroundElement={<WaveBackground />} cta={
+      <PageHero badge="Boutique, human-led linguistic support with a dedicated partner for every fleet" title="High-Stakes Maritime Translation: Precision for the Global Fleet" subtitle='In shipping, a "near-miss" costs more than just time — it costs operational safety. We provide boutique, human-led linguistic support with a dedicated partner for every fleet.' variant="full" backgroundElement={<WaveBackground />} cta={
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="group relative inline-flex items-center gap-2 bg-amber-500 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-amber-400 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/20" onClick={() => window.Beacon("open")}>
             Get a free estimate
@@ -96,7 +83,7 @@ export default function MaritimeTranslationClient() {
       } features={[
         { title: "Maritime Subject Matter Experts", description: "We pair naval linguists with industry-standard glossaries to guarantee absolute terminology consistency from the bridge to the engine room." },
         { title: "Safety-First TEP Workflow", description: "Our gold-standard Translation, Editing, and Proofreading workflow eliminates the risks of non-compliance." },
-        { title: "A Dedicated Single Point of Contact", description: "Forget anonymous help-desks. You are assigned a permanent project lead who understands your fleet\u2019s history, terminology, and specific operational needs." },
+        { title: "A Dedicated Single Point of Contact", description: "Forget anonymous help-desks. You are assigned a permanent project lead who understands your fleet's history, terminology, and specific operational needs." },
       ]} />
 
       {/* About Section */}
@@ -198,7 +185,7 @@ export default function MaritimeTranslationClient() {
         </div>
       </section>
 
-      <CTASection eyebrow="Ready to discuss your maritime translation project?" title="Your dedicated partner is ready" description="Whether it's a 1,000-page technical manual or an urgent arbitration claim, your dedicated partner is ready to deliver excellence." buttonText="Contact us" />
+      <CTASection title="Your dedicated partner is ready" description="Whether it's a 1,000-page technical manual or an urgent arbitration claim, your dedicated partner is ready to deliver excellence." buttonText="Contact us" />
       <Footer />
     </div>
   );

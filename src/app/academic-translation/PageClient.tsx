@@ -13,19 +13,6 @@ import {
   StaggerItem,
 } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Our services", href: "#services" },
-  { label: "Why us", href: "#why" },
-];
-
 const services = [
   {
     id: 1,
@@ -41,7 +28,7 @@ const services = [
     color: "from-emerald-900 to-emerald-800",
     spine: "bg-emerald-950",
     description:
-      "Sensitive translation for Memoirs and Novels that preserves authorial \u201cvoice\u201d and charisma\u2014something AI cannot replicate.",
+      "Sensitive translation for Memoirs and Novels that preserves authorial \"voice\" and charisma—something AI cannot replicate.",
   },
   {
     id: 3,
@@ -57,7 +44,7 @@ const services = [
     color: "from-rose-900 to-rose-800",
     spine: "bg-rose-950",
     description:
-      "Ensuring research is \u201cjournal-ready\u201d for international peer-reviewed publication with precise academic language.",
+      'Ensuring research is "journal-ready" for international peer-reviewed publication with precise academic language.',
   },
 ];
 
@@ -106,7 +93,6 @@ export default function AcademicTranslationClient() {
     <div className="w-full bg-base-100 text-base-content">
       {/* -- Hero -- */}
       <PageHero
-        navItems={navItems}
         badge="A boutique Greek agency specializing in long-form academic translation"
         title="High-Stakes Academic Translation: Beyond the Algorithm"
         subtitle="In scholarly publishing, a &ldquo;near-miss&rdquo; costs more than just credibility&mdash;it costs your budget. Unlike AI, our human-led process preserves the author&apos;s unique voice and charisma."
@@ -319,7 +305,6 @@ export default function AcademicTranslationClient() {
 
       {/* -- CTA -- */}
       <CTASection
-        eyebrow="Ready to discuss your academic translation project?"
         title="Let&apos;s talk about your book"
         description="Whether it&apos;s a 500-page textbook or a journal manuscript, we have the expertise and professional stamina to deliver excellence."
         buttonText="Contact us"

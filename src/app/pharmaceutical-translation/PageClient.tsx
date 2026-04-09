@@ -12,20 +12,6 @@ import {
   StaggerItem,
 } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Our services", href: "#services" },
-  { label: "Quality process", href: "#quality" },
-  { label: "Why us", href: "#why" },
-];
-
 const services = [
   { title: "Regulatory Submissions", description: "Regulatory-compliant translation of EU submissions and multi-module dossiers with precise terminology management." },
   { title: "Product Information", description: "Translation of SmPCs, package leaflets (PILs), and labeling texts that meet strict regulatory standards." },
@@ -86,7 +72,7 @@ const HeroBackground = () => (
 export default function PharmaceuticalTranslationClient() {
   return (
     <div className="w-full bg-base-100 text-base-content">
-      <PageHero navItems={navItems} badge="Specialized pharmaceutical and life sciences translation" title="Where Scientific Precision Meets Regulatory Compliance" subtitle="In pharmaceutical and clinical environments, language is part of compliance. A single error in an SmPC, PIL, regulatory dossier, or clinical trial document can delay approvals or raise regulatory scrutiny." variant="full" className="!text-slate-900" backgroundElement={<HeroBackground />} cta={
+      <PageHero badge="Specialized pharmaceutical and life sciences translation" title="Where Scientific Precision Meets Regulatory Compliance" subtitle="In pharmaceutical and clinical environments, language is part of compliance. A single error in an SmPC, PIL, regulatory dossier, or clinical trial document can delay approvals or raise regulatory scrutiny." variant="full" className="!text-slate-900" backgroundElement={<HeroBackground />} cta={
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="group relative inline-flex items-center gap-2 bg-teal-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-teal-700 transition-all duration-300 hover:shadow-lg hover:shadow-teal-600/20" onClick={() => window.Beacon("open")}>
             Get a free estimate
@@ -186,7 +172,7 @@ export default function PharmaceuticalTranslationClient() {
         </div>
       </section>
 
-      <CTASection eyebrow="Ready to discuss your pharmaceutical translation project?" title="Confidence in Every Submission" description="Whether it's regulatory submissions, clinical trial documentation, or patient-facing materials, we have the expertise to deliver excellence." buttonText="Contact us" />
+      <CTASection title="Confidence in Every Submission" description="Whether it's regulatory submissions, clinical trial documentation, or patient-facing materials, we have the expertise to deliver excellence." buttonText="Contact us" />
       <Footer />
     </div>
   );

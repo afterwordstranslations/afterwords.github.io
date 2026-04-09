@@ -11,19 +11,6 @@ import {
   StaggerItem,
 } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Our services", href: "#services" },
-  { label: "Why us", href: "#why" },
-];
-
 const services = [
   {
     icon: (
@@ -129,7 +116,6 @@ export default function CertifiedTranslationsClient() {
     <div className="w-full bg-base-100 text-base-content">
       {/* Hero Section */}
       <PageHero
-        navItems={navItems}
         badge="Certified & Sworn Translations accepted by all Greek authorities"
         title="Official Greek Translations You Can Trust"
         subtitle="Get certified translations from Ionian University graduates. Our sworn translations carry official association seals and are accepted by all public and private authorities in Greece and abroad."
@@ -152,7 +138,7 @@ export default function CertifiedTranslationsClient() {
         features={[
           { title: "Academic Excellence", description: "Expert graduates of the Ionian University ensure linguistic precision and academic rigor for every document." },
           { title: "Official Certification", description: "PEEMPIP members with official association seals for legal validity in all Greek public and private authorities." },
-          { title: "End-to-End Service", description: "We handle translation, stamping, and delivery\u2014including express shipping for urgent deadlines." },
+          { title: "End-to-End Service", description: "We handle translation, stamping, and delivery—including express shipping for urgent deadlines." },
         ]}
         backgroundElement={
           <>
@@ -210,15 +196,15 @@ export default function CertifiedTranslationsClient() {
       {/* Process Section */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-8">
-          <SectionHeader eyebrow="How it works" title="Three Steps to Your" titleItalic="Certified Translation" description="We've designed a seamless process to save you time: professional translation, official stamping, and final delivery\u2014all handled by certified experts." align="center" />
+          <SectionHeader eyebrow="How it works" title="Three Steps to Your" titleItalic="Certified Translation" description="We've designed a seamless process to save you time: professional translation, official stamping, and final delivery—all handled by certified experts." align="center" />
           <div className="mt-20 relative max-w-4xl mx-auto">
             <div className="hidden md:block absolute top-16 left-[16.67%] right-[16.67%] h-px bg-gradient-to-r from-warm/0 via-warm/40 to-warm/0" />
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8" staggerDelay={0.2}>
               {processSteps.map((step) => (
                 <StaggerItem key={step.step} className="text-center">
-                  <div className="relative inline-flex items-center justify-center w-32 h-32 mx-auto mb-8">
-                    <div className="absolute inset-0 rounded-full border-2 border-warm/20" />
-                    <div className="w-20 h-20 rounded-full bg-warm/10 flex items-center justify-center">
+                  <div className="relative z-10 inline-flex items-center justify-center w-32 h-32 mx-auto mb-8">
+                    <div className="absolute inset-0 rounded-full border-2 border-warm/20 bg-base-100" />
+                    <div className="relative w-20 h-20 rounded-full bg-warm/10 flex items-center justify-center">
                       <span className="font-[family-name:var(--font-display)] text-3xl font-bold text-warm">{step.step}</span>
                     </div>
                   </div>
@@ -286,7 +272,7 @@ export default function CertifiedTranslationsClient() {
       </section>
 
       {/* CTA */}
-      <CTASection eyebrow="Ready to get your certified translation?" title="Let's handle your official documents" description="From legal paperwork to educational records, we deliver certified translations with full legal validity and express delivery options." buttonText="Contact us" />
+      <CTASection title="Let's handle your official documents" description="From legal paperwork to educational records, we deliver certified translations with full legal validity and express delivery options." buttonText="Contact us" />
 
       {/* Footer */}
       <Footer />

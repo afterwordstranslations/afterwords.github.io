@@ -10,13 +10,6 @@ import { FadeIn } from "~/components/animations/FadeIn";
 import { CountUp } from "~/components/animations/CountUp";
 import { StaggerContainer, StaggerItem } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
 const portfolioItems = [
   {
     id: 1,
@@ -25,8 +18,8 @@ const portfolioItems = [
     category: "Specialized Translation",
     description: "Expert translations for the medical and scientific sectors, including patent specifications, pharmaceutical applications, clinical research, and healthcare documentation.",
     items: [
-      "Patent Specifications: Annual translation of 200\u2013300 patent specifications specializing in biology, chemistry, biochemistry, and technology.",
-      "Pharmaceutical Applications: Translation of 150\u2013200 patent applications and abstracts per year.",
+      "Patent Specifications: Annual translation of 200–300 patent specifications specializing in biology, chemistry, biochemistry, and technology.",
+      "Pharmaceutical Applications: Translation of 150–200 patent applications and abstracts per year.",
       "Clinical Research: Translation of clinical trial documents, medical research papers, and articles for publication.",
       "Healthcare Documentation: Comprehensive translation of patient records and medical reports.",
     ],
@@ -87,9 +80,9 @@ const portfolioItems = [
     description: "Professional subtitling services for TV series, films, and festivals, along with specialized interpreting for corporate conferences and the aviation sector.",
     items: [
       'TV Series Localization: Greek subtitles for the hit series "Black-ish".',
-      "Film Festivals: Subtitling for the Beyond Borders International Festival (2019\u20132022).",
+      "Film Festivals: Subtitling for the Beyond Borders International Festival (2019–2022).",
       'Cinema: English and French subtitles for the Greek short film "MAUVE".',
-      "Corporate Conferences: Interpreting for the Coating Forum (2022\u20132023) and pharmaceutical launches.",
+      "Corporate Conferences: Interpreting for the Coating Forum (2022–2023) and pharmaceutical launches.",
       "Aviation Sector: Specialized interpreting for business meetings and technical presentations.",
     ],
     stats: [
@@ -130,11 +123,9 @@ const expertiseAreas = [
 ];
 
 export default function PortfolioClient() {
-  const navItems = [{ label: "Home", href: "/" }];
-
   return (
     <div className="w-full bg-base-100 text-base-content">
-      <PageHero navItems={navItems} badge="Showcasing our expertise across specialized translation domains" title="Our Portfolio" subtitle="Explore our portfolio of translation and localization projects. From medical patents to published books, we deliver precision and cultural expertise across industries." variant="compact" cta={
+      <PageHero badge="Showcasing our expertise across specialized translation domains" title="Our Portfolio" subtitle="Explore our portfolio of translation and localization projects. From medical patents to published books, we deliver precision and cultural expertise across industries." variant="compact" cta={
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20 cursor-pointer" onClick={() => window.Beacon("open")}>
             Get a free estimate
@@ -211,7 +202,7 @@ export default function PortfolioClient() {
         </div>
       </section>
 
-      <CTASection eyebrow="Ready to start your translation project?" title="Let's discuss your needs" description="Whether you need specialized translation, certified documents, or media localization, we deliver quality, speed, and reliability." buttonText="Contact us" />
+      <CTASection title="Let's discuss your needs" description="Whether you need specialized translation, certified documents, or media localization, we deliver quality, speed, and reliability." buttonText="Contact us" />
       <Footer />
     </div>
   );

@@ -12,19 +12,6 @@ import {
   StaggerItem,
 } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Our services", href: "#services" },
-  { label: "Why us", href: "#why" },
-];
-
 const services = [
   { label: "Corporate Summits & Keynotes", description: "High-energy, stage-ready simultaneous interpreting for international conferences and corporate summits.", direction: "left" as const },
   { label: "Board Meetings & Negotiations", description: "Discreet, high-level consecutive interpreting for executive sessions and high-stakes negotiations.", direction: "right" as const },
@@ -85,7 +72,7 @@ const HeroBackground = () => (
 export default function InterpretingClient() {
   return (
     <div className="w-full bg-base-100 text-base-content">
-      <PageHero navItems={navItems} badge="Athens-based agency specializing in live event interpretation" title="High-Impact Interpreting: The Voice of Your Global Event" subtitle='In live events, there are no "second takes." We provide ready-for-stage interpreters for international summits and high-stakes board meetings.' cta={
+      <PageHero badge="Athens-based agency specializing in live event interpretation" title="High-Impact Interpreting: The Voice of Your Global Event" subtitle='In live events, there are no "second takes." We provide ready-for-stage interpreters for international summits and high-stakes board meetings.' cta={
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="group relative inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20" onClick={() => window.Beacon("open")}>
             Get a free estimate
@@ -167,7 +154,7 @@ export default function InterpretingClient() {
         </div>
       </section>
 
-      <CTASection eyebrow="Ready to discuss your interpreting needs?" title="Let's talk about your event" description="Whether it's a private executive session or a large-scale conference, we have the expertise and elite talent to deliver excellence." buttonText="Contact us" />
+      <CTASection title="Let's talk about your event" description="Whether it's a private executive session or a large-scale conference, we have the expertise and elite talent to deliver excellence." buttonText="Contact us" />
       <Footer />
     </div>
   );

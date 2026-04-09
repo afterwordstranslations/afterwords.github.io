@@ -12,13 +12,6 @@ import {
   StaggerItem,
 } from "~/components/animations/StaggerContainer";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line
-    Beacon: any;
-  }
-}
-
 const services = [
   {
     id: 1,
@@ -50,7 +43,7 @@ const whyUs = [
   {
     label: "Tone Adaptation",
     description:
-      "We navigate all genres and registers with ease, ensuring that the tone of your original content\u2014whether comedic, technical, or dramatic\u2014is perfectly adapted for your target viewers.",
+      "We navigate all genres and registers with ease, ensuring that the tone of your original content—whether comedic, technical, or dramatic—is perfectly adapted for your target viewers.",
   },
   {
     label: "Industry Turnaround",
@@ -71,12 +64,6 @@ const specializations = [
   { emoji: "\uD83C\uDFA5", label: "Documentaries" },
 ];
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Our services", href: "#services" },
-  { label: "Why us", href: "#why" },
-];
-
 const heroFeatures = [
   {
     title: "Flawless Synchronization",
@@ -86,7 +73,7 @@ const heroFeatures = [
   {
     title: "Genre Versatility",
     description:
-      "We navigate all genres and registers\u2014comedic, technical, or dramatic\u2014with equal expertise.",
+      "We navigate all genres and registers—comedic, technical, or dramatic—with equal expertise.",
   },
   {
     title: "Reliable Speed",
@@ -119,7 +106,6 @@ export default function AudiovisualTranslationClient() {
 
       {/* -- Hero -- */}
       <PageHero
-        navItems={navItems}
         badge="Bridging borders through expert audiovisual translation"
         title="Bringing Your Content to Global Audiences"
         subtitle="From TV series to feature films and entire film festivals, we ensure the narrative remains sharp and impactful across every frame."
@@ -301,7 +287,6 @@ export default function AudiovisualTranslationClient() {
 
       {/* -- CTA -- */}
       <CTASection
-        eyebrow="Ready to bring your content to global audiences?"
         title="Let's discuss your project"
         description="Whether it's a single film or an entire film festival, we have the expertise to deliver seamless, professional subtitles."
         buttonText="Contact us"
