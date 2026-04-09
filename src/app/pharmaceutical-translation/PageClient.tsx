@@ -54,31 +54,31 @@ const benefits = [
 /* Molecular / hexagonal SVG background for the hero */
 const HeroBackground = () => (
   <>
-    <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-teal-100/60" />
-    <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f2a3e] to-[#0a1628]" />
+    <svg className="absolute inset-0 w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <pattern id="hex" width="56" height="100" patternUnits="userSpaceOnUse" patternTransform="scale(1.4)">
-          <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="#0d9488" strokeWidth="1" />
-          <path d="M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34" fill="none" stroke="#0d9488" strokeWidth="1" />
+          <path d="M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100" fill="none" stroke="#5eead4" strokeWidth="1" />
+          <path d="M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34" fill="none" stroke="#5eead4" strokeWidth="1" />
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#hex)" />
     </svg>
-    <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-teal-400/10 blur-[120px]" />
-    <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-teal-300/10 blur-[100px]" />
+    <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-teal-500/8 blur-[120px]" />
+    <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-teal-400/6 blur-[100px]" />
   </>
 );
 
 export default function PharmaceuticalTranslationClient() {
   return (
     <div className="w-full bg-base-100 text-base-content">
-      <PageHero badge="Specialized pharmaceutical and life sciences translation" title="Where Scientific Precision Meets Regulatory Compliance" subtitle="In pharmaceutical and clinical environments, language is part of compliance. A single error in an SmPC, PIL, regulatory dossier, or clinical trial document can delay approvals or raise regulatory scrutiny." variant="full" className="!text-slate-900" backgroundElement={<HeroBackground />} cta={
+      <PageHero badge="Specialized pharmaceutical and life sciences translation" title="Where Scientific Precision Meets Regulatory Compliance" subtitle="In pharmaceutical and clinical environments, language is part of compliance. A single error in an SmPC, PIL, regulatory dossier, or clinical trial document can delay approvals or raise regulatory scrutiny." variant="full" backgroundElement={<HeroBackground />} cta={
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="group relative inline-flex items-center gap-2 bg-teal-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-teal-700 transition-all duration-300 hover:shadow-lg hover:shadow-teal-600/20" onClick={() => window.Beacon("open")}>
+          <button className="group relative inline-flex items-center gap-2 bg-teal-500 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-teal-400 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20" onClick={() => window.Beacon("open")}>
             Get a free estimate
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </button>
-          <Link href="/portfolio" className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-xl border-2 border-teal-600 text-teal-700 hover:bg-teal-50 transition-all duration-300">View Portfolio</Link>
+          <Link href="/portfolio" className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-xl border border-teal-400/40 text-teal-300 hover:bg-teal-500/10 transition-all duration-300">View Portfolio</Link>
         </div>
       } features={[
         { title: "Scientific Precision", description: "Expert translation by life sciences specialists with deep domain knowledge and terminology expertise." },
