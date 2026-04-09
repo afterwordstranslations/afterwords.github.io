@@ -25,11 +25,56 @@ const allPages = [
   ...blogPosts.map((slug) => ({ name: `blog-${slug}`, path: `/blog/${slug}` })),
 ];
 
+/**
+ * Disable CSS and JS animations for deterministic screenshots.
+ */
+async function disableAnimations(page: import("@playwright/test").Page) {
+  await page.addStyleTag({
+    content: `
+      *, *::before, *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+      }
+    `,
+  });
+  // Force all framer-motion elements to their final state
+  await page.evaluate(() => {
+    document.querySelectorAll("[style]").forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      htmlEl.style.opacity = htmlEl.style.opacity || "";
+      htmlEl.style.transform = htmlEl.style.transform || "";
+    });
+  });
+}
+
+/**
+ * Scroll through the entire page to trigger scroll-based animations,
+ * then scroll back to top for a clean full-page screenshot.
+ */
+async function triggerAnimations(page: import("@playwright/test").Page) {
+  await page.evaluate(async () => {
+    const step = window.innerHeight;
+    const maxScroll = document.body.scrollHeight;
+    for (let y = 0; y <= maxScroll; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 200));
+    }
+    window.scrollTo(0, maxScroll);
+    await new Promise((r) => setTimeout(r, 300));
+    window.scrollTo(0, 0);
+    await new Promise((r) => setTimeout(r, 200));
+  });
+}
+
 for (const page of allPages) {
   test(`${page.name} matches screenshot`, async ({ page: browserPage }) => {
-    await browserPage.goto(page.path, { waitUntil: "networkidle" });
-    // Wait for fonts and images to load
+    await browserPage.goto(page.path, { waitUntil: "domcontentloaded", timeout: 60000 });
     await browserPage.waitForTimeout(500);
+    await triggerAnimations(browserPage);
+    await disableAnimations(browserPage);
+    await browserPage.waitForTimeout(1000);
     await expect(browserPage).toHaveScreenshot(`${page.name}.png`, {
       fullPage: true,
     });

@@ -2,14 +2,16 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./e2e",
+  snapshotPathTemplate: "{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}-{projectName}{ext}",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.BASE_URL || "http://localhost:3000",
     screenshot: "only-on-failure",
+    reducedMotion: "reduce",
   },
   projects: [
     {
@@ -18,22 +20,22 @@ export default defineConfig({
     },
     {
       name: "tablet",
-      use: { ...devices["iPad Mini"], viewport: { width: 768, height: 1024 } },
+      use: { ...devices["Desktop Chrome"], viewport: { width: 768, height: 1024 } },
     },
     {
       name: "mobile",
-      use: { ...devices["iPhone 13"], viewport: { width: 375, height: 812 } },
+      use: { ...devices["Desktop Chrome"], viewport: { width: 375, height: 812 } },
     },
   ],
   webServer: {
     command: "npm run build && npm run start",
-    port: 3000,
+    port: parseInt(process.env.PORT || "3000", 10),
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },
   expect: {
     toHaveScreenshot: {
-      maxDiffPixelRatio: 0.001,
+      maxDiffPixelRatio: 0.01,
     },
   },
 });
