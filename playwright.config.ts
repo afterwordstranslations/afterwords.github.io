@@ -11,7 +11,9 @@ export default defineConfig({
   use: {
     baseURL: process.env.BASE_URL || "http://localhost:3000",
     screenshot: "only-on-failure",
-    reducedMotion: "reduce",
+    contextOptions: {
+      reducedMotion: "reduce",
+    },
   },
   projects: [
     {
