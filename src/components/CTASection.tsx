@@ -33,7 +33,7 @@ export const CTASection = ({
           <FadeIn delay={0.2}>
             <button
               className="group relative inline-flex items-center gap-2.5 bg-warm text-slate-900 font-semibold px-10 py-5 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 shadow-lg shadow-warm/25 hover:shadow-xl hover:shadow-warm/30 text-lg cursor-pointer"
-              onClick={() => window.Beacon("open")}
+              onClick={() => window.Beacon?.("open")}
             >
               {buttonText}
               <svg

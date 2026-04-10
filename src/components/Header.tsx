@@ -177,7 +177,7 @@ export function Header() {
             {/* Get a quote — Desktop */}
             <button
               className="hidden lg:inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300 cursor-pointer"
-              onClick={() => window.Beacon("open")}
+              onClick={() => window.Beacon?.("open")}
             >
               Get a quote
             </button>
@@ -304,7 +304,7 @@ export function Header() {
                   <button
                     className="w-full bg-warm text-slate-900 font-semibold text-sm px-5 py-3 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300 cursor-pointer"
                     onClick={() => {
-                      window.Beacon("open");
+                      window.Beacon?.("open");
                       closeAll();
                     }}
                   >

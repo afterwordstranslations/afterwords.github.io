@@ -127,7 +127,7 @@ export const Footer = () => {
             </div>
             <button
               className="text-sm text-warm hover:text-warm-dark transition-colors duration-200 cursor-pointer"
-              onClick={() => window.Beacon("open")}
+              onClick={() => window.Beacon?.("open")}
             >
               Get in touch &rarr;
             </button>

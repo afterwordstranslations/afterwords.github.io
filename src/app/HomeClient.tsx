@@ -127,7 +127,7 @@ export default function HomeClient() {
                 >
                   <button
                     className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20 cursor-pointer"
-                    onClick={() => window.Beacon("open")}
+                    onClick={() => window.Beacon?.("open")}
                   >
                     Get a free estimate
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -283,7 +283,7 @@ export default function HomeClient() {
           <FadeIn delay={0.3}>
             <button
               className="mt-10 group inline-flex items-center gap-2 text-warm-dark font-semibold hover:text-warm transition-colors duration-200 cursor-pointer"
-              onClick={() => window.Beacon("open")}
+              onClick={() => window.Beacon?.("open")}
             >
               Tell us about your industry
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

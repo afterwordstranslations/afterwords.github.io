@@ -75,7 +75,7 @@ export default function PharmaceuticalTranslationClient() {
     <div className="w-full bg-base-100 text-base-content">
       <PageHero badge="Specialized pharmaceutical and life sciences translation" title="Where Scientific Precision Meets Regulatory Compliance" subtitle="In pharmaceutical and clinical environments, language is part of compliance. A single error in an SmPC, PIL, regulatory dossier, or clinical trial document can delay approvals or raise regulatory scrutiny." variant="full" backgroundElement={<HeroBackground />} cta={
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="group relative inline-flex items-center gap-2 bg-teal-500 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-teal-400 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20" onClick={() => window.Beacon("open")}>
+          <button className="group relative inline-flex items-center gap-2 bg-teal-500 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-teal-400 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20" onClick={() => window.Beacon?.("open")}>
             Get a free estimate
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </button>
