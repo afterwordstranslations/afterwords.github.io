@@ -30,10 +30,13 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run build && npm run start",
-    port: parseInt(process.env.PORT || "3000", 10),
+    // The project uses `output: "standalone"` for Fly.io, which is
+    // incompatible with `next start`. `next dev` works regardless of
+    // output mode and matches how baseline screenshots were captured.
+    command: "npx next dev -p 3000",
+    url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
-    timeout: 120000,
+    timeout: 180000,
   },
   expect: {
     toHaveScreenshot: {
