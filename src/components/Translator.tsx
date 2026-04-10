@@ -49,14 +49,14 @@ export default function Translator({
         </a>
       </div>
 
-      <h3 className="font-[family-name:var(--font-display)] text-xl font-bold mb-2 text-base-content">
+      <h3 className="font-[family-name:var(--font-display)] text-[1.375rem] md:text-2xl font-bold leading-snug mb-3 text-base-content">
         {fullName}
       </h3>
-      <p className="text-base-content/70 text-sm leading-relaxed mb-4 flex-1">
+      <p className="text-base-content/70 text-sm leading-relaxed mb-4 min-h-[5lh]">
         {description}
       </p>
       {specializations.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="mt-auto flex flex-wrap gap-2 min-h-[3.25rem] content-start">
           {specializations.map((spec) => (
             <span
               key={spec}

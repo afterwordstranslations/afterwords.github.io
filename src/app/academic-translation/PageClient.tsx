@@ -82,10 +82,49 @@ const whyUsItems = [
 ];
 
 const specializations = [
-  { emoji: "\uD83D\uDCCA", label: "Econometrics" },
-  { emoji: "\uD83D\uDCBC", label: "Economics" },
-  { emoji: "\uD83C\uDFDB\uFE0F", label: "Politics" },
-  { emoji: "\uD83C\uDF93", label: "Pedagogics" },
+  {
+    label: "Econometrics",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M3 3v18h18" />
+        <path d="M7 15l4-4 3 3 5-6" />
+        <path d="M14 8h5v5" />
+      </svg>
+    ),
+  },
+  {
+    label: "Economics",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M12 3v18" />
+        <path d="M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6" />
+      </svg>
+    ),
+  },
+  {
+    label: "Politics",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M3 21h18" />
+        <path d="M3 10h18" />
+        <path d="M5 21V10" />
+        <path d="M10 21V10" />
+        <path d="M14 21V10" />
+        <path d="M19 21V10" />
+        <path d="M12 3L3 9h18z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Pedagogics",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 2 9 2 12 0v-5" />
+        <path d="M22 10v5" />
+      </svg>
+    ),
+  },
 ];
 
 export default function AcademicTranslationClient() {
@@ -199,7 +238,7 @@ export default function AcademicTranslationClient() {
                   whileHover="hover"
                 >
                   <motion.div
-                    className={`relative rounded-lg bg-gradient-to-b ${service.color} p-6 pt-10 pb-8 shadow-lg min-h-[280px] flex flex-col`}
+                    className={`relative rounded-lg bg-gradient-to-b ${service.color} p-6 pt-10 pb-8 shadow-lg aspect-[2/3] w-full max-w-[280px] mx-auto flex flex-col`}
                     variants={{
                       hover: {
                         rotateY: -6,
@@ -280,7 +319,7 @@ export default function AcademicTranslationClient() {
             {specializations.map((spec) => (
               <StaggerItem key={spec.label}>
                 <span className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-50 to-warm-subtle border border-warm/20 rounded-full px-6 py-3 text-base font-semibold text-base-content shadow-sm hover:shadow-md hover:border-warm/40 transition-all duration-300">
-                  <span className="text-xl">{spec.emoji}</span>
+                  <span className="text-warm-dark">{spec.icon}</span>
                   {spec.label}
                 </span>
               </StaggerItem>
@@ -293,10 +332,10 @@ export default function AcademicTranslationClient() {
               <div className="h-px w-12 bg-base-content/20" />
               <Image
                 alt="I work with SDL Trados Studio"
-                width={200}
-                height={50}
+                width={360}
+                height={90}
                 src="/trados.png"
-                className="w-40 grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-72 grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
           </FadeIn>
@@ -305,8 +344,8 @@ export default function AcademicTranslationClient() {
 
       {/* -- CTA -- */}
       <CTASection
-        title="Let&apos;s talk about your book"
-        description="Whether it&apos;s a 500-page textbook or a journal manuscript, we have the expertise and professional stamina to deliver excellence."
+        title="Your manuscript deserves a careful reader."
+        description="Whether it&apos;s a 500-page textbook or a journal article under deadline, bring it to translators who treat scholarship with the patience it requires."
         buttonText="Contact us"
       />
 

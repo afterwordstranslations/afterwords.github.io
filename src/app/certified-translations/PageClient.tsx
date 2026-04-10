@@ -177,13 +177,13 @@ export default function CertifiedTranslationsClient() {
       <section className="py-20 md:py-28 bg-base-200/50" id="services">
         <div className="container mx-auto px-8">
           <SectionHeader eyebrow="Our certified translation services" title="Document Portfolio" />
-          <StaggerContainer className="mt-16 max-w-3xl space-y-0 divide-y divide-base-300" staggerDelay={0.12}>
+          <StaggerContainer className="mt-16 max-w-3xl divide-y divide-base-300" staggerDelay={0.12}>
             {services.map((service) => (
-              <StaggerItem key={service.title}>
-                <div className="group flex items-start gap-6 py-8 first:pt-0 last:pb-0">
+              <StaggerItem key={service.title} className="py-6 first:pt-0 last:pb-0">
+                <div className="group flex items-start gap-6">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-warm/10 border border-warm/20 flex items-center justify-center text-warm group-hover:bg-warm group-hover:text-slate-900 transition-all duration-300">{service.icon}</div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-base-content mb-2">{service.title}</h3>
+                  <div className="flex-1 pt-1">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-base-content mb-2.5 leading-snug">{service.title}</h3>
                     <p className="text-base-content/60 leading-relaxed">{service.description}</p>
                   </div>
                 </div>
@@ -256,7 +256,8 @@ export default function CertifiedTranslationsClient() {
       {/* Credentials */}
       <section className="py-16 border-y border-base-300">
         <div className="container mx-auto px-8">
-          <FadeIn><p className="text-sm font-semibold uppercase tracking-[0.2em] text-warm-dark text-center mb-10">Certification & Professional Standing</p></FadeIn>
+          <FadeIn><p className="text-sm font-semibold uppercase tracking-[0.2em] text-warm-dark text-center mb-4">Certification & Professional Standing</p></FadeIn>
+          <FadeIn delay={0.05}><h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl leading-tight text-center text-base-content mb-5">Accredited, recognized, trusted</h2></FadeIn>
           <FadeIn delay={0.1}><p className="text-center text-base-content/70 text-lg max-w-2xl mx-auto mb-12">Every translation is handled by expert graduates of the Ionian University and carries the official seals required for legal validity.</p></FadeIn>
           <StaggerContainer className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6" staggerDelay={0.1}>
             {credentials.map((cred) => (
@@ -272,7 +273,7 @@ export default function CertifiedTranslationsClient() {
       </section>
 
       {/* CTA */}
-      <CTASection title="Let's handle your official documents" description="From legal paperwork to educational records, we deliver certified translations with full legal validity and express delivery options." buttonText="Contact us" />
+      <CTASection title="Stamped, signed, and accepted where it matters." description="Court filings, diplomas, birth certificates, contracts — certified translations that hold up at embassies, ministries, and courtrooms across Europe." buttonText="Contact us" />
 
       {/* Footer */}
       <Footer />

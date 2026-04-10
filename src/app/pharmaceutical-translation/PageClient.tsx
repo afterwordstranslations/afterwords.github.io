@@ -18,6 +18,7 @@ const services = [
   { title: "Clinical Trial Documentation", description: "Clinical trial documentation, protocols, and informed consent forms with absolute accuracy and consistency." },
   { title: "Pharmacovigilance & MAH", description: "Pharmacovigilance and MAH documentation with audit-ready quality and terminology precision." },
   { title: "Patient-Facing Materials", description: "Patient-facing and medical materials that balance accuracy with accessibility and clarity." },
+  { title: "Medical Device Documentation", description: "EU MDR and IVDR-compliant translation of IFUs, labeling, and technical documentation into all required EU languages for CE marking." },
 ];
 
 const qualityProcess = [
@@ -172,7 +173,7 @@ export default function PharmaceuticalTranslationClient() {
         </div>
       </section>
 
-      <CTASection title="Confidence in Every Submission" description="Whether it's regulatory submissions, clinical trial documentation, or patient-facing materials, we have the expertise to deliver excellence." buttonText="Contact us" />
+      <CTASection title="Confidence in every submission." description="Regulatory dossiers, clinical trial protocols, patient leaflets — translated by specialists who know EMA and FDA requirements inside-out." buttonText="Contact us" />
       <Footer />
     </div>
   );

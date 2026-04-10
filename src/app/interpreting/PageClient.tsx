@@ -101,16 +101,19 @@ export default function InterpretingClient() {
       <section className="py-20 md:py-28 bg-base-200/50" id="services">
         <div className="container mx-auto px-8">
           <SectionHeader eyebrow="Our interpreting services" title="Service Portfolio" align="center" />
-          <div className="mt-16 max-w-3xl mx-auto space-y-8">
+          <div className="mt-16 max-w-3xl mx-auto space-y-4">
             {services.map((service, i) => {
               const isLeft = service.direction === "left";
               return (
                 <FadeIn key={service.label} direction={service.direction} delay={i * 0.1}>
-                  <div className={`flex ${isLeft ? "justify-start" : "justify-end"}`}>
-                    <div className={`relative max-w-lg p-6 rounded-2xl ${isLeft ? "bg-emerald-600/10 border border-emerald-500/20 rounded-bl-sm" : "bg-teal-600/10 border border-teal-500/20 rounded-br-sm"}`}>
-                      <div className={`absolute bottom-0 w-4 h-4 ${isLeft ? "-left-1 bg-emerald-600/10 border-l border-b border-emerald-500/20" : "-right-1 bg-teal-600/10 border-r border-b border-teal-500/20"}`} style={{ clipPath: isLeft ? "polygon(100% 0, 0% 100%, 100% 100%)" : "polygon(0 0, 100% 100%, 0 100%)" }} />
-                      <h3 className="text-lg font-bold mb-2 text-base-content">{service.label}</h3>
-                      <p className="text-base-content/70 leading-relaxed">{service.description}</p>
+                  <div className={`chat ${isLeft ? "chat-start" : "chat-end"}`}>
+                    <div
+                      className={`chat-bubble max-w-lg ${
+                        isLeft ? "chat-bubble-success" : "chat-bubble-info"
+                      }`}
+                    >
+                      <h3 className="text-lg font-bold mb-1">{service.label}</h3>
+                      <p className="leading-relaxed opacity-90">{service.description}</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -154,7 +157,7 @@ export default function InterpretingClient() {
         </div>
       </section>
 
-      <CTASection title="Let's talk about your event" description="Whether it's a private executive session or a large-scale conference, we have the expertise and elite talent to deliver excellence." buttonText="Contact us" />
+      <CTASection title="The right voice in the room." description="Board meetings, arbitration hearings, international summits — we match interpreters to your moment, not just your language pair." buttonText="Contact us" />
       <Footer />
     </div>
   );

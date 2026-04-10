@@ -64,12 +64,12 @@ const primaryServices = [
 ];
 
 const industries = [
-  { label: "Pharmaceutical & Life Sciences", href: "/pharmaceutical-translation", description: "Regulatory-compliant translation for submissions, clinical documentation, and patient-facing materials.", span: "md:col-span-2", borderColor: "border-l-teal-500" },
-  { label: "Maritime", href: "/maritime-translation", description: "Technical and legal maritime translation for shipowners, crewing managers, and maritime law firms.", borderColor: "border-l-blue-500" },
-  { label: "Academic Books", href: "/academic-translation", description: "Translations that preserve the intellectual rigor and voice of scholarly works.", borderColor: "border-l-amber-500" },
-  { label: "Legal & Financial", description: "Accurate translations of contracts, legal proceedings, and financial statements.", span: "md:col-span-2", borderColor: "border-l-indigo-500" },
-  { label: "Websites", description: "Engaging and culturally attuned translations to enhance your online presence.", borderColor: "border-l-emerald-500" },
-  { label: "Agriculture & Agroforestry", description: "Specialized translations bolstered by a PDC at Oregon State University.", borderColor: "border-l-orange-500" },
+  { label: "Pharmaceutical & Life Sciences", href: "/pharmaceutical-translation", description: "Regulatory-compliant translation for submissions, clinical documentation, and patient-facing materials." },
+  { label: "Maritime", href: "/maritime-translation", description: "Technical and legal maritime translation for shipowners, crewing managers, and maritime law firms." },
+  { label: "Academic Books", href: "/academic-translation", description: "Translations that preserve the intellectual rigor and voice of scholarly works." },
+  { label: "Legal & Financial", description: "Accurate translations of contracts, legal proceedings, and financial statements." },
+  { label: "Websites", description: "Engaging and culturally attuned translations to enhance your online presence." },
+  { label: "Agriculture & Agroforestry", description: "Specialized translations bolstered by a PDC at Oregon State University." },
 ];
 
 export default function HomeClient() {
@@ -249,11 +249,11 @@ export default function HomeClient() {
             description="We provide specialized translation services designed to meet the unique needs of businesses, organizations, and individuals."
           />
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-16">
             {industries.map((ind) => {
-              const cardClasses = `card-surface h-full p-6 rounded-2xl border border-base-300 border-l-4 ${ind.borderColor} hover:shadow-lg transition-all duration-300`;
+              const cardClasses = "card-surface h-full flex flex-col p-6 rounded-2xl border border-base-300 hover:shadow-lg transition-all duration-300";
               return (
-                <StaggerItem key={ind.label} className={ind.span || ""}>
+                <StaggerItem key={ind.label}>
                   {ind.href ? (
                     <Link href={ind.href} className="block h-full group">
                       <div className={cardClasses}>
@@ -261,7 +261,7 @@ export default function HomeClient() {
                           {ind.label}
                         </h3>
                         <p className="text-sm text-base-content/60 leading-relaxed">{ind.description}</p>
-                        <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-warm-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-warm-dark group-hover:gap-2 transition-all duration-300">
                           Learn more
                           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -328,10 +328,38 @@ export default function HomeClient() {
               shortName="Anna Maria"
               href="https://www.linkedin.com/in/amchatzistylianou/"
               description="Anna Maria is your go-to specialist for maritime and legal translation, delivering linguistic precision with deep industry knowledge."
-              specializations={["Maritime", "Legal", "Subtitling"]}
+              specializations={["Maritime", "Legal", "Subtitling", "Transcreation"]}
               index={2}
             />
           </div>
+
+          <FadeIn delay={0.2}>
+            <div className="mt-16 flex flex-col items-center text-center">
+              <p className="text-base-content/70 text-lg max-w-2xl mb-6">
+                Curious what we&apos;ve delivered? Explore a selection of our
+                recent translation and interpreting projects.
+              </p>
+              <Link
+                href="/portfolio"
+                className="group inline-flex items-center gap-2 rounded-xl border border-warm/40 bg-warm-subtle/40 px-8 py-4 font-semibold text-base-content transition-all duration-300 hover:border-warm hover:bg-warm-subtle hover:shadow-md"
+              >
+                See our portfolio
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="M13 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -340,8 +368,8 @@ export default function HomeClient() {
 
       {/* ===== CTA ===== */}
       <CTASection
-        title="Let's bring your words to the world."
-        description="Whether you need a book translated, interpreters for a conference, or certified documents for a deadline — we're here to help."
+        title="Send us the first page."
+        description="Books, contracts, conferences, films — every project starts with a conversation. Tell us what you're working on and we'll tell you how we'd approach it."
         buttonText="Get in touch"
       />
 

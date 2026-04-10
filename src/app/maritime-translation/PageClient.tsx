@@ -119,7 +119,7 @@ export default function MaritimeTranslationClient() {
               <StaggerItem key={service.id}>
                 <div className="group relative flex gap-6 md:gap-8 py-8 border-b border-slate-200 last:border-b-0">
                   <div className="hidden sm:flex flex-col items-center">
-                    <span className="text-xs font-bold text-amber-700/70 tracking-widest uppercase mb-2">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-xs font-bold text-amber-700/70 tracking-widest uppercase mt-[6px] md:mt-[9px] mb-2 leading-none">{String(i + 1).padStart(2, "0")}</span>
                     <div className="w-px flex-1 bg-gradient-to-b from-amber-500 to-amber-500/20" />
                   </div>
                   <div className="flex-1">
@@ -162,7 +162,7 @@ export default function MaritimeTranslationClient() {
         <div className="container mx-auto px-8">
           <SectionHeader eyebrow="Our expertise" title="European Maritime" titleItalic="Hubs" description="We provide end-to-end linguistic solutions for high-impact shipping projects across these core jurisdictions:" />
           <div className="mt-16 relative">
-            <div className="absolute top-0 bottom-0 left-[19px] md:left-0 md:top-1/2 md:right-0 md:bottom-auto md:w-full md:h-px border-l md:border-l-0 md:border-t-2 border-dashed border-amber-500/30 md:-translate-y-1/2 z-0" />
+            <div className="absolute top-0 bottom-0 left-[19px] md:left-0 md:top-5 md:right-0 md:bottom-auto md:w-full md:h-px border-l md:border-l-0 md:border-t-2 border-dashed border-amber-500/30 md:-translate-y-1/2 z-0" />
             <StaggerContainer className="relative z-10 grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4" staggerDelay={0.1}>
               {languages.map((lang) => (
                 <StaggerItem key={lang.code}>
@@ -185,7 +185,7 @@ export default function MaritimeTranslationClient() {
         </div>
       </section>
 
-      <CTASection title="Your dedicated partner is ready" description="Whether it's a 1,000-page technical manual or an urgent arbitration claim, your dedicated partner is ready to deliver excellence." buttonText="Contact us" />
+      <CTASection title="When the claim lands at 2am." description="Urgent arbitration filings, technical manuals, charter party disputes — maritime work rarely waits, and neither do we." buttonText="Contact us" />
       <Footer />
     </div>
   );

@@ -202,7 +202,7 @@ export default function PortfolioClient() {
         </div>
       </section>
 
-      <CTASection title="Let's discuss your needs" description="Whether you need specialized translation, certified documents, or media localization, we deliver quality, speed, and reliability." buttonText="Contact us" />
+      <CTASection title="Your project could be next." description="You've seen the work. Now tell us about yours, and we'll walk you through how we'd approach it." buttonText="Contact us" />
       <Footer />
     </div>
   );

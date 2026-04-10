@@ -58,10 +58,53 @@ const whyUs = [
 ];
 
 const specializations = [
-  { emoji: "\uD83C\uDFAC", label: "Film Festivals" },
-  { emoji: "\uD83C\uDFAD", label: "Theatre" },
-  { emoji: "\uD83D\uDCFA", label: "TV Series" },
-  { emoji: "\uD83C\uDFA5", label: "Documentaries" },
+  {
+    label: "Film Festivals",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <rect x="3" y="6" width="18" height="12" rx="1" />
+        <circle cx="7" cy="9" r="1" />
+        <circle cx="12" cy="9" r="1" />
+        <circle cx="17" cy="9" r="1" />
+        <circle cx="7" cy="15" r="1" />
+        <circle cx="12" cy="15" r="1" />
+        <circle cx="17" cy="15" r="1" />
+      </svg>
+    ),
+  },
+  {
+    label: "Theatre",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <path d="M3 4h18" />
+        <path d="M5 4v6a7 7 0 0 0 14 0V4" />
+        <path d="M9 11c.5 1 1.5 1.5 3 1.5S14.5 12 15 11" />
+        <circle cx="9" cy="8" r="0.5" fill="currentColor" />
+        <circle cx="15" cy="8" r="0.5" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    label: "TV Series",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <rect x="3" y="7" width="18" height="12" rx="2" />
+        <path d="M8 3l4 4 4-4" />
+        <path d="M8 19v2" />
+        <path d="M16 19v2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Documentaries",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <path d="M4 6h11l3 3v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z" />
+        <circle cx="11" cy="13" r="3" />
+        <circle cx="11" cy="13" r="0.8" fill="currentColor" />
+      </svg>
+    ),
+  },
 ];
 
 const heroFeatures = [
@@ -191,30 +234,31 @@ export default function AudiovisualTranslationClient() {
           />
 
           {/* Filmstrip frames */}
-          <div className="mt-12 flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible scrollbar-hide">
-            <StaggerContainer className="contents" staggerDelay={0.12}>
-              {services.map((service) => (
-                <StaggerItem key={service.id} className="min-w-[300px] md:min-w-0">
-                  <div className="relative h-full rounded-xl border border-amber-400/20 bg-slate-900/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-amber-400/40 hover:shadow-lg hover:shadow-amber-500/5 group">
-                    {/* Golden accent top bar */}
-                    <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
-                    {/* Sprocket holes */}
-                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full border border-amber-400/30" />
-                    <div className="absolute top-3 right-3 w-2 h-2 rounded-full border border-amber-400/30" />
-                    <div className="absolute bottom-3 left-3 w-2 h-2 rounded-full border border-amber-400/30" />
-                    <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full border border-amber-400/30" />
+          <StaggerContainer
+            className="mt-12 flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible scrollbar-hide"
+            staggerDelay={0.12}
+          >
+            {services.map((service) => (
+              <StaggerItem key={service.id} className="min-w-[300px] md:min-w-0">
+                <div className="relative h-full rounded-xl border border-amber-400/20 bg-slate-900/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-amber-400/40 hover:shadow-lg hover:shadow-amber-500/5 group">
+                  {/* Golden accent top bar */}
+                  <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
+                  {/* Sprocket holes */}
+                  <div className="absolute top-3 left-3 w-2 h-2 rounded-full border border-amber-400/30" />
+                  <div className="absolute top-3 right-3 w-2 h-2 rounded-full border border-amber-400/30" />
+                  <div className="absolute bottom-3 left-3 w-2 h-2 rounded-full border border-amber-400/30" />
+                  <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full border border-amber-400/30" />
 
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">
-                      {service.label}
-                    </h3>
-                    <p className="text-white/60 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">
+                    {service.label}
+                  </h3>
+                  <p className="text-white/60 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
@@ -270,11 +314,13 @@ export default function AudiovisualTranslationClient() {
                 <motion.div
                   whileHover={{ scale: 1.05, y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="relative px-8 py-5 rounded-xl border border-amber-400/25 bg-gradient-to-br from-slate-900 to-slate-800 cursor-default group"
+                  className="relative flex items-center gap-3 px-8 py-5 rounded-xl border border-amber-400/25 bg-gradient-to-br from-slate-900 to-slate-800 cursor-default group"
                 >
                   {/* Dramatic top glow on hover */}
                   <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="text-3xl mr-3">{spec.emoji}</span>
+                  <span className="text-amber-300/90 group-hover:text-amber-300 transition-colors duration-300">
+                    {spec.icon}
+                  </span>
                   <span className="text-lg font-semibold text-white tracking-wide uppercase">
                     {spec.label}
                   </span>
@@ -287,8 +333,8 @@ export default function AudiovisualTranslationClient() {
 
       {/* -- CTA -- */}
       <CTASection
-        title="Let's discuss your project"
-        description="Whether it's a single film or an entire film festival, we have the expertise to deliver seamless, professional subtitles."
+        title="Subtitles your audience will forget they're reading."
+        description="Feature films, documentaries, entire festival slates — we time, translate, and quality-check every frame so the story lands intact."
         buttonText="Contact us"
       />
 
