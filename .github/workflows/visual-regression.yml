@@ -7,7 +7,13 @@ on:
 jobs:
   visual-regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    # Run inside the official Playwright image so visual baselines
+    # are byte-identical regardless of the runner's host OS/fonts.
+    # Must match the @playwright/test version in package.json.
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-noble
+      options: --ipc=host
     steps:
       - uses: actions/checkout@v4
 
@@ -18,11 +24,10 @@ jobs:
 
       - run: npm ci
 
-      - run: npx playwright install --with-deps chromium
-
       - run: npx playwright test
         env:
           CI: true
+          HOME: /root
 
       - uses: actions/upload-artifact@v4
         if: failure()
