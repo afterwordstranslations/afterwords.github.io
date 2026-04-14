@@ -51,12 +51,12 @@ export default function NotFound() {
                 <Link href="/" className="btn btn-lg btn-accent">
                   Go to Homepage
                 </Link>
-                <button
+                <Link
+                  href="/get-a-quote"
                   className="btn btn-lg btn-outline btn-accent"
-                  onClick={() => window.Beacon?.("open")}
                 >
                   Contact Us
-                </button>
+                </Link>
               </div>
             </div>
           </div>

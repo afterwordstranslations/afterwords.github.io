@@ -175,12 +175,12 @@ export function Header() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             {/* Get a quote — Desktop */}
-            <button
-              className="hidden lg:inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300 cursor-pointer"
-              onClick={() => window.Beacon?.("open")}
+            <Link
+              href="/get-a-quote"
+              className="hidden lg:inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300"
             >
               Get a quote
-            </button>
+            </Link>
 
             {/* LinkedIn */}
             <a
@@ -301,15 +301,13 @@ export function Header() {
                   transition={{ delay: (navCategories.length + 1) * 0.05 }}
                   className="mt-4"
                 >
-                  <button
-                    className="w-full bg-warm text-slate-900 font-semibold text-sm px-5 py-3 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300 cursor-pointer"
-                    onClick={() => {
-                      window.Beacon?.("open");
-                      closeAll();
-                    }}
+                  <Link
+                    href="/get-a-quote"
+                    className="block w-full text-center bg-warm text-slate-900 font-semibold text-sm px-5 py-3 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300"
+                    onClick={closeAll}
                   >
                     Get a quote
-                  </button>
+                  </Link>
                 </motion.div>
               </div>
             </motion.nav>

@@ -155,12 +155,12 @@ export default function AudiovisualTranslationClient() {
         variant="full"
         cta={
           <div className="flex flex-col sm:flex-row gap-4">
-            <button
+            <Link
+              href="/get-a-quote"
               className="group relative inline-flex items-center gap-2 bg-amber-400 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-amber-300 transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/20"
-              onClick={() => window.Beacon?.("open")}
             >
               Get a free estimate
-            </button>
+            </Link>
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 border border-amber-400/40 text-amber-300 font-semibold px-8 py-4 rounded-xl hover:bg-amber-400/10 transition-all duration-300"

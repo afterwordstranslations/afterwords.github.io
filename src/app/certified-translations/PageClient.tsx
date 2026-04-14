@@ -121,15 +121,15 @@ export default function CertifiedTranslationsClient() {
         subtitle="Get certified translations from Ionian University graduates. Our sworn translations carry official association seals and are accepted by all public and private authorities in Greece and abroad."
         cta={
           <div className="flex flex-col sm:flex-row gap-4">
-            <button
+            <Link
+              href="/get-a-quote"
               className="group relative inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20"
-              onClick={() => window.Beacon?.("open")}
             >
               Get a free quote
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </button>
+            </Link>
             <Link href="/portfolio" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-300">
               View Portfolio
             </Link>

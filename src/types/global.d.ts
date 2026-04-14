@@ -1,6 +1,7 @@
 declare global {
   interface Window {
-    Beacon: (action: string) => void;
+    Beacon: (action: string, data?: Record<string, unknown>) => void;
+    gtag: (...args: unknown[]) => void;
   }
 }
 

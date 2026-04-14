@@ -97,7 +97,7 @@ export default function RootLayout({
           <Script
             id="beacon-2"
             type="text/javascript"
-          >{`window.Beacon('init', '${process.env.NEXT_PUBLIC_HELPSCOUT_BEACON_ID}')`}</Script>
+          >{`window.Beacon('init', '${process.env.NEXT_PUBLIC_HELPSCOUT_BEACON_ID}'); window.Beacon('config', {display: {style: 'manual'}})`}</Script>
         </>
       )}
     </html>

@@ -125,12 +125,12 @@ export const Footer = () => {
                 </a>
               ))}
             </div>
-            <button
-              className="text-sm text-warm hover:text-warm-dark transition-colors duration-200 cursor-pointer"
-              onClick={() => window.Beacon?.("open")}
+            <Link
+              href="/get-a-quote"
+              className="text-sm text-warm hover:text-warm-dark transition-colors duration-200"
             >
               Get in touch &rarr;
-            </button>
+            </Link>
           </div>
         </div>
 
