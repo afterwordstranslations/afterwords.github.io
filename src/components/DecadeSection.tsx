@@ -69,7 +69,7 @@ export const DecadeSection = () => {
         10+
       </div>
 
-      <div className="container mx-auto px-8 relative z-10">
+      <div className="container mx-auto px-8 relative z-[1]">
         <SectionHeader
           eyebrow="10th Anniversary"
           title="Our Decade of Excellence"

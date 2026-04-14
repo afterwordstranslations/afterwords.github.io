@@ -76,9 +76,9 @@ export default function HomeClient() {
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* ===== HERO ===== */}
-      <section className="relative w-full overflow-hidden min-h-[100vh] flex flex-col">
+      <section className="relative w-full min-h-[100vh] flex flex-col">
         {/* Gradient mesh background */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
           <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-warm/8 blur-[150px]" />
           <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-secondary/20 blur-[120px]" />

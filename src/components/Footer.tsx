@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { getEmail } from "~/lib/email";
 
 const serviceLinks = [
   { label: "Certified Translations", href: "/certified-translations" },
@@ -131,6 +132,9 @@ export const Footer = () => {
             >
               Get in touch &rarr;
             </Link>
+            <p className="text-white/60 text-sm mt-3">
+              {getEmail()}
+            </p>
           </div>
         </div>
 

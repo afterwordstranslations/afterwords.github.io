@@ -33,11 +33,13 @@ export const PageHero = ({
   const featureDesc = lightHero ? "text-base-content/50" : "text-white/50";
 
   return (
-    <section className={`relative w-full overflow-hidden ${className}`}>
+    <section className={`relative w-full ${className}`}>
       {/* Background */}
-      {backgroundElement || (
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-      )}
+      <div className="absolute inset-0 overflow-hidden">
+        {backgroundElement || (
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+        )}
+      </div>
 
       <div className={`relative z-10 px-8 lg:px-24 ${paddingClass}`}>
         <Header />
