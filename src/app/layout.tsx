@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import { EmailOverlayProvider } from "~/components/EmailOverlay";
 
 const noto = Noto_Sans({ subsets: ["latin", "greek"], variable: "--font-body" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-display" });
@@ -72,7 +73,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${noto.variable} ${playfair.variable}`}>{children}</body>
+      <body className={`${noto.variable} ${playfair.variable}`}>
+        <EmailOverlayProvider>{children}</EmailOverlayProvider>
+      </body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
         <>
           <Script

@@ -17,7 +17,7 @@ export interface QuoteState {
   customVolume: string;
   timeline: string;
   customContext: string;
-  specialRequirements: string;
+  specialRequirements: string[];
   customRequirements: string;
 }
 
@@ -33,7 +33,7 @@ export type QuoteAction =
   | { type: "SET_VOLUME"; payload: string }
   | { type: "SET_CUSTOM_VOLUME"; payload: string }
   | { type: "SET_TIMELINE"; payload: string }
-  | { type: "SET_SPECIAL_REQUIREMENTS"; payload: string }
+  | { type: "TOGGLE_SPECIAL_REQUIREMENT"; payload: string }
   | { type: "SET_CUSTOM_REQUIREMENTS"; payload: string }
   | { type: "NEXT_STEP" }
   | { type: "PREV_STEP" }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "~/components/ThemeToggle";
 import { getEmail } from "~/lib/email";
+import { useEmailOverlay } from "~/components/EmailOverlay";
 
 interface NavCategory {
   label: string;
@@ -40,7 +41,7 @@ const navCategories: NavCategory[] = [
 
 // ─── Compact Scroll Bar ───────────────────────────────────────────────────
 
-function CompactBar({ visible }: { visible: boolean }) {
+function CompactBar({ visible, onEmailClick }: { visible: boolean; onEmailClick: () => void }) {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -78,15 +79,15 @@ function CompactBar({ visible }: { visible: boolean }) {
 
             {/* Contact links */}
             <div className="flex items-center gap-3 md:gap-5 text-xs">
-              <a
-                href={`mailto:${getEmail()}`}
-                className="flex items-center gap-1.5 text-base-content/70 hover:text-warm transition-colors duration-200"
+              <button
+                onClick={onEmailClick}
+                className="flex items-center gap-1.5 text-base-content/70 hover:text-warm transition-colors duration-200 cursor-pointer"
               >
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
                 <span className="hidden sm:inline">{getEmail()}</span>
-              </a>
+              </button>
               <a
                 href="https://wa.me/306988854427"
                 target="_blank"
@@ -131,6 +132,7 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const { openEmailOverlay } = useEmailOverlay();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 200);
@@ -183,7 +185,7 @@ export function Header() {
   return (
     <>
     {/* Compact bar — slides in when scrolled past header */}
-    <CompactBar visible={scrolled} />
+    <CompactBar visible={scrolled} onEmailClick={() => openEmailOverlay()} />
 
     <header
       ref={navRef}
@@ -192,15 +194,15 @@ export function Header() {
       {/* ── Utility bar ── */}
       <div>
         <div className="container mx-auto flex items-center justify-between text-xs mb-3 pb-3 border-b border-white/10">
-          <a
-            href={`mailto:${getEmail()}`}
-            className="flex items-center gap-1.5 text-white/60 hover:text-warm transition-colors duration-200"
+          <button
+            onClick={() => openEmailOverlay()}
+            className="flex items-center gap-1.5 text-white/60 hover:text-warm transition-colors duration-200 cursor-pointer"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
             {getEmail()}
-          </a>
+          </button>
           <div className="flex items-center gap-4">
             <a
               href="https://wa.me/306988854427"

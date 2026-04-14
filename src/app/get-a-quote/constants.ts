@@ -72,31 +72,55 @@ export const VOLUME_PRESETS_INTERPRETING = [
   "Multi-day conference",
 ] as const;
 
-// ─── Service-aware requirement presets ────────────────────────────────────
+// ─── Service × project-type requirement presets ──────────────────────────
 
-export const REQUIREMENT_PRESETS_TRANSLATION = [
-  "Apostille / notarisation needed",
-  "Specific terminology glossary",
-  "Preserve original formatting",
-  "NDA / confidentiality required",
-  "Certified / sworn translation",
-] as const;
-
-export const REQUIREMENT_PRESETS_SUBTITLING = [
-  "Timecoded subtitles (SRT / VTT)",
-  "Burn-in (hardcoded) subtitles",
-  "Closed captions (incl. sound effects)",
-  "Specific style guide / font",
-  "NDA / confidentiality required",
-] as const;
-
-export const REQUIREMENT_PRESETS_INTERPRETING = [
-  "Simultaneous interpreting",
-  "Consecutive interpreting",
-  "Interpreting equipment needed",
-  "Remote / online event",
-  "NDA / confidentiality required",
-] as const;
+export const REQUIREMENT_PRESETS: Record<
+  string,
+  { personal: string[]; business: string[] }
+> = {
+  "Certified Translations": {
+    personal: [
+      "Apostille / legalisation needed",
+      "Embassy submission",
+      "Sworn translation required",
+      "Multiple certified copies",
+    ],
+    business: [
+      "NDA / confidentiality required",
+      "Terminology glossary provided",
+      "Specific formatting (e.g. patent layout)",
+      "Notarisation needed",
+    ],
+  },
+  "Subtitling Services": {
+    personal: [
+      "Timecoded subtitles (SRT / VTT)",
+      "Burn-in (hardcoded) subtitles",
+      "Closed captions / SDH",
+      "Speaker identification needed",
+    ],
+    business: [
+      "Timecoded subtitles (SRT / VTT)",
+      "Burn-in (hardcoded) subtitles",
+      "Closed captions / SDH",
+      "Speaker identification needed",
+    ],
+  },
+  Interpreting: {
+    personal: [
+      "Simultaneous interpreting",
+      "Consecutive interpreting",
+      "Equipment needed",
+      "Remote / hybrid setup",
+    ],
+    business: [
+      "Simultaneous interpreting",
+      "Consecutive interpreting",
+      "Equipment needed",
+      "Remote / hybrid setup",
+    ],
+  },
+};
 
 export const TIMELINES = [
   {
@@ -126,14 +150,11 @@ export const TIMELINES = [
 ] as const;
 
 export const STEP_LABELS = [
-  "Services",
-  "Project type",
+  "Services & type",
   "Context",
   "Languages",
-  "Volume",
-  "Timeline",
+  "Volume & timeline",
   "Requirements",
-  "Review",
   "Contact",
 ] as const;
 
