@@ -1,7 +1,8 @@
-import Link from "next/link";
+import { Link } from "~/i18n/navigation";
 import Image from "next/image";
 import { formatDate, estimateReadingTime } from "~/lib/blog";
 import { BlogClickTracker } from "./BlogClickTracker";
+import { useTranslations } from "next-intl";
 
 interface BlogCardProps {
   title: string;
@@ -14,6 +15,7 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ title, excerpt, date, slug, image, content, trackingContext = "listing" }: BlogCardProps) {
+  const t = useTranslations("Blog");
   const readingTime = estimateReadingTime(content);
 
   return (
@@ -36,7 +38,7 @@ export function BlogCard({ title, excerpt, date, slug, image, content, trackingC
           <div className="flex items-center gap-3 text-xs text-base-content/50">
             <time dateTime={date}>{formatDate(date)}</time>
             <span className="w-1 h-1 rounded-full bg-base-content/30" />
-            <span>{readingTime} min read</span>
+            <span>{t("minRead", { minutes: readingTime })}</span>
           </div>
           <h3 className="font-[family-name:var(--font-display)] text-lg leading-snug text-base-content group-hover:text-warm-dark transition-colors duration-300">
             {title}
@@ -44,7 +46,7 @@ export function BlogCard({ title, excerpt, date, slug, image, content, trackingC
           <p className="text-base-content/60 text-sm leading-relaxed line-clamp-3">{excerpt}</p>
           <div className="mt-auto pt-3">
             <span className="text-warm-dark text-sm font-medium inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
-              Read article
+              {t("readArticle")}
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
@@ -59,6 +61,7 @@ export function BlogCard({ title, excerpt, date, slug, image, content, trackingC
 }
 
 export function FeaturedBlogCard({ title, excerpt, date, slug, image, content, trackingContext = "featured" }: BlogCardProps) {
+  const t = useTranslations("Blog");
   const readingTime = estimateReadingTime(content);
 
   return (
@@ -83,18 +86,18 @@ export function FeaturedBlogCard({ title, excerpt, date, slug, image, content, t
         <div className="relative z-10 p-8 md:p-12 w-full max-w-3xl">
           <div className="flex items-center gap-3 text-sm text-white/60 mb-4">
             <span className="bg-warm text-slate-900 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
-              Latest
+              {t("latest")}
             </span>
             <time dateTime={date}>{formatDate(date)}</time>
             <span className="w-1 h-1 rounded-full bg-white/40" />
-            <span>{readingTime} min read</span>
+            <span>{t("minRead", { minutes: readingTime })}</span>
           </div>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl leading-tight text-white mb-4">
             {title}
           </h2>
           <p className="text-white/70 text-lg leading-relaxed mb-6 line-clamp-2 max-w-2xl">{excerpt}</p>
           <span className="inline-flex items-center gap-2 text-warm font-medium group-hover:gap-3 transition-all duration-300">
-            Read article
+            {t("readArticle")}
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
