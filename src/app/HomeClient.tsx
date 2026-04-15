@@ -76,9 +76,9 @@ export default function HomeClient() {
   return (
     <div className="w-full bg-base-100 text-base-content">
       {/* ===== HERO ===== */}
-      <section className="relative w-full overflow-hidden min-h-[100vh] flex flex-col">
+      <section className="relative w-full min-h-[100vh] flex flex-col">
         {/* Gradient mesh background */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
           <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-warm/8 blur-[150px]" />
           <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-secondary/20 blur-[120px]" />
@@ -125,15 +125,15 @@ export default function HomeClient() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1 }}
                 >
-                  <button
-                    className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20 cursor-pointer"
-                    onClick={() => window.Beacon?.("open")}
+                  <Link
+                    href="/get-a-quote"
+                    className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20"
                   >
                     Get a free estimate
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </button>
+                  </Link>
                   <Link
                     href="/portfolio"
                     className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
@@ -281,15 +281,15 @@ export default function HomeClient() {
           </StaggerContainer>
 
           <FadeIn delay={0.3}>
-            <button
-              className="mt-10 group inline-flex items-center gap-2 text-warm-dark font-semibold hover:text-warm transition-colors duration-200 cursor-pointer"
-              onClick={() => window.Beacon?.("open")}
+            <Link
+              href="/get-a-quote"
+              className="mt-10 group inline-flex items-center gap-2 text-warm-dark font-semibold hover:text-warm transition-colors duration-200"
             >
               Tell us about your industry
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </button>
+            </Link>
           </FadeIn>
         </div>
       </section>

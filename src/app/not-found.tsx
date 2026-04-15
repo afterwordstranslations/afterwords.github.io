@@ -11,18 +11,20 @@ export default function NotFound() {
       {/* Hero Section */}
       <div className="hero-section bg-sl h-full">
         <section
-          className="relative w-full overflow-hidden pb-16"
+          className="relative w-full pb-16"
           style={{
             background:
               "linear-gradient(to top right, oklch(27% 0.041 260.031), oklch(44% 0.043 257.281), oklch(27% 0.046 192.524))",
           }}
         >
-          <Image
-            src="/bg.jpg"
-            alt="Professional signing document"
-            fill
-            className="object-cover"
-          />
+          <div className="absolute inset-0 overflow-hidden">
+            <Image
+              src="/bg.jpg"
+              alt="Professional signing document"
+              fill
+              className="object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
           <div className="relative z-10 h-full items-center px-8 lg:px-24">
             <Header />
@@ -51,12 +53,12 @@ export default function NotFound() {
                 <Link href="/" className="btn btn-lg btn-accent">
                   Go to Homepage
                 </Link>
-                <button
+                <Link
+                  href="/get-a-quote"
                   className="btn btn-lg btn-outline btn-accent"
-                  onClick={() => window.Beacon?.("open")}
                 >
                   Contact Us
-                </button>
+                </Link>
               </div>
             </div>
           </div>

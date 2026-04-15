@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FadeIn } from "./animations/FadeIn";
 
 interface CTASectionProps {
@@ -31,9 +32,9 @@ export const CTASection = ({
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <button
-              className="group relative inline-flex items-center gap-2.5 bg-warm text-slate-900 font-semibold px-10 py-5 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 shadow-lg shadow-warm/25 hover:shadow-xl hover:shadow-warm/30 text-lg cursor-pointer"
-              onClick={() => window.Beacon?.("open")}
+            <Link
+              href="/get-a-quote"
+              className="group relative inline-flex items-center gap-2.5 bg-warm text-slate-900 font-semibold px-10 py-5 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 shadow-lg shadow-warm/25 hover:shadow-xl hover:shadow-warm/30 text-lg"
             >
               {buttonText}
               <svg
@@ -49,7 +50,7 @@ export const CTASection = ({
                   d="M13 7l5 5m0 0l-5 5m5-5H6"
                 />
               </svg>
-            </button>
+            </Link>
           </FadeIn>
         </div>
       </div>

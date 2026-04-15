@@ -138,9 +138,9 @@ export default function AcademicTranslationClient() {
         variant="full"
         cta={
           <div className="flex flex-col sm:flex-row gap-4">
-            <button
+            <Link
+              href="/get-a-quote"
               className="group relative inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20"
-              onClick={() => window.Beacon?.("open")}
             >
               Get a free estimate
               <svg
@@ -151,7 +151,7 @@ export default function AcademicTranslationClient() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </button>
+            </Link>
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"

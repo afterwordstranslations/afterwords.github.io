@@ -94,15 +94,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     />
     <div className="w-full bg-base-100 text-base-content">
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden bg-slate-900">
-        <Image
-          src={heroImage}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          fill
-          sizes="100vw"
-          priority
-        />
+      <section className="relative w-full bg-slate-900">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={heroImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            sizes="100vw"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 
