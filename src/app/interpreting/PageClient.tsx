@@ -113,7 +113,7 @@ export default function InterpretingClient() {
                         isLeft ? "chat-bubble-success" : "chat-bubble-info"
                       }`}
                     >
-                      <h3 className="text-lg font-bold mb-1">{service.label}</h3>
+                      <h3 className="font-[family-name:var(--font-display)] text-lg mb-1">{service.label}</h3>
                       <p className="leading-relaxed opacity-90">{service.description}</p>
                     </div>
                   </div>
@@ -133,7 +133,7 @@ export default function InterpretingClient() {
               <StaggerItem key={card.title}>
                 <motion.div className="group relative p-8 rounded-2xl border border-base-300 bg-base-100 hover:border-emerald-500/30 transition-all duration-300 h-full" whileHover={{ y: -4, boxShadow: "0 20px 40px -12px rgba(16, 185, 129, 0.1)" }}>
                   <div className="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors duration-300">{card.icon}</div>
-                  <h3 className="text-xl font-bold mb-3 text-base-content">{card.title}</h3>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl mb-3 text-base-content">{card.title}</h3>
                   <p className="text-base-content/70 leading-relaxed">{card.description}</p>
                 </motion.div>
               </StaggerItem>

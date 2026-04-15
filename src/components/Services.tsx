@@ -30,7 +30,7 @@ export const ServiceCard: React.FC<IServiceCard> = ({ description, label, learnM
             ) : null}
           </div>
 
-          <h3 className="text-xl font-bold mb-4 text-base-content group-hover:text-primary transition-colors duration-300">
+          <h3 className="font-[family-name:var(--font-display)] text-xl mb-4 text-base-content group-hover:text-primary transition-colors duration-300">
             {label}
           </h3>
           <div className="text-base-content leading-relaxed flex-1">{description}</div>

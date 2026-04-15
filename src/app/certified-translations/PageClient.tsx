@@ -210,7 +210,7 @@ export default function CertifiedTranslationsClient() {
                       <span className="font-[family-name:var(--font-display)] text-3xl font-bold text-warm">{step.step}</span>
                     </div>
                   </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-base-content mb-3">{step.title}</h3>
+                  <h3 className="font-[family-name:var(--font-display)] text-2xl text-base-content mb-3">{step.title}</h3>
                   <p className="text-base-content/60 leading-relaxed max-w-xs mx-auto">{step.description}</p>
                 </StaggerItem>
               ))}

@@ -49,7 +49,7 @@ export default function Translator({
         </a>
       </div>
 
-      <h3 className="font-[family-name:var(--font-display)] text-[1.375rem] md:text-2xl font-bold leading-snug mb-3 text-base-content">
+      <h3 className="font-[family-name:var(--font-display)] text-[1.375rem] md:text-2xl leading-snug mb-3 text-base-content">
         {fullName}
       </h3>
       <p className="text-base-content/70 text-sm leading-relaxed mb-4 min-h-[5lh]">

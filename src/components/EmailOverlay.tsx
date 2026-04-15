@@ -171,7 +171,7 @@ export function EmailOverlayProvider({
                 </svg>
               </div>
 
-              <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-base-content mb-1">
+              <h3 className="font-[family-name:var(--font-display)] text-lg text-base-content mb-1">
                 Send us an email
               </h3>
               <p className="text-sm text-base-content/50 mb-6">

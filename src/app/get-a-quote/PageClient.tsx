@@ -395,7 +395,7 @@ export default function GetAQuoteClient() {
                 </p>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-4">
                   Great translations start
                   <br />
                   with a conversation.
@@ -493,7 +493,7 @@ export default function GetAQuoteClient() {
                     </svg>
                   </div>
                   <div>
-                    <h2 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-bold text-base-content mb-2">
+                    <h2 className="font-[family-name:var(--font-display)] text-xl md:text-2xl text-base-content mb-2">
                       Not sure where to start?
                     </h2>
                     <p className="text-sm text-base-content/60 leading-relaxed">

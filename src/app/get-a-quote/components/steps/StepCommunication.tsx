@@ -96,7 +96,7 @@ export function StepCommunication({ state }: { state: QuoteState }) {
 
   return (
     <div>
-      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-3">
+      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-3">
         How should we get back to you?
       </h2>
       <p className="text-base-content/60 mb-8">

@@ -140,7 +140,7 @@ export default function PortfolioClient() {
         { title: "Proven Track Record", description: "From medical patents to published books, we deliver excellence across all project types." },
       ]} backgroundElement={
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary/90 to-slate-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
           <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-warm/8 blur-[120px]" />
         </div>
       } />
@@ -162,7 +162,7 @@ export default function PortfolioClient() {
                 <span className="text-5xl">{item.emoji}</span>
                 <span className="text-sm font-semibold uppercase tracking-[0.15em] text-warm-dark">{item.category}</span>
               </div>
-              <h3 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-4 text-base-content">{item.title}</h3>
+              <h3 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-4 text-base-content">{item.title}</h3>
               <p className="text-lg text-base-content/60 leading-relaxed max-w-3xl mb-10">{item.description}</p>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div className="lg:col-span-2 space-y-4">
@@ -194,7 +194,7 @@ export default function PortfolioClient() {
               <StaggerItem key={area.title}>
                 <div className="group p-6 rounded-2xl border border-base-300 hover:shadow-lg hover:border-warm/30 transition-all duration-300 bg-base-100">
                   <div className={`${area.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>{area.icon}</div>
-                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold mb-2 text-base-content">{area.title}</h3>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl mb-2 text-base-content">{area.title}</h3>
                   <p className="text-sm text-base-content/60 leading-relaxed">{area.description}</p>
                 </div>
               </StaggerItem>

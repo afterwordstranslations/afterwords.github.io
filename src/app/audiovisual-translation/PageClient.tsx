@@ -252,7 +252,7 @@ export default function AudiovisualTranslationClient() {
                   <div className="absolute bottom-3 left-3 w-2 h-2 rounded-full border border-amber-400/30" />
                   <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full border border-amber-400/30" />
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">
                     {service.label}
                   </h3>
                   <p className="text-white/60 leading-relaxed">
@@ -285,7 +285,7 @@ export default function AudiovisualTranslationClient() {
                     </div>
                     <div className="flex-1 h-[1px] bg-gradient-to-r from-amber-400/40 to-transparent" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-amber-600 transition-colors duration-300">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl mb-3 group-hover:text-amber-600 transition-colors duration-300">
                     {item.label}
                   </h3>
                   <p className="text-base-content/70 leading-relaxed">

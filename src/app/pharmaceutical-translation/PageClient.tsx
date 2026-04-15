@@ -103,7 +103,7 @@ export default function PharmaceuticalTranslationClient() {
                 <div className="group bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-all duration-300 h-full flex">
                   <div className="w-1.5 bg-teal-500 shrink-0 group-hover:w-2 transition-all duration-300" />
                   <div className="p-6">
-                    <h3 className="text-lg font-bold mb-2 text-slate-900">{service.title}</h3>
+                    <h3 className="font-[family-name:var(--font-display)] text-lg mb-2 text-slate-900">{service.title}</h3>
                     <p className="text-base-content/70 text-sm leading-relaxed">{service.description}</p>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export default function PharmaceuticalTranslationClient() {
                     <div className="relative z-10 w-24 h-24 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shadow-lg shadow-teal-500/20 mb-6">
                       <span className="text-white text-2xl font-bold tracking-tight">{item.step}</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-slate-900">{item.title}</h3>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl mb-2 text-slate-900">{item.title}</h3>
                     <p className="text-base-content/60 text-sm leading-relaxed max-w-xs">{item.description}</p>
                   </div>
                 </StaggerItem>
@@ -143,7 +143,7 @@ export default function PharmaceuticalTranslationClient() {
               <StaggerItem key={card.title}>
                 <div className="bg-white rounded-xl border border-slate-200 p-8 hover:shadow-lg hover:shadow-teal-500/5 transition-all duration-300 h-full">
                   <div className="w-10 h-1 rounded-full bg-teal-500 mb-6" />
-                  <h3 className="text-lg font-bold mb-3 text-slate-900">{card.title}</h3>
+                  <h3 className="font-[family-name:var(--font-display)] text-lg mb-3 text-slate-900">{card.title}</h3>
                   <p className="text-base-content/70 text-sm leading-relaxed">{card.description}</p>
                 </div>
               </StaggerItem>
@@ -157,7 +157,7 @@ export default function PharmaceuticalTranslationClient() {
           <FadeIn>
             <div className="flex flex-col items-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-2 text-warm-dark">Our commitment</p>
-              <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-3 text-center text-slate-900">Accuracy in Every Term</h2>
+              <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-3 text-center text-slate-900">Accuracy in Every Term</h2>
               <p className="text-base-content/70 text-center mb-10 max-w-xl">We ensure confidence in every submission through rigorous quality control and domain expertise.</p>
             </div>
           </FadeIn>

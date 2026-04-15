@@ -57,7 +57,7 @@ export const PageHero = ({
             </motion.p>
 
             <motion.h1
-              className={`font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl leading-tight font-bold ${titleColor}`}
+              className={`font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl leading-tight ${titleColor}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}

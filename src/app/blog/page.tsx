@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "~/lib/blog";
 import { BlogCard, FeaturedBlogCard } from "~/components/BlogCard";
-import Image from "next/image";
-import { Header } from "~/components/Header";
+import { PageHero } from "~/components/PageHero";
 import { Footer } from "~/components/Footer";
 import { JsonLd, breadcrumbJsonLd } from "~/lib/seo";
 
@@ -37,45 +36,22 @@ export default async function BlogPage() {
       ])}
     />
     <div className="w-full bg-base-100 text-base-content">
-      {/* Hero Section */}
-      <div className="hero-section bg-sl h-full pb-16">
-        <div>
-          <section className="relative w-full bg-slate-900">
-            <div className="absolute inset-0 overflow-hidden">
-              <Image
-                src="/bg.jpg"
-                alt="Professional signing document"
-                className="absolute inset-0 h-full w-full object-cover"
-                fill
-                sizes="100vw"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
-
-            <div className="relative z-10 h-full items-center px-8 lg:px-24">
-              <Header />
-
-              <div className="max-w-2xl text-white py-8">
-                <div>
-                  <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] text-white bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
-                    The Afterwords Blog
-                  </span>
-                  <h1 className="text-5xl md:text-6xl leading-tight font-bold mb-6">
-                    The stories behind the words
-                  </h1>
-                  <p className="text-xl md:text-2xl mb-20 text-white/70 leading-relaxed">
-                    {/* TODO: alternative subtitle: "Notes from the space between languages." */}
-                    Where we unpack what gets lost — and found — in translation.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+      <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <PageHero
+          badge="The Afterwords Blog"
+          title="The stories behind the words"
+          subtitle=""
+          backgroundElement={<div />}
+        />
+        <div className="relative z-10 -mt-8 px-8 lg:px-24 pb-16">
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
+            Where we unpack what gets lost — and found — in translation.
+          </p>
         </div>
       </div>
 
-      {/* Blog Posts Section */}
-      <div className="container mx-auto px-4 md:px-8 py-12 md:py-16">
+      {/* Blog Posts */}
+      <div className="py-16 md:py-24">
         {posts.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-xl text-base-content/60">No blog posts yet. Check back soon!</p>
@@ -84,7 +60,7 @@ export default async function BlogPage() {
           <>
             {/* Featured Post */}
             {featured && (
-              <section className="mb-12 md:mb-16">
+              <section className="container mx-auto px-4 md:px-8 mb-20 md:mb-28">
                 <FeaturedBlogCard
                   title={featured.title}
                   excerpt={featured.excerpt}
@@ -96,11 +72,14 @@ export default async function BlogPage() {
               </section>
             )}
 
-            {/* Remaining Posts */}
+            {/* More Articles */}
             {rest.length > 0 && (
-              <section>
-                <h2 className="text-2xl font-bold mb-8 text-base-content/80">More articles</h2>
-                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <section className="container mx-auto px-4 md:px-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-warm-dark mb-4">Keep reading</p>
+                <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-base-content mb-12">
+                  More from the blog
+                </h2>
+                <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                   {rest.map((post) => (
                     <BlogCard
                       key={post.slug}

@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] font-bold text-white mb-8">
+            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white mb-8">
               {post.title}
             </h1>
 
@@ -170,8 +170,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="border-t border-base-300">
-          <div className="container mx-auto px-4 md:px-8 py-12 md:py-16">
-            <h2 className="text-2xl font-bold mb-8 text-base-content/80">Keep reading</h2>
+          <div className="container mx-auto px-4 md:px-8 py-16 md:py-24">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-warm-dark mb-4">Keep reading</p>
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-base-content mb-12">More from the blog</h2>
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((relatedPost) => (
                 <BlogCard

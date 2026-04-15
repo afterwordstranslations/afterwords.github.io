@@ -15,7 +15,7 @@ function StepIndustries({
 }) {
   return (
     <div>
-      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-3">
+      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-3">
         What&apos;s your industry?
       </h2>
       <p className="text-base-content/60 mb-8">
@@ -52,7 +52,7 @@ function StepPersonalDocTypes({
 }) {
   return (
     <div>
-      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-3">
+      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-3">
         What type of documents?
       </h2>
       <p className="text-base-content/60 mb-8">

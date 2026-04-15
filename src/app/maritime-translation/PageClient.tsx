@@ -127,7 +127,7 @@ export default function MaritimeTranslationClient() {
                     <div className="flex items-start gap-4">
                       <div className="mt-2 w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-500/10 flex-shrink-0 sm:hidden" />
                       <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-base-content mb-3 group-hover:text-amber-700 transition-colors duration-300">{service.label}</h3>
+                        <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl text-base-content mb-3 group-hover:text-amber-700 transition-colors duration-300">{service.label}</h3>
                         <p className="text-base-content/70 text-base md:text-lg leading-relaxed max-w-2xl">{service.description}</p>
                       </div>
                     </div>
@@ -149,7 +149,7 @@ export default function MaritimeTranslationClient() {
               <StaggerItem key={card.title}>
                 <div className="group relative h-full rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 hover:border-amber-500/30 hover:bg-white/[0.06] transition-all duration-500">
                   <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">{card.title}</h3>
+                  <h3 className="font-[family-name:var(--font-display)] text-lg text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">{card.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{card.description}</p>
                 </div>
               </StaggerItem>
@@ -175,7 +175,7 @@ export default function MaritimeTranslationClient() {
                       <div className="absolute inset-0 rounded-full border-2 border-amber-400/30 animate-ping opacity-0 group-hover:opacity-100" />
                     </div>
                     <div className="md:mt-4">
-                      <h4 className="font-bold text-base-content text-sm md:text-base">{lang.label}</h4>
+                      <h4 className="text-base-content text-sm md:text-base">{lang.label}</h4>
                       <p className="text-base-content/60 text-sm mt-1">{lang.detail}</p>
                     </div>
                   </div>

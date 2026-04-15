@@ -35,11 +35,11 @@ export default function NotFound() {
               </h4>
 
               {/* Main Heading */}
-              <h1 className="text-6xl md:text-7xl font-bold mb-6">
+              <h1 className="font-[family-name:var(--font-display)] text-6xl md:text-7xl mb-6">
                 404
               </h1>
 
-              <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+              <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold mb-6">
                 Lost in translation?
               </h2>
 
@@ -71,7 +71,7 @@ export default function NotFound() {
           <p className="text-2xl mb-2 text-muted-foreground">
             Where would you like to go?
           </p>
-          <h2 className="text-4xl font-bold mb-8">Explore our services</h2>
+          <h2 className="font-[family-name:var(--font-display)] text-4xl mb-8">Explore our services</h2>
 
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8">
             <ServiceCard

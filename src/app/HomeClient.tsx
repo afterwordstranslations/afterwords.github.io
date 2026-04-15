@@ -104,7 +104,7 @@ export default function HomeClient() {
 
                 <TextReveal
                   text="Precision in every word."
-                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] font-bold text-white"
+                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] text-white"
                   delay={0.2}
                 />
               </div>
@@ -223,7 +223,7 @@ export default function HomeClient() {
                     <div className={`w-14 h-14 rounded-xl bg-base-200 flex items-center justify-center ${service.iconColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       {service.icon}
                     </div>
-                    <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold mb-3 text-base-content group-hover:text-warm-dark transition-colors duration-300">
+                    <h3 className="font-[family-name:var(--font-display)] text-2xl mb-3 text-base-content group-hover:text-warm-dark transition-colors duration-300">
                       {service.label}
                     </h3>
                     <p className="text-base-content/60 text-base leading-relaxed flex-1">
@@ -260,7 +260,7 @@ export default function HomeClient() {
                   {ind.href ? (
                     <Link href={ind.href} className="block h-full group">
                       <div className={cardClasses}>
-                        <h3 className="font-semibold text-lg mb-2 text-base-content group-hover:text-warm-dark transition-colors duration-300">
+                        <h3 className="font-[family-name:var(--font-display)] text-lg mb-2 text-base-content group-hover:text-warm-dark transition-colors duration-300">
                           {ind.label}
                         </h3>
                         <p className="text-sm text-base-content/60 leading-relaxed">{ind.description}</p>
@@ -274,7 +274,7 @@ export default function HomeClient() {
                     </Link>
                   ) : (
                     <div className={cardClasses}>
-                      <h3 className="font-semibold text-lg mb-2 text-base-content">{ind.label}</h3>
+                      <h3 className="font-[family-name:var(--font-display)] text-lg mb-2 text-base-content">{ind.label}</h3>
                       <p className="text-sm text-base-content/60 leading-relaxed">{ind.description}</p>
                     </div>
                   )}

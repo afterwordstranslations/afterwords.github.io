@@ -59,7 +59,7 @@ export function StepServicesAndType({
 
   return (
     <div>
-      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold mb-3">
+      <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl mb-3">
         What are you looking for?
       </h2>
       <p className="text-base-content/60 mb-8">

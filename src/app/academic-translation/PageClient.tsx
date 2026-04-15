@@ -260,7 +260,7 @@ export default function AcademicTranslationClient() {
                     <div className="absolute right-0 top-2 bottom-2 w-1 bg-white/10 rounded-r" />
                     <div className="absolute right-1 top-3 bottom-3 w-[2px] bg-white/5 rounded-r" />
 
-                    <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-4 leading-snug">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl text-white mb-4 leading-snug">
                       {service.label}
                     </h3>
                     <p className="text-white/70 text-sm leading-relaxed mt-auto">
@@ -293,7 +293,7 @@ export default function AcademicTranslationClient() {
                   <div className="w-12 h-12 rounded-xl bg-warm/15 text-warm flex items-center justify-center mb-6">
                     {item.icon}
                   </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold mb-3 text-base-content">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl mb-3 text-base-content">
                     {item.title}
                   </h3>
                   <p className="text-base-content/60 leading-relaxed">

@@ -25,7 +25,7 @@ export const CTASection = ({
       <div className="container mx-auto px-8 relative z-10">
         <div className="max-w-3xl">
           <FadeIn>
-            <h2 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl mb-6 text-white leading-tight">
               {title}
             </h2>
           </FadeIn>
