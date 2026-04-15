@@ -9,6 +9,7 @@ import { Footer } from "~/components/Footer";
 import { FadeIn } from "~/components/animations/FadeIn";
 import { STEP_LABELS, TOTAL_STEPS } from "./constants";
 import { trackQuoteEvent } from "./analytics";
+import { trackContact } from "~/lib/analytics";
 import type { QuoteState, QuoteAction } from "./types";
 
 // ─── Steps ─────────────────────────────────────────────────────────────────
@@ -144,9 +145,43 @@ export default function GetAQuoteClient() {
       step_name: STEP_LABELS[state.currentStep],
       step_number: String(state.currentStep + 1),
     });
+
+    // Track granular selections per step
+    if (state.currentStep === 0 && state.services.length > 0) {
+      trackQuoteEvent("quote_services_selected", {
+        services: state.services.join(", "),
+        project_type: state.projectType || "not_set",
+      });
+    }
+    if (state.currentStep === 1) {
+      if (state.projectType === "business" && state.industries.length > 0) {
+        trackQuoteEvent("quote_industry_selected", {
+          industries: state.industries.join(", "),
+        });
+      }
+      if (state.projectType === "personal" && state.personalDocTypes.length > 0) {
+        trackQuoteEvent("quote_doc_types_selected", {
+          doc_types: state.personalDocTypes.join(", "),
+        });
+      }
+    }
+    if (state.currentStep === 2 && state.languagePairs.length > 0) {
+      trackQuoteEvent("quote_languages_selected", {
+        pairs: state.languagePairs.map((p) => `${p.source}→${p.target}`).join(", "),
+      });
+    }
+    if (state.currentStep === 3) {
+      if (state.volume) {
+        trackQuoteEvent("quote_volume_selected", { volume: state.volume });
+      }
+      if (state.timeline) {
+        trackQuoteEvent("quote_timeline_selected", { timeline: state.timeline });
+      }
+    }
+
     setDirection(1);
     dispatch({ type: "NEXT_STEP" });
-  }, [state.currentStep]);
+  }, [state]);
 
   const handleBack = useCallback(() => {
     trackQuoteEvent("quote_step_back", {
@@ -376,7 +411,7 @@ export default function GetAQuoteClient() {
               <FadeIn delay={0.3}>
                 <div className="flex flex-wrap items-center gap-4">
                   <button
-                    onClick={() => window.Beacon?.("open")}
+                    onClick={() => { trackContact("helpscout", "/get-a-quote"); window.Beacon?.("open"); }}
                     className="inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold text-sm px-6 py-3 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300 cursor-pointer shadow-lg shadow-warm/20"
                   >
                     <svg

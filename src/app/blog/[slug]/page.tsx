@@ -182,6 +182,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   slug={relatedPost.slug}
                   image={relatedPost.image}
                   content={relatedPost.content}
+                  trackingContext="related"
                 />
               ))}
             </div>

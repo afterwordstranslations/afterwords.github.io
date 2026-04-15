@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate, estimateReadingTime } from "~/lib/blog";
+import { BlogClickTracker } from "./BlogClickTracker";
 
 interface BlogCardProps {
   title: string;
@@ -9,12 +10,14 @@ interface BlogCardProps {
   slug: string;
   image?: string;
   content: string;
+  trackingContext?: "listing" | "featured" | "related";
 }
 
-export function BlogCard({ title, excerpt, date, slug, image, content }: BlogCardProps) {
+export function BlogCard({ title, excerpt, date, slug, image, content, trackingContext = "listing" }: BlogCardProps) {
   const readingTime = estimateReadingTime(content);
 
   return (
+    <BlogClickTracker slug={slug} context={trackingContext}>
     <Link href={`/blog/${slug}`} className="group block">
       <article className="card bg-base-100 border border-base-300 overflow-hidden h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
         {image && (
@@ -51,13 +54,15 @@ export function BlogCard({ title, excerpt, date, slug, image, content }: BlogCar
         </div>
       </article>
     </Link>
+    </BlogClickTracker>
   );
 }
 
-export function FeaturedBlogCard({ title, excerpt, date, slug, image, content }: BlogCardProps) {
+export function FeaturedBlogCard({ title, excerpt, date, slug, image, content, trackingContext = "featured" }: BlogCardProps) {
   const readingTime = estimateReadingTime(content);
 
   return (
+    <BlogClickTracker slug={slug} context={trackingContext}>
     <Link href={`/blog/${slug}`} className="group block">
       <article className="grid md:grid-cols-2 gap-0 bg-base-100 border border-base-300 rounded-box overflow-hidden transition-all duration-300 hover:shadow-xl">
         {image && (
@@ -95,5 +100,6 @@ export function FeaturedBlogCard({ title, excerpt, date, slug, image, content }:
         </div>
       </article>
     </Link>
+    </BlogClickTracker>
   );
 }

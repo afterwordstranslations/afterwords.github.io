@@ -7,8 +7,10 @@ import {
   useCallback,
   useEffect,
 } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { getEmail } from "~/lib/email";
+import { trackEmailOverlay } from "~/lib/analytics";
 
 // ─── Context ──────────────────────────────────────────────────────────────
 
@@ -37,14 +39,16 @@ export function EmailOverlayProvider({
     subject?: string;
     body?: string;
   }>({});
+  const pathname = usePathname();
 
   const openEmailOverlay = useCallback(
     (options?: { subject?: string; body?: string }) => {
       setMailtoParams(options ?? {});
       setCopied(false);
       setOpen(true);
+      trackEmailOverlay("opened", pathname);
     },
-    [],
+    [pathname],
   );
 
   const close = useCallback(() => setOpen(false), []);
@@ -74,6 +78,7 @@ export function EmailOverlayProvider({
   const email = getEmail();
 
   const handleOpenMailClient = () => {
+    trackEmailOverlay("open_client", pathname);
     const params = new URLSearchParams();
     if (mailtoParams.subject)
       params.set("subject", mailtoParams.subject);
@@ -86,6 +91,7 @@ export function EmailOverlayProvider({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(email);
+      trackEmailOverlay("copy", pathname);
       setCopied(true);
       setTimeout(() => {
         setCopied(false);

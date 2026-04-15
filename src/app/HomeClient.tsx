@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { trackCTA } from "~/lib/analytics";
 import { Header } from "~/components/Header";
 import { DecadeSection } from "~/components/DecadeSection";
 import { TestimonialsSection } from "~/components/TestimonialsSection";
@@ -128,6 +129,7 @@ export default function HomeClient() {
                   <Link
                     href="/get-a-quote"
                     className="group inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20"
+                    onClick={() => trackCTA("Get a free estimate", "/")}
                   >
                     Get a free estimate
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -137,6 +139,7 @@ export default function HomeClient() {
                   <Link
                     href="/portfolio"
                     className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
+                    onClick={() => trackCTA("View Portfolio", "/")}
                   >
                     View Portfolio
                   </Link>
@@ -284,6 +287,7 @@ export default function HomeClient() {
             <Link
               href="/get-a-quote"
               className="mt-10 group inline-flex items-center gap-2 text-warm-dark font-semibold hover:text-warm transition-colors duration-200"
+              onClick={() => trackCTA("Tell us about your industry", "/")}
             >
               Tell us about your industry
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -342,6 +346,7 @@ export default function HomeClient() {
               <Link
                 href="/portfolio"
                 className="group inline-flex items-center gap-2 rounded-xl border border-warm/40 bg-warm-subtle/40 px-8 py-4 font-semibold text-base-content transition-all duration-300 hover:border-warm hover:bg-warm-subtle hover:shadow-md"
+                onClick={() => trackCTA("See our portfolio", "/")}
               >
                 See our portfolio
                 <svg

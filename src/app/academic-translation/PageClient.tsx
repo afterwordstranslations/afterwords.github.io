@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { trackCTA } from "~/lib/analytics";
 import { PageHero } from "~/components/PageHero";
 import { SectionHeader } from "~/components/SectionHeader";
 import { CTASection } from "~/components/CTASection";
@@ -140,6 +141,7 @@ export default function AcademicTranslationClient() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/get-a-quote"
+              onClick={() => trackCTA("Get a free estimate", "/academic-translation")}
               className="group relative inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-warm/20"
             >
               Get a free estimate
@@ -154,6 +156,7 @@ export default function AcademicTranslationClient() {
             </Link>
             <Link
               href="/portfolio"
+              onClick={() => trackCTA("View Portfolio", "/academic-translation")}
               className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
             >
               View Portfolio

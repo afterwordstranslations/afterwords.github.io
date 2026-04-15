@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { trackCTA } from "~/lib/analytics";
 import { PageHero } from "~/components/PageHero";
 import { SectionHeader } from "~/components/SectionHeader";
 import { CTASection } from "~/components/CTASection";
@@ -157,12 +158,14 @@ export default function AudiovisualTranslationClient() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/get-a-quote"
+              onClick={() => trackCTA("Get a free estimate", "/audiovisual-translation")}
               className="group relative inline-flex items-center gap-2 bg-amber-400 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-amber-300 transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/20"
             >
               Get a free estimate
             </Link>
             <Link
               href="/portfolio"
+              onClick={() => trackCTA("View Portfolio", "/audiovisual-translation")}
               className="inline-flex items-center gap-2 border border-amber-400/40 text-amber-300 font-semibold px-8 py-4 rounded-xl hover:bg-amber-400/10 transition-all duration-300"
             >
               View Portfolio

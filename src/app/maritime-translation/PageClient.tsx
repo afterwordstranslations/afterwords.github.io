@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { trackCTA } from "~/lib/analytics";
 import { PageHero } from "~/components/PageHero";
 import { SectionHeader } from "~/components/SectionHeader";
 import { CTASection } from "~/components/CTASection";
@@ -74,11 +75,11 @@ export default function MaritimeTranslationClient() {
     <div className="w-full bg-base-100 text-base-content">
       <PageHero badge="Boutique, human-led linguistic support with a dedicated partner for every fleet" title="High-Stakes Maritime Translation: Precision for the Global Fleet" subtitle='In shipping, a "near-miss" costs more than just time — it costs operational safety. We provide boutique, human-led linguistic support with a dedicated partner for every fleet.' variant="full" backgroundElement={<WaveBackground />} cta={
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/get-a-quote" className="group relative inline-flex items-center gap-2 bg-amber-500 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-amber-400 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/20">
+          <Link href="/get-a-quote" onClick={() => trackCTA("Get a free estimate", "/maritime-translation")} className="group relative inline-flex items-center gap-2 bg-amber-500 text-slate-900 font-semibold px-8 py-4 rounded-xl hover:bg-amber-400 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/20">
             Get a free estimate
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </Link>
-          <Link href="/portfolio" className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-xl border border-amber-500/40 text-amber-300 hover:bg-amber-500/10 transition-all duration-300">View Portfolio</Link>
+          <Link href="/portfolio" onClick={() => trackCTA("View Portfolio", "/maritime-translation")} className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-xl border border-amber-500/40 text-amber-300 hover:bg-amber-500/10 transition-all duration-300">View Portfolio</Link>
         </div>
       } features={[
         { title: "Maritime Subject Matter Experts", description: "We pair naval linguists with industry-standard glossaries to guarantee absolute terminology consistency from the bridge to the engine room." },

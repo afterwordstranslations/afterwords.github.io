@@ -1,7 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { getEmail } from "~/lib/email";
+import { trackSocial, trackCTA } from "~/lib/analytics";
 
 const serviceLinks = [
   { label: "Certified Translations", href: "/certified-translations" },
@@ -22,6 +24,7 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
+  const pathname = usePathname();
   return (
     <footer className="bg-slate-900 text-white">
       {/* Warm gradient divider */}
@@ -115,6 +118,7 @@ export const Footer = () => {
                   href={link.href}
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-warm/20 transition-all duration-300"
                   aria-label={link.label}
+                  onClick={() => trackSocial(link.label.toLowerCase() as "instagram" | "linkedin" | "facebook", pathname)}
                 >
                   <Image
                     alt={link.label}
@@ -129,6 +133,7 @@ export const Footer = () => {
             <Link
               href="/get-a-quote"
               className="text-sm text-warm hover:text-warm-dark transition-colors duration-200"
+              onClick={() => trackCTA("Get in touch", pathname)}
             >
               Get in touch &rarr;
             </Link>

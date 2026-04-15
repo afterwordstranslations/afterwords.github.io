@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FadeIn } from "./animations/FadeIn";
+import { trackCTA } from "~/lib/analytics";
 
 interface CTASectionProps {
   title: string;
@@ -13,6 +15,7 @@ export const CTASection = ({
   description,
   buttonText = "Contact us",
 }: CTASectionProps) => {
+  const pathname = usePathname();
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Warm accent glow */}
@@ -35,6 +38,7 @@ export const CTASection = ({
             <Link
               href="/get-a-quote"
               className="group relative inline-flex items-center gap-2.5 bg-warm text-slate-900 font-semibold px-10 py-5 rounded-xl hover:bg-warm-dark hover:text-white transition-all duration-300 shadow-lg shadow-warm/25 hover:shadow-xl hover:shadow-warm/30 text-lg"
+              onClick={() => trackCTA(buttonText, pathname)}
             >
               {buttonText}
               <svg
