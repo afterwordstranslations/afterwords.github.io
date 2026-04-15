@@ -2,53 +2,20 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeader } from "./SectionHeader";
-
-const testimonials = [
-  {
-    quote:
-      "In 2023, the year when the title of the European Capital of Culture was awarded, 2023 Eleusis in cooperation with the Aikaterini Laskaridis Foundation and with its exclusive sponsorship, implemented the dedicated bilingual anthology They Wrote about Her with texts by Greek and foreign authors written about Eleusis, from antiquity to the present day. The Afterwords Translations team undertook the difficult task of translating texts from the entire range of this anthology. The collaboration was flawless at every level and the result was excellent with an emphasis on the quality of the style and meaning of the texts.",
-    author: "Isavela Karouti",
-    company: "2023 Eleusis European Capital of Culture",
-  },
-  {
-    quote:
-      "I strongly endorse Ms. Chatzistylianou as a subtitler. She is professional, reliable, and fast, with excellent knowledge of multiple languages, strong research abilities, and clear communication. Her expertise and work ethic make her one of the best in today's subtitling market.",
-    author: "Georgios Kalipetis",
-    company: "VIDEOPRESS S.A.",
-  },
-  {
-    quote:
-      "Beyond their linguistic expertise, Afterwords Translations proves to be a collaborative and reliable team. They consistently go above and beyond to meet deadlines and play a crucial role in the overall success of our projects, especially focusing on chemical and technical patents.",
-    author: "Olena Vasilatos",
-    company: "LSP Owner & Translator",
-  },
-  {
-    quote:
-      "After working with Afterwords Translations, I can confidently affirm their outstanding proficiency in medical and legal translations. Their precision, unwavering professionalism, and dedication to meeting deadlines make them an indispensable resource.",
-    author: "Sofia Simoni",
-    company: "Greek LSP Owner & Subtitler",
-  },
-  {
-    quote:
-      "The Afterwords Translations team is dedicated and readily accessible to deliver outstanding services for translation and interpreting requirements. Moreover, they exhibit a high level of professionalism and ethical conduct, making them excellent colleagues. I wholeheartedly recommend their services.",
-    author: "Zoe Resta, Ph.D.",
-    company: "Translator & Conference Interpreter",
-  },
-  {
-    quote:
-      "We engaged Afterwords Translations for a high-stakes interpretation project and they delivered at a level few vendors reach. They were professional and strong on context, not just language. Communication was clear, controlled, and seamless throughout. I would work with them again without hesitation.",
-    author: "Ifigenia Geiveli",
-    company: "Human Resources Executive",
-  },
-  {
-    quote:
-      "Our long-standing collaboration with Afterwords proves the quality of their work. They are a team of translators who respond with great success to the translation of texts from various scientific disciplines, always respecting the deadlines set each time.",
-    author: "Maria Simantiri",
-    company: "Gutenberg Editions, Athens",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export const TestimonialsSection = () => {
+  const t = useTranslations("Testimonials");
+
+  const testimonials = [
+    { quote: t("quote1"), author: t("author1"), company: t("company1") },
+    { quote: t("quote2"), author: t("author2"), company: t("company2") },
+    { quote: t("quote3"), author: t("author3"), company: t("company3") },
+    { quote: t("quote4"), author: t("author4"), company: t("company4") },
+    { quote: t("quote5"), author: t("author5"), company: t("company5") },
+    { quote: t("quote6"), author: t("author6"), company: t("company6") },
+    { quote: t("quote7"), author: t("author7"), company: t("company7") },
+  ];
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -68,8 +35,8 @@ export const TestimonialsSection = () => {
     <section className="py-24 md:py-32 bg-base-200">
       <div className="container mx-auto px-8">
         <SectionHeader
-          eyebrow="Client Testimonials"
-          title="What our clients say"
+          eyebrow={t("eyebrow")}
+          title={t("title")}
           className="mb-16"
         />
 
@@ -127,7 +94,7 @@ export const TestimonialsSection = () => {
                     ? "w-8 bg-warm/30"
                     : "w-2 bg-base-content/20 hover:bg-base-content/40"
                 }`}
-                aria-label={`Go to testimonial ${i + 1}`}
+                aria-label={t("goToTestimonial", { number: i + 1 })}
               >
                 {i === current && (
                   <motion.div

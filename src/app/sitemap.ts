@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "~/lib/blog";
+import { routing } from "~/i18n/routing";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://afterwords.gr";
 
@@ -7,76 +8,51 @@ export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
+  const { locales } = routing;
 
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${BASE_URL}/certified-translations`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/interpreting`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/audiovisual-translation`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/academic-translation`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/pharmaceutical-translation`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/maritime-translation`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/get-a-quote`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/portfolio`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+  const staticPaths = [
+    "",
+    "/certified-translations",
+    "/interpreting",
+    "/audiovisual-translation",
+    "/academic-translation",
+    "/pharmaceutical-translation",
+    "/maritime-translation",
+    "/get-a-quote",
+    "/portfolio",
+    "/blog",
   ];
 
-  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
+  const staticPages: MetadataRoute.Sitemap = staticPaths.flatMap((path) =>
+    locales.map((locale) => ({
+      url: `${BASE_URL}/${locale}${path}`,
+      lastModified: new Date(),
+      changeFrequency:
+        path === "" || path === "/blog"
+          ? ("weekly" as const)
+          : ("monthly" as const),
+      priority: path === "" ? 1 : path === "/blog" ? 0.8 : 0.9,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}${path}`])
+        ),
+      },
+    }))
+  );
+
+  const blogPages: MetadataRoute.Sitemap = posts.flatMap((post) =>
+    locales.map((locale) => ({
+      url: `${BASE_URL}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}/blog/${post.slug}`])
+        ),
+      },
+    }))
+  );
 
   return [...staticPages, ...blogPages];
 }

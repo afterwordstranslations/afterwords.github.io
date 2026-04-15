@@ -1,21 +1,10 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "~/i18n/navigation";
+import { usePathname } from "~/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { getEmail } from "~/lib/email";
 import { trackSocial, trackCTA } from "~/lib/analytics";
-
-const serviceLinks = [
-  { label: "Certified Translations", href: "/certified-translations" },
-  { label: "Interpreting", href: "/interpreting" },
-  { label: "Subtitling", href: "/audiovisual-translation" },
-];
-
-const industryLinks = [
-  { label: "Pharmaceutical", href: "/pharmaceutical-translation" },
-  { label: "Maritime", href: "/maritime-translation" },
-  { label: "Academic", href: "/academic-translation" },
-];
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/afterwordstranslations/", icon: "/insta.svg" },
@@ -25,6 +14,20 @@ const socialLinks = [
 
 export const Footer = () => {
   const pathname = usePathname();
+  const t = useTranslations("Footer");
+  const tHeader = useTranslations("Header");
+
+  const serviceLinks = [
+    { label: tHeader("certifiedTranslations"), href: "/certified-translations" },
+    { label: tHeader("interpreting"), href: "/interpreting" },
+    { label: tHeader("subtitling"), href: "/audiovisual-translation" },
+  ];
+  const industryLinks = [
+    { label: tHeader("pharmaceutical"), href: "/pharmaceutical-translation" },
+    { label: tHeader("maritime"), href: "/maritime-translation" },
+    { label: tHeader("academic"), href: "/academic-translation" },
+  ];
+
   return (
     <footer className="bg-slate-900 text-white">
       {/* Warm gradient divider */}
@@ -42,14 +45,14 @@ export const Footer = () => {
               className="mb-4 w-48"
             />
             <p className="text-white/60 text-sm leading-relaxed">
-              Precision in every word. A boutique Greek translation agency bridging languages and cultures since 2015.
+              {t("tagline")}
             </p>
           </div>
 
           {/* Services */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-warm mb-6">
-              Services
+              {t("services")}
             </h4>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
@@ -68,7 +71,7 @@ export const Footer = () => {
           {/* Industries */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-warm mb-6">
-              Industries
+              {t("industries")}
             </h4>
             <ul className="space-y-3">
               {industryLinks.map((link) => (
@@ -84,7 +87,7 @@ export const Footer = () => {
             </ul>
 
             <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-warm mb-4 mt-8">
-              Resources
+              {t("resources")}
             </h4>
             <ul className="space-y-3">
               <li>
@@ -92,7 +95,7 @@ export const Footer = () => {
                   href="/blog"
                   className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Blog
+                  {t("blog")}
                 </Link>
               </li>
               <li>
@@ -100,7 +103,7 @@ export const Footer = () => {
                   href="/portfolio"
                   className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Portfolio
+                  {t("portfolio")}
                 </Link>
               </li>
             </ul>
@@ -109,7 +112,7 @@ export const Footer = () => {
           {/* Connect */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-[0.15em] text-warm mb-6">
-              Connect
+              {t("connect")}
             </h4>
             <div className="flex items-center gap-4 mb-6">
               {socialLinks.map((link) => (
@@ -135,7 +138,7 @@ export const Footer = () => {
               className="text-sm text-warm hover:text-warm-dark transition-colors duration-200"
               onClick={() => trackCTA("Get in touch", pathname)}
             >
-              Get in touch &rarr;
+              {t("getInTouch")} &rarr;
             </Link>
             <p className="text-white/60 text-sm mt-3">
               {getEmail()}
@@ -146,7 +149,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm">
-            &copy; {new Date().getFullYear()} Afterwords. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
           <Image
             alt="I work with SDL Trados Studio"
@@ -156,7 +159,7 @@ export const Footer = () => {
             className="h-7 w-auto opacity-50 hover:opacity-80 transition-opacity duration-300"
           />
           <p className="text-white/40 text-sm">
-            Athens, Greece
+            {t("location")}
           </p>
         </div>
       </div>

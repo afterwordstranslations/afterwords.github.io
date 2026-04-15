@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "~/i18n/navigation";
+import { usePathname } from "~/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "~/components/ThemeToggle";
+import { LocaleSwitcher } from "~/components/LocaleSwitcher";
 import { getEmail } from "~/lib/email";
 import { useEmailOverlay } from "~/components/EmailOverlay";
 import { trackContact, trackCTA } from "~/lib/analytics";
@@ -15,35 +16,11 @@ interface NavCategory {
   items: { label: string; href: string }[];
 }
 
-const navCategories: NavCategory[] = [
-  {
-    label: "Services",
-    items: [
-      { label: "Certified Translations", href: "/certified-translations" },
-      { label: "Interpreting", href: "/interpreting" },
-      { label: "Subtitling", href: "/audiovisual-translation" },
-    ],
-  },
-  {
-    label: "Industries",
-    items: [
-      { label: "Pharmaceutical", href: "/pharmaceutical-translation" },
-      { label: "Maritime", href: "/maritime-translation" },
-      { label: "Academic", href: "/academic-translation" },
-    ],
-  },
-  {
-    label: "About",
-    items: [
-      { label: "Our Team", href: "/#team" },
-      { label: "Portfolio", href: "/portfolio" },
-    ],
-  },
-];
 
 // ─── Compact Scroll Bar ───────────────────────────────────────────────────
 
 function CompactBar({ visible, onEmailClick, pathname }: { visible: boolean; onEmailClick: () => void; pathname: string }) {
+  const t = useTranslations("Header");
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -113,13 +90,14 @@ function CompactBar({ visible, onEmailClick, pathname }: { visible: boolean; onE
                 <Image alt="LinkedIn" width={14} height={14} src="/in.png" className={`w-3.5 h-3.5 opacity-70 ${isDark ? "" : "invert"}`} />
               </a>
 
-              {/* CTA */}
+              {/* Locale + Theme, then CTA */}
+              <LocaleSwitcher />
               <Link
                 href="/get-a-quote"
-                className="inline-flex items-center bg-warm text-slate-900 font-semibold text-xs px-4 py-1.5 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300"
+                className="ml-1 inline-flex items-center bg-warm text-slate-900 font-semibold text-xs px-4 py-1.5 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300"
                 onClick={() => trackCTA("Get a quote", pathname)}
               >
-                Get a quote
+                {t("getAQuote")}
               </Link>
             </div>
           </div>
@@ -132,6 +110,7 @@ function CompactBar({ visible, onEmailClick, pathname }: { visible: boolean; onE
 // ─── Main Header ──────────────────────────────────────────────────────────
 
 export function Header() {
+  const t = useTranslations("Header");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -139,6 +118,32 @@ export function Header() {
   const navRef = useRef<HTMLElement>(null);
   const { openEmailOverlay } = useEmailOverlay();
   const pathname = usePathname();
+
+  const navCategories: NavCategory[] = [
+    {
+      label: t("services"),
+      items: [
+        { label: t("certifiedTranslations"), href: "/certified-translations" },
+        { label: t("interpreting"), href: "/interpreting" },
+        { label: t("subtitling"), href: "/audiovisual-translation" },
+      ],
+    },
+    {
+      label: t("industries"),
+      items: [
+        { label: t("pharmaceutical"), href: "/pharmaceutical-translation" },
+        { label: t("maritime"), href: "/maritime-translation" },
+        { label: t("academic"), href: "/academic-translation" },
+      ],
+    },
+    {
+      label: t("about"),
+      items: [
+        { label: t("ourTeam"), href: "/#team" },
+        { label: t("portfolio"), href: "/portfolio" },
+      ],
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 200);
@@ -299,23 +304,23 @@ export function Header() {
               href="/blog"
               className="px-3 py-2 text-sm font-medium text-white/80 hover:text-warm transition-colors duration-200 rounded-lg"
             >
-              Blog
+              {t("blog")}
             </Link>
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
+            {/* Locale + Theme */}
+            <LocaleSwitcher variant="dark" />
+
             {/* Get a quote — Desktop */}
             <Link
               href="/get-a-quote"
               className="hidden lg:inline-flex items-center gap-2 bg-warm text-slate-900 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300"
               onClick={() => trackCTA("Get a quote", pathname)}
             >
-              Get a quote
+              {t("getAQuote")}
             </Link>
-
-            {/* Theme Toggle */}
-            <ThemeToggle />
 
             {/* Burger Menu — Mobile only */}
             <button
@@ -324,7 +329,7 @@ export function Header() {
                 setMobileMenuOpen(!mobileMenuOpen);
                 if (mobileMenuOpen) setMobileExpanded(null);
               }}
-              aria-label="Toggle menu"
+              aria-label={t("toggleMenu")}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
@@ -401,7 +406,7 @@ export function Header() {
                     className="block py-2.5 text-sm font-medium text-white/80 hover:text-warm transition-colors duration-200"
                     onClick={closeAll}
                   >
-                    Blog
+                    {t("blog")}
                   </Link>
                 </motion.div>
 
@@ -417,7 +422,7 @@ export function Header() {
                     className="block w-full text-center bg-warm text-slate-900 font-semibold text-sm px-5 py-3 rounded-lg hover:bg-warm-dark hover:text-white transition-all duration-300"
                     onClick={() => { trackCTA("Get a quote", pathname); closeAll(); }}
                   >
-                    Get a quote
+                    {t("getAQuote")}
                   </Link>
                 </motion.div>
 

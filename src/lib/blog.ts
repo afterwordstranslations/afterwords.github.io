@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const POSTS_DIR = path.join(process.cwd(), "src/content/blog");
+const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
 export interface BlogPost {
   slug: string;
@@ -34,9 +34,9 @@ export const AUTHORS: Record<string, Author> = {
 
 export const DEFAULT_AUTHOR = "team";
 
-export function formatDate(dateStr: string): string {
+export function formatDate(dateStr: string, locale: string = "en"): string {
   const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString(locale === "el" ? "el-GR" : "en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -48,12 +48,20 @@ export function estimateReadingTime(content: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
-export async function getAllPosts(): Promise<BlogPost[]> {
-  const files = fs.readdirSync(POSTS_DIR);
+function getPostsDir(locale: string): string {
+  if (locale === "en") return BLOG_DIR;
+  const localeDir = path.join(BLOG_DIR, locale);
+  if (fs.existsSync(localeDir)) return localeDir;
+  return BLOG_DIR;
+}
+
+export async function getAllPosts(locale: string = "en"): Promise<BlogPost[]> {
+  const postsDir = getPostsDir(locale);
+  const files = fs.readdirSync(postsDir);
   const posts = files
-    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
+    .filter((file) => (file.endsWith(".mdx") || file.endsWith(".md")) && !fs.statSync(path.join(postsDir, file)).isDirectory())
     .map((file) => {
-      const filePath = path.join(POSTS_DIR, file);
+      const filePath = path.join(postsDir, file);
       const content = fs.readFileSync(filePath, "utf-8");
       const { data, content: markdown } = parseFrontmatter(content);
 
@@ -72,12 +80,12 @@ export async function getAllPosts(): Promise<BlogPost[]> {
   return posts;
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getPostBySlug(slug: string, locale: string = "en"): Promise<BlogPost | null> {
   try {
-    // Try .mdx first, then .md
-    let filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+    const postsDir = getPostsDir(locale);
+    let filePath = path.join(postsDir, `${slug}.mdx`);
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(POSTS_DIR, `${slug}.md`);
+      filePath = path.join(postsDir, `${slug}.md`);
     }
 
     const content = fs.readFileSync(filePath, "utf-8");
@@ -122,13 +130,12 @@ function parseFrontmatter(content: string) {
 }
 
 function extractExcerpt(content: string, maxLength = 150): string {
-  // Remove markdown syntax for plain text excerpt
   const plainText = content
-    .replace(/^#{1,6}\s+/gm, "") // Remove headers
-    .replace(/\*\*/g, "") // Remove bold
-    .replace(/\*/g, "") // Remove italic
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // Remove links, keep text
-    .replace(/\n+/g, " ") // Replace newlines with spaces
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/\*\*/g, "")
+    .replace(/\*/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\n+/g, " ")
     .trim();
 
   return plainText.slice(0, maxLength) + (plainText.length > maxLength ? "..." : "");
